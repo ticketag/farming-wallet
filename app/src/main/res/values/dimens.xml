@@ -1,0 +1,21 @@
+<resources>
+    <!-- Text -->
+    <dimen name="text_size_large">28sp</dimen>
+    <dimen name="text_size_normal">24sp</dimen>
+    <dimen name="text_size_medium">20sp</dimen>
+    <dimen name="text_size_small">18sp</dimen>
+    <dimen name="text_size_nano">12sp</dimen>
+
+    <!-- Activities -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Card -->
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_content_padding">12dp</dimen>
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="card_margin">2dp</dimen>
+
+    <!-- Item Transaction Record -->
+    <dimen name="itr_icon_padding">8dp</dimen>
+</resources>

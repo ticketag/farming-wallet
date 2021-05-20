@@ -1,0 +1,14 @@
+<resources>
+    <!--  Main -->
+    <string name="app_name">FarmingWallet</string>
+
+    <!--  Navigation -->
+    <string name="navigation_title_wallet">wallet</string>
+    <string name="navigation_title_dapps">DApps</string>
+    <string name="navigation_title_pool">Pool</string>
+
+    <string name="itr_operation_placeholder" translatable="false">Received</string>
+    <string name="itr_amount_placeholder" translatable="false">+1.45 XHC</string>
+    <string name="itr_date_placeholder" translatable="false">09:30 - 12/12/2021</string>
+    <string name="itr_corresponding_placeholder" translatable="false">1,800.00 €</string>
+</resources>
