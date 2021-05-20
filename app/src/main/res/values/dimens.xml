@@ -1,8 +1,7 @@
 <resources>
     <!-- Text -->
     <dimen name="text_size_large">28sp</dimen>
-    <dimen name="text_size_normal">24sp</dimen>
-    <dimen name="text_size_medium">20sp</dimen>
+    <dimen name="text_size_normal">22sp</dimen>
     <dimen name="text_size_small">18sp</dimen>
     <dimen name="text_size_nano">12sp</dimen>
 
@@ -11,11 +10,27 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <!-- Card -->
-    <dimen name="card_elevation">4dp</dimen>
-    <dimen name="card_content_padding">12dp</dimen>
-    <dimen name="card_corner_radius">8dp</dimen>
-    <dimen name="card_margin">2dp</dimen>
+    <dimen name="itr_card_elevation">4dp</dimen>
+    <dimen name="itr_card_content_padding">12dp</dimen>
+    <dimen name="itr_card_corner_radius">8dp</dimen>
+    <dimen name="itr_card_margin">4dp</dimen>
 
     <!-- Item Transaction Record -->
     <dimen name="itr_icon_padding">8dp</dimen>
+
+    <!-- Item Balance -->
+    <dimen name="ib_separator_width">2dp</dimen>
+    <dimen name="ib_separator_height">60dp</dimen>
+    <dimen name="ib_content_padding">20dp</dimen>
+    <dimen name="ib_elements_margin">12dp</dimen>
+    <dimen name="ib_radius">20dp</dimen>
+    <dimen name="ib_wallet_address_radius">20dp</dimen>
+    <dimen name="isr_buttons_spacing">20dp</dimen>
+
+    <!-- Send receive buttons -->
+    <dimen name="srb_radius">8dp</dimen>
+
+    <!-- Fragment Wallet -->
+    <dimen name="fragment_wallet_content_padding">32dp</dimen>
+    <dimen name="fragment_wallet_items_margin">20dp</dimen>
 </resources>

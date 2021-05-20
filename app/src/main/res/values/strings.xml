@@ -7,8 +7,20 @@
     <string name="navigation_title_dapps">DApps</string>
     <string name="navigation_title_pool">Pool</string>
 
+
+    <!--  Item Transaction Record -->
     <string name="itr_operation_placeholder" translatable="false">Received</string>
     <string name="itr_amount_placeholder" translatable="false">+1.45 XHC</string>
     <string name="itr_date_placeholder" translatable="false">09:30 - 12/12/2021</string>
     <string name="itr_corresponding_placeholder" translatable="false">1,800.00 €</string>
+
+    <!--  Item Balance -->
+    <string name="ib_wallet_address_placeholder">xch13…45fe</string>
+    <string name="ib_balance">Balance</string>
+    <string name="ib_amount_placeholder">1,35 XCH</string>
+    <string name="ib_corresponding_placeholder">1,834,34 $</string>
+
+    <!--  Item Send Receive Buttons -->
+    <string name="isr_send">Send</string>
+    <string name="isr_receive">Receive</string>
 </resources>
