@@ -22,9 +22,11 @@ import static eu.farmingpool.farmingwallet.utils.Utils.getLocale;
 
 public class TransactionRecordsAdapter extends RecyclerView.Adapter<TransactionRecordsAdapter.TransactionRecordViewHolder> {
     private final TransactionRecords transactionRecords;
+    private final OnClickListener onClickListener;
 
-    public TransactionRecordsAdapter(TransactionRecords transactionRecords) {
+    public TransactionRecordsAdapter(TransactionRecords transactionRecords, OnClickListener onClickListener) {
         this.transactionRecords = transactionRecords;
+        this.onClickListener = onClickListener;
     }
 
     @NonNull
@@ -39,6 +41,7 @@ public class TransactionRecordsAdapter extends RecyclerView.Adapter<TransactionR
     @Override
     public void onBindViewHolder(@NonNull TransactionRecordViewHolder holder, int position) {
         holder.setup(transactionRecords.get(position));
+        holder.setOnClickListener(v -> onClickListener.onTransactionClicked(position));
     }
 
     @Override
@@ -46,7 +49,13 @@ public class TransactionRecordsAdapter extends RecyclerView.Adapter<TransactionR
         return transactionRecords.size();
     }
 
+    public interface OnClickListener {
+        void onTransactionClicked(int i);
+    }
+
     protected static class TransactionRecordViewHolder extends RecyclerView.ViewHolder {
+        private final View itemView;
+
         private final ImageView ivIcon;
         private final TextView tvOperation;
         private final TextView tvAmount;
@@ -55,6 +64,8 @@ public class TransactionRecordsAdapter extends RecyclerView.Adapter<TransactionR
 
         public TransactionRecordViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            this.itemView = itemView;
 
             ivIcon = itemView.findViewById(R.id.iv_itr_icon);
             tvOperation = itemView.findViewById(R.id.tv_itr_operation);
@@ -81,6 +92,10 @@ public class TransactionRecordsAdapter extends RecyclerView.Adapter<TransactionR
             tvAmount.setTextColor(color);
             tvDate.setText(f.format(date));
             tvCorresponding.setText("0.0 $");
+        }
+
+        public void setOnClickListener(View.OnClickListener listener) {
+            itemView.setOnClickListener(listener);
         }
     }
 }

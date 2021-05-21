@@ -1,5 +1,6 @@
 package eu.farmingpool.farmingwallet.ui.wallet;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 
-public class TransactionRecordsFragment extends Fragment {
+public class TransactionRecordsFragment extends Fragment implements TransactionRecordsAdapter.OnClickListener {
     private RecyclerView rvTransactionRecords;
+    private TransactionRecordsAdapter.OnClickListener onClickListener;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -34,12 +36,27 @@ public class TransactionRecordsFragment extends Fragment {
         transactionRecordsViewModel.getTransactionRecords().observe(getViewLifecycleOwner(), this::setTransactionRecordsAdapter);
     }
 
+    @Override
+    public void onTransactionClicked(int i) {
+        onClickListener.onTransactionClicked(i);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        try {
+            onClickListener = (TransactionRecordsAdapter.OnClickListener) context;
+        } catch (Exception ignored) {
+        }
+    }
+
     private void setupRecyclerView(View view) {
         rvTransactionRecords = view.findViewById(R.id.rv_transaction_records);
     }
 
     private void setTransactionRecordsAdapter(TransactionRecords transactionRecords) {
-        TransactionRecordsAdapter adapter = new TransactionRecordsAdapter(transactionRecords);
+        TransactionRecordsAdapter adapter = new TransactionRecordsAdapter(transactionRecords, this);
         rvTransactionRecords.setAdapter(adapter);
         rvTransactionRecords.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
     }

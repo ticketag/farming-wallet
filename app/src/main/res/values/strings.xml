@@ -3,9 +3,11 @@
     <string name="app_name">FarmingWallet</string>
 
     <!--  Navigation -->
-    <string name="navigation_title_wallet">wallet</string>
+    <string name="navigation_title_wallet">Wallet</string>
+    <string name="navigation_title_wallet_detail">Wallet Detail</string>
     <string name="navigation_title_dapps">DApps</string>
     <string name="navigation_title_pool">Pool</string>
+    <string name="navigation_title_transaction_record_dialog">Transaction Record</string>
 
     <!--  Fragment Wallet -->
     <string name="fragment_transactions_title">Transactions</string>
@@ -24,7 +26,20 @@
     <string name="ib_amount_placeholder">1,35 XCH</string>
     <string name="ib_corresponding_placeholder">1,834,34 $</string>
 
+
+    <string name="dtr_amount">Amount</string>
+    <string name="dtr_date">Date</string>
+    <string name="dtr_sender">Sender</string>
+    <string name="dtr_receiver">Receiver</string>
+    <string name="dtr_sender_placeholder">xch13…45fe</string>
+    <string name="dtr_receiver_placeholder">xch13…45fe</string>
+
     <!--  Item Send Receive Buttons -->
     <string name="isr_send">Send</string>
     <string name="isr_receive">Receive</string>
+    <string name="icb_coin_name_placeholder">Chia</string>
+    <string name="icb_coin_amount_placeholder">14.0 XCH</string>
+    <string name="icb_value_placeholder">10,000.00$</string>
+    <string name="icb_change_placeholder">+35%</string>
+    <string name="icb_corresponding_placeholder">100,000.00 $</string>
 </resources>

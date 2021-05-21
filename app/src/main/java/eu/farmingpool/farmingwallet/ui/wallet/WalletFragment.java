@@ -1,5 +1,6 @@
 package eu.farmingpool.farmingwallet.ui.wallet;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,34 +8,51 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
+import java.util.ArrayList;
 
 import eu.farmingpool.farmingwallet.R;
+import eu.farmingpool.farmingwallet.coins.Coin;
 
-public class WalletFragment extends Fragment {
+public class WalletFragment extends Fragment implements CoinBalancesAdapter.OnClickListener {
+    CoinBalancesAdapter.OnClickListener onClickListener;
+    RecyclerView rvCoins;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_wallet, container, false);
 
-        setupViewPager(root);
+        setupRecyclerView(root);
 
         return root;
     }
 
-    private void setupViewPager(View view) {
-        WalletFragmentStateAdapter adapter = new WalletFragmentStateAdapter(this);
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
 
-        ViewPager2 viewPager = view.findViewById(R.id.fragment_wallet_host_fragment);
-        viewPager.setAdapter(adapter);
+        try {
+            onClickListener = (CoinBalancesAdapter.OnClickListener) context;
+        } catch (Exception ignored) {
+        }
+    }
 
-        TabLayout tabLayout = view.findViewById(R.id.tl_wallet);
+    @Override
+    public void onCoinBalanceClicked(int i) {
+        onClickListener.onCoinBalanceClicked(i);
+    }
 
-        new TabLayoutMediator(tabLayout, viewPager,
-                (tab, position) -> tab.setText(adapter.getTabTitle(position))
-        ).attach();
+    private void setupRecyclerView(View view) {
+        ArrayList<CoinBalance> coinBalances = new ArrayList<>();
+
+        coinBalances.add(new CoinBalance(Coin.XCH, 1.45));
+
+        CoinBalancesAdapter adapter = new CoinBalancesAdapter(coinBalances, this);
+
+        rvCoins = view.findViewById(R.id.rv_coins);
+        rvCoins.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+        rvCoins.setAdapter(adapter);
     }
 }

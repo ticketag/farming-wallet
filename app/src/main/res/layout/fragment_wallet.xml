@@ -1,45 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@android:color/transparent"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingHorizontal="@dimen/fragment_wallet_content_padding"
-    android:paddingTop="@dimen/fragment_wallet_content_padding"
-    tools:context=".ui.wallet.WalletFragment">
+    android:paddingHorizontal="@dimen/fragment_wallet_detail_content_padding"
+    android:paddingTop="@dimen/fragment_wallet_detail_content_padding"
+    tools:context=".ui.wallet.WalletDetailFragment">
 
-    <include
-        layout="@layout/item_balance"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/fragment_wallet_items_margin" />
-
-    <include
-        layout="@layout/item_send_receive_buttons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/fragment_wallet_items_margin" />
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tl_wallet"
-        style="@style/tabWidgetStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:foregroundGravity="center"
-        android:paddingBottom="6dp"
-        app:tabIndicatorGravity="center"
-        app:tabIndicatorHeight="0dp"
-        app:tabSelectedTextColor="?colorAccent"
-        app:tabTextColor="?colorControlNormal" />
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/fragment_wallet_host_fragment"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_coins"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@android:color/transparent" />
+        tools:listitem="@layout/item_coin_balance" />
 </LinearLayout>

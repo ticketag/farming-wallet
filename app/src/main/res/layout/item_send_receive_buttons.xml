@@ -4,25 +4,20 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
+    <!--        style="@style/buttonStyleSendReceive"-->
     <Button
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@drawable/selector_button_send_receive"
+        android:id="@+id/bt_receive"
+        style="@style/buttonStyleSendReceive"
         android:drawableLeft="@drawable/ic_receive_24"
-        android:text="@string/isr_receive"
-        android:textAllCaps="false" />
+        android:text="@string/isr_receive" />
 
     <Space
         android:layout_width="@dimen/isr_buttons_spacing"
         android:layout_height="match_parent" />
 
     <Button
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@drawable/selector_button_send_receive"
+        android:id="@+id/bt_send"
+        style="@style/buttonStyleSendReceive"
         android:drawableEnd="@drawable/ic_send_24"
-        android:text="@string/isr_send"
-        android:textAllCaps="false" />
+        android:text="@string/isr_send" />
 </LinearLayout>

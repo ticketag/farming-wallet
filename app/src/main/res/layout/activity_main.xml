@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
+    android:background="@drawable/background_activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:background="@color/primary_iper_dark"
         app:itemIconTint="@drawable/selector_bottom_navigation_view"
+        app:itemRippleColor="@color/white"
         app:itemTextColor="@drawable/selector_bottom_navigation_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

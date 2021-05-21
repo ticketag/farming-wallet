@@ -22,4 +22,16 @@
         android:name="eu.farmingpool.farmingwallet.ui.pool.PoolFragment"
         android:label="@string/navigation_title_pool"
         tools:layout="@layout/fragment_pool" />
+
+    <fragment
+        android:id="@+id/navigation_wallet_detail"
+        android:name="eu.farmingpool.farmingwallet.ui.wallet.WalletDetailFragment"
+        android:label="@string/navigation_title_wallet_detail"
+        tools:layout="@layout/fragment_wallet_detail" />
+
+    <dialog
+        android:id="@+id/navigation_transaction_record_dialog"
+        android:name="eu.farmingpool.farmingwallet.ui.wallet.TransactionRecordDialog"
+        android:label="@string/navigation_title_transaction_record_dialog"
+        tools:layout="@layout/dialog_transaction_record" />
 </navigation>
