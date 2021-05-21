@@ -28,9 +28,11 @@
     <dimen name="isr_buttons_spacing">20dp</dimen>
 
     <!-- Send receive buttons -->
-    <dimen name="srb_radius">8dp</dimen>
+    <dimen name="srb_radius">12dp</dimen>
 
     <!-- Fragment Wallet -->
-    <dimen name="fragment_wallet_content_padding">32dp</dimen>
+    <dimen name="fragment_wallet_content_padding">24dp</dimen>
     <dimen name="fragment_wallet_items_margin">20dp</dimen>
+    <dimen name="ib_half_icon_size">30dp</dimen>
+    <dimen name="ib_icon_size">60dp</dimen>
 </resources>

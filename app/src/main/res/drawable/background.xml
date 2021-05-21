@@ -5,6 +5,6 @@
         android:height="100dp" />
     <gradient
         android:angle="270"
-        android:endColor="#081b29"
+        android:endColor="@color/primary_ultra_dark"
         android:startColor="#0c293b" />
 </shape>

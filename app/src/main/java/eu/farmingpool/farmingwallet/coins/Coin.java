@@ -30,4 +30,15 @@ public enum Coin {
                 throw new IllegalStateException("Unexpected value: " + this);
         }
     }
+
+    public String getFormat() {
+        switch (this) {
+            case EUR:
+            case USD:
+            case XCH:
+                return "%.2f " + this;
+            default:
+                throw new IllegalStateException("Unexpected value: " + this);
+        }
+    }
 }

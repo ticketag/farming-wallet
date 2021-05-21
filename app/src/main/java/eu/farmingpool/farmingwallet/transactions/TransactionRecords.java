@@ -1,15 +1,18 @@
 package eu.farmingpool.farmingwallet.transactions;
 
-import androidx.collection.ArraySet;
-
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class TransactionRecords {
-    private final ArraySet<TransactionRecord> transactionRecords = new ArraySet<>();
+    private final ArrayList<TransactionRecord> transactionRecords = new ArrayList<>();
+
+    public int size() {
+        return transactionRecords.size();
+    }
 
     public void clear() {
         transactionRecords.clear();
@@ -27,7 +30,11 @@ public class TransactionRecords {
         this.transactionRecords.addAll(transactionRecords.getTransactionRecords());
     }
 
-    public Set<TransactionRecord> getTransactionRecords() {
+    public TransactionRecord get(int i) {
+        return this.transactionRecords.get(i);
+    }
+
+    public ArrayList<TransactionRecord> getTransactionRecords() {
         return transactionRecords;
     }
 

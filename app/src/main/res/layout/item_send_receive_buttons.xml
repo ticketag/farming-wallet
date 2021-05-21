@@ -8,8 +8,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@drawable/background_send_receive_button"
-        android:drawableStart="@drawable/ic_receive_24"
+        android:background="@drawable/selector_button_send_receive"
+        android:drawableLeft="@drawable/ic_receive_24"
         android:text="@string/isr_receive"
         android:textAllCaps="false" />
 
@@ -21,7 +21,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@drawable/background_send_receive_button"
+        android:background="@drawable/selector_button_send_receive"
         android:drawableEnd="@drawable/ic_send_24"
         android:text="@string/isr_send"
         android:textAllCaps="false" />

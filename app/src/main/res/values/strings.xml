@@ -7,9 +7,13 @@
     <string name="navigation_title_dapps">DApps</string>
     <string name="navigation_title_pool">Pool</string>
 
+    <!--  Fragment Wallet -->
+    <string name="fragment_transactions_title">Transactions</string>
+    <string name="fragment_prices_title">Prices</string>
 
     <!--  Item Transaction Record -->
-    <string name="itr_operation_placeholder" translatable="false">Received</string>
+    <string name="itr_operation_received">Received</string>
+    <string name="itr_operation_sent">Sent</string>
     <string name="itr_amount_placeholder" translatable="false">+1.45 XHC</string>
     <string name="itr_date_placeholder" translatable="false">09:30 - 12/12/2021</string>
     <string name="itr_corresponding_placeholder" translatable="false">1,800.00 €</string>
