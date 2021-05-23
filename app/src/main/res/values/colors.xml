@@ -13,7 +13,7 @@
     <color name="primary_dark">#0d293e</color>
     <color name="primary_ultra_dark">#081b29</color>
     <color name="primary_iper_dark">#040E15</color>
-    <color name="accent">#669E51</color>
-    <color name="positive_amount">#669E51</color>
+    <color name="accent">#30B454</color>
+    <color name="positive_amount">#30B454</color>
     <color name="negative_amount">#9E5151</color>
 </resources>

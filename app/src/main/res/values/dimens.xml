@@ -1,5 +1,6 @@
 <resources>
     <!-- Text -->
+    <dimen name="text_size_huge">36sp</dimen>
     <dimen name="text_size_large">28sp</dimen>
     <dimen name="text_size_normal">22sp</dimen>
     <dimen name="text_size_small">18sp</dimen>
@@ -9,13 +10,18 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <!-- Card -->
+    <!-- Activity Splash -->
+    <dimen name="activity_splash_button_radius">8dp</dimen>
+    <dimen name="activity_splash_vertical_space">12dp</dimen>
+    <dimen name="activity_splash_padding">8dp</dimen>
+    <dimen name="activity_splash_button_height">36dp</dimen>
+    <dimen name="activity_splash_button_padding">12dp</dimen>
+
+    <!-- Item Transaction Record -->
     <dimen name="itr_card_elevation">4dp</dimen>
     <dimen name="itr_card_content_padding">12dp</dimen>
     <dimen name="itr_card_corner_radius">8dp</dimen>
     <dimen name="itr_card_margin">4dp</dimen>
-
-    <!-- Item Transaction Record -->
     <dimen name="itr_icon_padding">8dp</dimen>
 
     <!-- Item Balance -->
@@ -44,4 +50,5 @@
     <dimen name="icb_card_margin">4dp</dimen>
     <dimen name="icb_icon_padding">8dp</dimen>
     <dimen name="dtr_items_vertical_spacing">8dp</dimen>
+    <dimen name="activity_splash_icon_size">56dp</dimen>
 </resources>

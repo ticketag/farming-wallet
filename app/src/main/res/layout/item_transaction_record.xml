@@ -35,18 +35,16 @@
 
                 <TextView
                     android:id="@+id/tv_itr_operation"
+                    style="@style/styleTextNormal.Accent"
                     android:layout_weight="1"
-                    android:text="@string/itr_operation_received"
-                    android:textColor="?colorAccent"
-                    android:textSize="@dimen/text_size_normal" />
+                    android:text="@string/itr_operation_received" />
 
                 <TextView
                     android:id="@+id/tv_itr_amount"
+                    style="@style/styleTextNormal.Accent"
                     android:layout_weight="1"
                     android:gravity="end"
-                    android:text="@string/itr_amount_placeholder"
-                    android:textColor="?colorAccent"
-                    android:textSize="@dimen/text_size_normal" />
+                    android:text="@string/itr_amount_placeholder" />
             </TableRow>
 
             <TableRow

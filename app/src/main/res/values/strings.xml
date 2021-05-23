@@ -9,6 +9,16 @@
     <string name="navigation_title_pool">Pool</string>
     <string name="navigation_title_transaction_record_dialog">Transaction Record</string>
 
+    <!--  Activity Splash -->
+    <string name="activity_splash_label">SplashActivity</string>
+    <string name="activity_splash_welcome_to">Welcome to</string>
+    <string name="activity_splash_farming">Farming</string>
+    <string name="activity_splash_wallet">Wallet</string>
+    <string name="activity_splash_for">For</string>
+    <string name="activity_splash_by_farmingpool_eu">By farmingpool.eu</string>
+    <string name="activity_splash_create_new_wallet">Create New Wallet</string>
+    <string name="activity_splash_import_existing_one">Import Existing One</string>
+
     <!--  Fragment Wallet -->
     <string name="fragment_transactions_title">Transactions</string>
     <string name="fragment_prices_title">Prices</string>
