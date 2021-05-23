@@ -75,14 +75,14 @@ public class TransactionRecordsAdapter extends RecyclerView.Adapter<TransactionR
         }
 
         public void setup(TransactionRecord transactionRecord) {
-            double amount = transactionRecord.getAmount();
+            double amount = transactionRecord.amount;
             boolean isPositive = amount > 0;
             int colorId = isPositive ? R.color.positive_amount : R.color.negative_amount;
             int color = tvAmount.getContext().getColor(colorId);
             int iconId = isPositive ? R.drawable.ic_receive_24 : R.drawable.ic_send_24;
 
-            Coin coin = transactionRecord.getCoin();
-            Date date = new Date(transactionRecord.getTimestamp().getTime());
+            Coin coin = transactionRecord.coin;
+            Date date = new Date(transactionRecord.timestamp.getTime());
             DateFormat f = new SimpleDateFormat("HH:mm   dd/MM/yyyy", getLocale());
 
             ivIcon.setImageResource(iconId);

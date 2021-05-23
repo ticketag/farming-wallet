@@ -70,8 +70,8 @@ public class CoinBalancesAdapter extends RecyclerView.Adapter<CoinBalancesAdapte
         }
 
         public void setup(CoinBalance coinBalance) {
-            Coin coin = coinBalance.getCoin();
-            double amount = coinBalance.getAmount();
+            Coin coin = coinBalance.coin;
+            double amount = coinBalance.amount;
 
             tvCoinName.setText(coin.getCoinName());
             tvCoinAmount.setText(String.format(getLocale(), coin.getFormat(), amount));

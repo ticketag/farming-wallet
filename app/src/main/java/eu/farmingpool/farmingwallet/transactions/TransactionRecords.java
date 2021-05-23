@@ -50,10 +50,10 @@ public class TransactionRecords {
             boolean valid = true;
 
             if (timestampFrom != null)
-                valid = transactionRecord.getTimestamp().after(timestampFrom);
+                valid = transactionRecord.timestamp.after(timestampFrom);
 
             if (timestampFrom != null)
-                valid = transactionRecord.getTimestamp().before(timestampTo);
+                valid = valid && transactionRecord.timestamp.before(timestampTo);
 
             return valid;
         };
