@@ -3,35 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_wallet">
+    app:startDestination="@+id/walletFragment">
 
     <fragment
-        android:id="@+id/navigation_wallet"
+        android:id="@+id/walletFragment"
         android:name="eu.farmingpool.farmingwallet.ui.wallet.WalletFragment"
         android:label="@string/navigation_title_wallet"
         tools:layout="@layout/fragment_wallet" />
 
     <fragment
-        android:id="@+id/navigation_d_apps"
+        android:id="@+id/dAppsFragment"
         android:name="eu.farmingpool.farmingwallet.ui.dapps.DAppsFragment"
         android:label="@string/navigation_title_dapps"
         tools:layout="@layout/fragment_d_apps" />
 
     <fragment
-        android:id="@+id/navigation_pool"
+        android:id="@+id/poolFragment"
         android:name="eu.farmingpool.farmingwallet.ui.pool.PoolFragment"
         android:label="@string/navigation_title_pool"
         tools:layout="@layout/fragment_pool" />
 
     <fragment
-        android:id="@+id/navigation_wallet_detail"
-        android:name="eu.farmingpool.farmingwallet.ui.wallet.WalletDetailFragment"
+        android:id="@+id/walletDetailFragment"
+        android:name="eu.farmingpool.farmingwallet.ui.wallet.detail.WalletDetailFragment"
         android:label="@string/navigation_title_wallet_detail"
         tools:layout="@layout/fragment_wallet_detail" />
 
     <dialog
-        android:id="@+id/navigation_transaction_record_dialog"
-        android:name="eu.farmingpool.farmingwallet.ui.wallet.TransactionRecordDialog"
+        android:id="@+id/transactionRecordDialog"
+        android:name="eu.farmingpool.farmingwallet.ui.wallet.detail.TransactionRecordDialog"
         android:label="@string/navigation_title_transaction_record_dialog"
         tools:layout="@layout/dialog_transaction_record" />
 </navigation>

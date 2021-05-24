@@ -16,4 +16,6 @@
     <color name="accent">#30B454</color>
     <color name="positive_amount">#30B454</color>
     <color name="negative_amount">#9E5151</color>
+    <color name="accent_blue">#66FFEF</color>
+    <color name="error">#FF5454</color>
 </resources>

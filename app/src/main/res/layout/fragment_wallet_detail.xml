@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/fragment_wallet_detail_content_padding"
     android:paddingTop="@dimen/fragment_wallet_detail_content_padding"
-    tools:context=".ui.wallet.WalletDetailFragment">
+    tools:context=".ui.wallet.detail.WalletDetailFragment">
 
     <include
         layout="@layout/item_balance"

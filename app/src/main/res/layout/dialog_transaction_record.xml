@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     app:cardCornerRadius="20dp"
-    tools:context=".ui.wallet.TransactionRecordDialog">
+    tools:context=".ui.wallet.detail.TransactionRecordDialog">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

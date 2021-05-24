@@ -7,7 +7,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_receive"
         style="@style/buttonStyleSendReceive"
-        android:drawableLeft="@drawable/ic_receive_24"
+        android:drawableStart="@drawable/ic_receive_24"
         android:text="@string/isr_receive" />
 
     <Space

@@ -1,4 +1,4 @@
-package eu.farmingpool.farmingwallet.ui.wallet;
+package eu.farmingpool.farmingwallet.ui.wallet.detail;
 
 import android.view.LayoutInflater;
 import android.view.View;

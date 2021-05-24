@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".NewWalletActivity">
+
+    <TextView
+        android:id="@+id/tv_line_1"
+        style="@style/styleTextSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Your backup words"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_line_2"
+        style="@style/styleTextSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/fragment_keyword_creation_text_margin"
+        android:gravity="center"
+        android:text="Write or copy these words in the correct order and keep them in a safe place."
+        app:layout_constraintTop_toBottomOf="@+id/tv_line_1" />
+
+    <TextView
+        android:id="@+id/tv_line_3"
+        style="@style/styleTextSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/fragment_keyword_creation_text_margin"
+        android:gravity="center"
+        android:text="Don’t share them with other people!"
+        android:textColor="?colorError"
+        app:layout_constraintTop_toBottomOf="@+id/tv_line_2" />
+
+    <TableLayout
+        android:id="@+id/tl_keywords"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fragment_keyword_creation_text_margin"
+        android:stretchColumns="*"
+        app:layout_constraintTop_toBottomOf="@+id/tv_line_3" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        style="@style/buttonSplashActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/selector_button_splash_activity"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

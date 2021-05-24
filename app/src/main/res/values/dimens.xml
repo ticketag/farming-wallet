@@ -7,6 +7,7 @@
     <dimen name="text_size_nano">12sp</dimen>
 
     <!-- Activities -->
+    <integer name="activity_animation_duration">1000</integer>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
@@ -16,6 +17,12 @@
     <dimen name="activity_splash_padding">8dp</dimen>
     <dimen name="activity_splash_button_height">36dp</dimen>
     <dimen name="activity_splash_button_padding">12dp</dimen>
+    <dimen name="activity_splash_icon_size">56dp</dimen>
+
+    <!-- Activity New Wallet -->
+    <dimen name="activity_new_wallet_toolbar_height">30dp</dimen>
+    <dimen name="activity_new_wallet_close_icon_margin">12dp</dimen>
+    <dimen name="activity_new_wallet_close_icon_padding">40dp</dimen>
 
     <!-- Item Transaction Record -->
     <dimen name="itr_card_elevation">4dp</dimen>
@@ -37,6 +44,7 @@
 
     <!-- Send receive buttons -->
     <dimen name="srb_radius">12dp</dimen>
+    <dimen name="srb_padding">16dp</dimen>
 
     <!-- Fragment Wallet -->
     <dimen name="fragment_wallet_detail_content_padding">24dp</dimen>
@@ -49,6 +57,7 @@
     <dimen name="icb_card_corner_radius">8dp</dimen>
     <dimen name="icb_card_margin">4dp</dimen>
     <dimen name="icb_icon_padding">8dp</dimen>
+
     <dimen name="dtr_items_vertical_spacing">8dp</dimen>
-    <dimen name="activity_splash_icon_size">56dp</dimen>
+    <dimen name="fragment_keyword_creation_text_margin">16dp</dimen>
 </resources>

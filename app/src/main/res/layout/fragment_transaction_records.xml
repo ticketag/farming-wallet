@@ -6,7 +6,7 @@
     android:background="@android:color/transparent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ui.wallet.WalletDetailFragment">
+    tools:context=".ui.wallet.detail.WalletDetailFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_transaction_records"

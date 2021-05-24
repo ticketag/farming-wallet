@@ -14,7 +14,7 @@
         android:theme="@style/Theme.FarmingWallet">
         <activity
             android:name=".SplashActivity"
-            android:label="@string/activity_splash_label"
+            android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,12 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NewWalletActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ImportWalletActivity"
             android:screenOrientation="portrait" />
 
         <meta-data

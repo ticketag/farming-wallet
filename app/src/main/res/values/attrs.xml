@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="KeywordsRow">
+        <attr name="keywordsRowCols" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="KeywordsGrid">
+        <attr name="keywordGridCols" format="integer" />
+        <attr name="keywordGridRows" format="integer" />
+    </declare-styleable>
+</resources>

@@ -7,4 +7,4 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="@dimen/fragment_wallet_detail_content_padding"
-    tools:context=".ui.wallet.WalletDetailFragment"></LinearLayout>
+    tools:context=".ui.wallet.detail.WalletDetailFragment"></LinearLayout>

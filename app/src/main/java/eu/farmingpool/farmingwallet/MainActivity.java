@@ -26,8 +26,8 @@ import eu.farmingpool.farmingwallet.coins.Coin;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecord;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 import eu.farmingpool.farmingwallet.ui.wallet.CoinBalancesAdapter;
-import eu.farmingpool.farmingwallet.ui.wallet.TransactionRecordsAdapter;
-import eu.farmingpool.farmingwallet.ui.wallet.TransactionRecordsViewModel;
+import eu.farmingpool.farmingwallet.ui.wallet.detail.TransactionRecordsAdapter;
+import eu.farmingpool.farmingwallet.ui.wallet.detail.TransactionRecordsViewModel;
 
 public class MainActivity extends AppCompatActivity implements
         TransactionRecordsAdapter.OnClickListener,
@@ -62,17 +62,17 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onCoinBalanceClicked(int i) {
-        navController.navigate(R.id.navigation_wallet_detail);
+        navController.navigate(R.id.walletDetailFragment);
     }
 
     @Override
     public void onTransactionClicked(int i) {
-        navController.navigate(R.id.navigation_transaction_record_dialog);
+        navController.navigate(R.id.transactionRecordDialog);
     }
 
     private void setupAnimations() {
-        animShow = AnimationUtils.loadAnimation(this, R.anim.view_show);
-        animHide = AnimationUtils.loadAnimation(this, R.anim.view_hide);
+        animShow = AnimationUtils.loadAnimation(this, R.anim.view_show_from_bottom);
+        animHide = AnimationUtils.loadAnimation(this, R.anim.view_hide_to_botom);
     }
 
     private void setupFragments() {
@@ -88,10 +88,9 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void setupNavigation() {
-        getSupportActionBar().hide();
         navView = findViewById(R.id.nav_view);
 
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.activity_main_nav_host_fragment);
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             String label = String.valueOf(destination.getLabel());
 
@@ -102,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements
         });
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_wallet, R.id.navigation_d_apps, R.id.navigation_pool)
+                R.id.walletFragment, R.id.dAppsFragment, R.id.poolFragment)
                 .build();
 
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
