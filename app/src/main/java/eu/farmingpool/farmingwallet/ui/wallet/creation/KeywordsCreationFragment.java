@@ -1,69 +1,60 @@
 package eu.farmingpool.farmingwallet.ui.wallet.creation;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-
-import java.util.ArrayList;
+import androidx.viewpager2.widget.ViewPager2;
 
 import eu.farmingpool.farmingwallet.R;
-import eu.farmingpool.farmingwallet.views.KeywordItem;
-
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import eu.farmingpool.farmingwallet.keywords.Keywords;
 
 public class KeywordsCreationFragment extends Fragment {
-    private static final int N_COLS = 2;
+    KeywordsCreationFragmentInterface keywordsCreationFragmentInterface;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_keywords_creation, container, false);
 
-        KeywordsViewModel keywordsViewModel = new ViewModelProvider(requireActivity()).get(KeywordsViewModel.class);
-        keywordsViewModel.getKeywords().observe(getViewLifecycleOwner(), keywords -> {
-            setupKeywordsTable(root, keywords);
-        });
+        setupViewPager(root, getKeywords());
 
         return root;
     }
 
-    private void setupKeywordsTable(View view, ArrayList<String> keywords) {
-        TableLayout tableLayout = view.findViewById(R.id.tl_keywords);
+    private Keywords getKeywords() {
+        KeywordsViewModel keywordsViewModel = new ViewModelProvider(requireActivity()).get(KeywordsViewModel.class);
 
-        int rows = keywords.size() / N_COLS;
-        int keywordIndex = 0;
+        return keywordsViewModel.getKeywords().getValue();
+    }
 
-        for (int row = 0; row < rows; row++) {
-            TableRow tableRow = new TableRow(requireContext());
-            LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
+    private void setupViewPager(View view, Keywords keywords) {
+        ViewPager2 vpKeywordsTable = view.findViewById(R.id.vp_keywords_table);
+        vpKeywordsTable.setAdapter(new KeywordsTableFragmentStateAdapter(this, keywords));
 
-            for (int col = 0; col < N_COLS; col++) {
-                KeywordItem keywordItem = new KeywordItem(requireContext());
-                TableRow.LayoutParams tableParams = new TableRow.LayoutParams();
+        view.findViewById(R.id.bt_keywords_creation_next).setOnClickListener(v -> {
+            if (vpKeywordsTable.getCurrentItem() == 0)
+                vpKeywordsTable.setCurrentItem(1);
+            else
+                keywordsCreationFragmentInterface.onNextPressed();
+        });
+    }
 
-                tableParams.weight = 1;
-                tableParams.leftMargin = 10;
-                tableParams.rightMargin = 10;
-                tableParams.bottomMargin = 20;
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
 
-                keywordItem.setNumber(keywordIndex + 1);
-                keywordItem.setKeyword(keywords.get(keywordIndex));
-                keywordItem.setEditable(false);
-
-                tableRow.addView(keywordItem, tableParams);
-
-                keywordIndex++;
-            }
-
-            tableLayout.addView(tableRow, linearLayoutParams);
+        try {
+            keywordsCreationFragmentInterface = (KeywordsCreationFragmentInterface) context;
+        } catch (Exception ignored) {
         }
+    }
+
+    public interface KeywordsCreationFragmentInterface {
+        void onNextPressed();
     }
 }

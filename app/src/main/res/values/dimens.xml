@@ -46,6 +46,10 @@
     <dimen name="srb_radius">12dp</dimen>
     <dimen name="srb_padding">16dp</dimen>
 
+    <!-- Fragment Keywords Creation -->
+    <dimen name="fragment_keywords_creation_text_margin">16dp</dimen>
+    <dimen name="fragment_keywords_keywords_margin">16dp</dimen>
+
     <!-- Fragment Wallet -->
     <dimen name="fragment_wallet_detail_content_padding">24dp</dimen>
     <dimen name="fragment_wallet_detail_items_margin">20dp</dimen>
@@ -59,5 +63,4 @@
     <dimen name="icb_icon_padding">8dp</dimen>
 
     <dimen name="dtr_items_vertical_spacing">8dp</dimen>
-    <dimen name="fragment_keyword_creation_text_margin">16dp</dimen>
 </resources>

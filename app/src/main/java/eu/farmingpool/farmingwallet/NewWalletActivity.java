@@ -9,16 +9,20 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import java.util.ArrayList;
-
+import eu.farmingpool.farmingwallet.keywords.Keywords;
 import eu.farmingpool.farmingwallet.keywords.KeywordsGenerator;
+import eu.farmingpool.farmingwallet.ui.wallet.creation.KeywordsCreationFragment;
+import eu.farmingpool.farmingwallet.ui.wallet.creation.KeywordsCreationFragmentDirections;
 import eu.farmingpool.farmingwallet.ui.wallet.creation.KeywordsViewModel;
 
 import static eu.farmingpool.farmingwallet.utils.Utils.openActivity;
 
-public class NewWalletActivity extends AppCompatActivity {
+public class NewWalletActivity extends AppCompatActivity implements
+        KeywordsCreationFragment.KeywordsCreationFragmentInterface {
     public static final int KEYWORDS_TO_GENERATE = 16;
+
     private NavController navController;
+    private KeywordsViewModel keywordsViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,9 +30,23 @@ public class NewWalletActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_new_wallet);
 
+        keywordsViewModel = new ViewModelProvider(this).get(KeywordsViewModel.class);
+
+        generateRandomKeywords();
+
         setupNavigation();
         setupCloseButton();
-        generateRandomKeywords();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onNextPressed() {
+        navController.navigate(KeywordsCreationFragmentDirections.actionKeywordsCreationFragmentToKeywordsCheckFragment());
+        keywordsViewModel.generateKeywordsToCheck();
     }
 
     private void setupNavigation() {
@@ -46,8 +64,7 @@ public class NewWalletActivity extends AppCompatActivity {
     }
 
     private void generateRandomKeywords() {
-        KeywordsViewModel keywordsViewModel = new ViewModelProvider(this).get(KeywordsViewModel.class);
-        ArrayList<String> keywords = KeywordsGenerator.generate(KEYWORDS_TO_GENERATE);
+        Keywords keywords = KeywordsGenerator.generate(KEYWORDS_TO_GENERATE);
 
         keywordsViewModel.setKeywords(keywords);
     }
