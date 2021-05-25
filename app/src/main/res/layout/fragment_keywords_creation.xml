@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Your backup words"
+        android:text="@string/fragment_keywords_creation_your_backup_words"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/fragment_keywords_creation_text_margin"
         android:gravity="center"
-        android:text="Write or copy these words in the correct order and keep them in a safe place."
+        android:text="@string/fragment_keywords_creation_write_or_copy"
         app:layout_constraintTop_toBottomOf="@+id/tv_line_1" />
 
     <TextView
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/fragment_keywords_creation_text_margin"
         android:gravity="center"
-        android:text="Don’t share them with other people!"
+        android:text="@string/fragment_keywords_creation_don_t_share"
         android:textColor="?colorError"
         app:layout_constraintTop_toBottomOf="@+id/tv_line_2" />
 
@@ -45,8 +45,36 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginVertical="@dimen/fragment_keywords_creation_text_margin"
-        app:layout_constraintBottom_toTopOf="@+id/bt_keywords_creation_next"
+        app:layout_constraintBottom_toTopOf="@+id/iv_keywords_creation_copy"
         app:layout_constraintTop_toBottomOf="@+id/tv_line_3"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/iv_keywords_creation_copy"
+        style="@style/styleTextNormal.Accent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/fragment_keywords_creation_text_margin"
+        android:drawableStart="@drawable/ic_file_copy_24"
+        android:text="@string/fragment_keywords_creation_copy"
+        app:drawableTint="?colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/tl_keywords_creation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tl_keywords_creation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/fragment_keywords_creation_text_margin"
+        android:background="@android:color/transparent"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/bt_keywords_creation_next"
+        app:tabBackground="@drawable/selector_tab_layout_dots"
+        app:tabGravity="center"
+        app:tabIndicatorColor="?colorPrimaryDark"
+        app:tabIndicatorGravity="center"
+        app:tabIndicatorHeight="0dp"
         tools:layout_editor_absoluteX="16dp" />
 
     <androidx.appcompat.widget.AppCompatButton

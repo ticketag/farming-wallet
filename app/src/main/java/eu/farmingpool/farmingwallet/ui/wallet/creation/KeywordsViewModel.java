@@ -6,8 +6,6 @@ import androidx.lifecycle.ViewModel;
 import eu.farmingpool.farmingwallet.keywords.Keywords;
 
 public class KeywordsViewModel extends ViewModel {
-    private static final int N_KEYWORDS = 10;
-
     private final MutableLiveData<Keywords> keywords = new MutableLiveData<>();
     private final MutableLiveData<Keywords> keywordsToCheck = new MutableLiveData<>();
 
@@ -19,11 +17,11 @@ public class KeywordsViewModel extends ViewModel {
         this.keywords.setValue(keywords);
     }
 
-    public void generateKeywordsToCheck() {
+    public void generateKeywordsToCheck(int n) {
         Keywords allKeywords = keywords.getValue();
 
         if (allKeywords != null)
-            keywordsToCheck.setValue(allKeywords.getRandom(N_KEYWORDS));
+            keywordsToCheck.setValue(allKeywords.getRandom(n));
     }
 
     public MutableLiveData<Keywords> getKeywordsToCheck() {

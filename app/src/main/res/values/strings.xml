@@ -55,4 +55,8 @@
     <!--  Item Keyword -->
     <string name="item_keyword_number_placeholder" translatable="false">1.</string>
     <string name="item_keyword_word_placeholder" translatable="false">word</string>
+    <string name="fragment_keywords_creation_copy">Copy</string>
+    <string name="fragment_keywords_creation_don_t_share">Don’t share them with other people!</string>
+    <string name="fragment_keywords_creation_write_or_copy">Write or copy these words in the correct order and keep them in a safe place.</string>
+    <string name="fragment_keywords_creation_your_backup_words">Your backup words</string>
 </resources>

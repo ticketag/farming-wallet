@@ -32,6 +32,7 @@ public class Keywords implements Serializable {
 
     public Keywords getRandom(int n) {
         List<Keyword> selectedKeywordsList = getSelectedKeywordsList(n);
+        selectedKeywordsList.sort((o1, o2) -> Integer.compare(o1.index, o2.index));
 
         Keywords selectedKeywords = new Keywords();
         selectedKeywords.addAll(selectedKeywordsList);

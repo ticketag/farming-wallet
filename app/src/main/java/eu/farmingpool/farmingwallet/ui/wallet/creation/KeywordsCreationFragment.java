@@ -11,6 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+
 import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.keywords.Keywords;
 
@@ -42,6 +45,12 @@ public class KeywordsCreationFragment extends Fragment {
             else
                 keywordsCreationFragmentInterface.onNextPressed();
         });
+
+        TabLayout tlKeywordsCreation = view.findViewById(R.id.tl_keywords_creation);
+        new TabLayoutMediator(tlKeywordsCreation, vpKeywordsTable,
+                (tab, position) -> {
+                }
+        ).attach();
     }
 
     @Override

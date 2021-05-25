@@ -19,7 +19,8 @@ import static eu.farmingpool.farmingwallet.utils.Utils.openActivity;
 
 public class NewWalletActivity extends AppCompatActivity implements
         KeywordsCreationFragment.KeywordsCreationFragmentInterface {
-    public static final int KEYWORDS_TO_GENERATE = 16;
+    public static final int N_KEYWORDS_TO_GENERATE = 16;
+    private static final int N_KEYWORDS_TO_CHECK = 8;
 
     private NavController navController;
     private KeywordsViewModel keywordsViewModel;
@@ -46,7 +47,7 @@ public class NewWalletActivity extends AppCompatActivity implements
     @Override
     public void onNextPressed() {
         navController.navigate(KeywordsCreationFragmentDirections.actionKeywordsCreationFragmentToKeywordsCheckFragment());
-        keywordsViewModel.generateKeywordsToCheck();
+        keywordsViewModel.generateKeywordsToCheck(N_KEYWORDS_TO_CHECK);
     }
 
     private void setupNavigation() {
@@ -64,7 +65,7 @@ public class NewWalletActivity extends AppCompatActivity implements
     }
 
     private void generateRandomKeywords() {
-        Keywords keywords = KeywordsGenerator.generate(KEYWORDS_TO_GENERATE);
+        Keywords keywords = KeywordsGenerator.generate(N_KEYWORDS_TO_GENERATE);
 
         keywordsViewModel.setKeywords(keywords);
     }
