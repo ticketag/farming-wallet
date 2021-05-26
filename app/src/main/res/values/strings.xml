@@ -27,6 +27,7 @@
     <string name="fragment_keywords_creation_write_or_copy">Write or copy these words in the correct order and keep them in a safe place.</string>
     <string name="fragment_keywords_creation_your_backup_words">Your backup words</string>
     <string name="fragment_keywords_creation_next">Next</string>
+    <string name="fragment_keywords_creation_copied">Copied to clipboard!</string>
 
     <!--  Fragment Keywords Check -->
     <string name="fragment_keywords_check_verify_your_backup_words">Verify your backup words</string>

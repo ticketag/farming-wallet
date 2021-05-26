@@ -1,10 +1,14 @@
 package eu.farmingpool.farmingwallet.ui.wallet.creation;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -26,8 +30,19 @@ public class KeywordsCreationFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_keywords_creation, container, false);
 
         setupViewPager(root, getKeywords());
+        setupCopyButton(root);
 
         return root;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        try {
+            keywordsCreationFragmentInterface = (KeywordsCreationFragmentInterface) context;
+        } catch (Exception ignored) {
+        }
     }
 
     private Keywords getKeywords() {
@@ -54,14 +69,20 @@ public class KeywordsCreationFragment extends Fragment {
         ).attach();
     }
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
+    private void setupCopyButton(View view) {
+        TextView llCopy = view.findViewById(R.id.tv_keywords_creation_copy);
 
-        try {
-            keywordsCreationFragmentInterface = (KeywordsCreationFragmentInterface) context;
-        } catch (Exception ignored) {
-        }
+        llCopy.setOnClickListener(v -> copyKeywords());
+    }
+
+    private void copyKeywords() {
+        Keywords keywords = getKeywords();
+
+        ClipboardManager clipboard = (ClipboardManager) (requireActivity().getSystemService(Context.CLIPBOARD_SERVICE));
+        ClipData clip = ClipData.newPlainText("keywords", keywords.toPlainString());
+        clipboard.setPrimaryClip(clip);
+
+        Toast.makeText(requireContext(), R.string.fragment_keywords_creation_copied, Toast.LENGTH_SHORT).show();
     }
 
     public interface KeywordsCreationFragmentInterface {

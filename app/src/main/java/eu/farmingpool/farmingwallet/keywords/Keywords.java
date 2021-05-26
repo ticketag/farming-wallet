@@ -52,6 +52,19 @@ public class Keywords implements Serializable {
         return selectedKeywords;
     }
 
+    public String toPlainString() {
+        StringBuilder builder = new StringBuilder();
+        String separator = "\n";
+
+        for (Keyword keyword : keywords)
+            builder.append(keyword.index).append(". ").append(keyword.value).append(separator);
+
+        String plainString = builder.toString();
+        plainString = plainString.substring(0, plainString.length() - separator.length());
+
+        return plainString;
+    }
+
     @NotNull
     private List<Keyword> getSelectedKeywordsList(int n) {
         ArrayList<Keyword> allKeywordsList = new ArrayList<>(keywords);

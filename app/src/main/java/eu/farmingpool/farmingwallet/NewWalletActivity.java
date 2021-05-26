@@ -63,7 +63,6 @@ public class NewWalletActivity extends AppCompatActivity implements
 
     @Override
     public void onBackPressed() {
-        openSplashActivity();
     }
 
     @Override
@@ -77,6 +76,8 @@ public class NewWalletActivity extends AppCompatActivity implements
     public void onAccountNameChosen(String accountName) {
         Account account = new Account(0);
         account.setName(accountName);
+
+        openMainActivity();
     }
 
     private void setupNavigation() {
@@ -102,6 +103,10 @@ public class NewWalletActivity extends AppCompatActivity implements
 
     private void openSplashActivity() {
         openActivity(this, SplashActivity.class, true, true, true, true);
+    }
+
+    private void openMainActivity() {
+        openActivity(this, MainActivity.class, true, true, true, true);
     }
 
     private void generateRandomKeywords() {
