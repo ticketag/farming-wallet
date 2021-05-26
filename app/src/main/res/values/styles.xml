@@ -14,7 +14,9 @@
         <item name="android:paddingHorizontal">
             @dimen/activity_splash_button_padding
         </item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">
+            @dimen/activity_splash_button_width
+        </item>
         <item name="android:layout_height">
             @dimen/activity_splash_button_height
         </item>

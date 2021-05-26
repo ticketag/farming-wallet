@@ -11,12 +11,24 @@ import java.util.List;
 public class Keywords implements Serializable {
     public final ArrayList<Keyword> keywords = new ArrayList<>();
 
+    public int size() {
+        return keywords.size();
+    }
+
     public void add(Keyword keyword) {
         keywords.add(keyword);
     }
 
     public void addAll(Collection<Keyword> other) {
         this.keywords.addAll(other);
+    }
+
+    public Keyword get(int keywordIndex) {
+        for (Keyword keyword : keywords)
+            if (keyword.index == keywordIndex)
+                return keyword;
+
+        return null;
     }
 
     public Keywords getFraction(double start, double end) {

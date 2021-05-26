@@ -1,9 +1,8 @@
 package eu.farmingpool.farmingwallet;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
+import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,23 +11,22 @@ import androidx.appcompat.widget.AppCompatButton;
 import eu.farmingpool.farmingwallet.utils.Utils;
 
 public class SplashActivity extends AppCompatActivity {
-
-    private static final int PROCEED_DELAY_MILLIS = 2000;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_splash);
 
-        new Handler(Looper.getMainLooper()).postDelayed(this::proceed, PROCEED_DELAY_MILLIS);
-    }
-
-    private void proceed() {
         if (existsAtLeasOneAccount())
             openActivity(MainActivity.class);
         else
             showButtons();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     private void openActivity(Class<?> className) {

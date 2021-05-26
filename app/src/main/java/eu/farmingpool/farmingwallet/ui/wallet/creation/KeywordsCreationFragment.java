@@ -20,6 +20,7 @@ import eu.farmingpool.farmingwallet.keywords.Keywords;
 public class KeywordsCreationFragment extends Fragment {
     KeywordsCreationFragmentInterface keywordsCreationFragmentInterface;
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_keywords_creation, container, false);

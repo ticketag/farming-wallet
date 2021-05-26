@@ -18,6 +18,29 @@
     <string name="activity_splash_create_new_wallet">Create New Wallet</string>
     <string name="activity_splash_import_existing_one">Import Existing One</string>
 
+    <!--  Activity New Wallet -->
+    <string name="activity_new_wallet_create_new_wallet">Create New Wallet</string>
+
+    <!--  Fragment Keywords Creation -->
+    <string name="fragment_keywords_creation_copy">Copy</string>
+    <string name="fragment_keywords_creation_don_t_share">Don’t share them with other people!</string>
+    <string name="fragment_keywords_creation_write_or_copy">Write or copy these words in the correct order and keep them in a safe place.</string>
+    <string name="fragment_keywords_creation_your_backup_words">Your backup words</string>
+    <string name="fragment_keywords_creation_next">Next</string>
+
+    <!--  Fragment Keywords Check -->
+    <string name="fragment_keywords_check_verify_your_backup_words">Verify your backup words</string>
+    <string name="fragment_keywords_check_write_the_word">Write the word corresponding to the provided number.</string>
+
+    <!--  Fragment Wallet Created -->
+    <string name="fragment_wallet_created_farming">Farming</string>
+    <string name="fragment_wallet_created_wallet">Wallet</string>
+    <string name="fragment_wallet_created_success">Success!</string>
+    <string name="fragment_wallet_created_wallet_created">Wallet Created</string>
+    <string name="fragment_wallet_created_give_a_name">Give a name to your account</string>
+    <string name="fragment_wallet_created_account_name_placeholder">Account1</string>
+    <string name="fragment_wallet_created_done">Done</string>
+
     <!--  Fragment Wallet -->
     <string name="fragment_transactions_title">Transactions</string>
     <string name="fragment_prices_title">Prices</string>
@@ -35,7 +58,7 @@
     <string name="ib_amount_placeholder">1,35 XCH</string>
     <string name="ib_corresponding_placeholder">1,834,34 $</string>
 
-
+    <!--  Dialog Transaction Record -->
     <string name="dtr_amount">Amount</string>
     <string name="dtr_date">Date</string>
     <string name="dtr_sender">Sender</string>
@@ -55,8 +78,4 @@
     <!--  Item Keyword -->
     <string name="item_keyword_number_placeholder" translatable="false">1.</string>
     <string name="item_keyword_word_placeholder" translatable="false">word</string>
-    <string name="fragment_keywords_creation_copy">Copy</string>
-    <string name="fragment_keywords_creation_don_t_share">Don’t share them with other people!</string>
-    <string name="fragment_keywords_creation_write_or_copy">Write or copy these words in the correct order and keep them in a safe place.</string>
-    <string name="fragment_keywords_creation_your_backup_words">Your backup words</string>
 </resources>

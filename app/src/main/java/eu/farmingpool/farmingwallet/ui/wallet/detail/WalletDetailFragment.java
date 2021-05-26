@@ -19,6 +19,7 @@ public class WalletDetailFragment extends Fragment {
     private Button btSend;
     private Button btReceive;
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_wallet_detail, container, false);

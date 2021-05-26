@@ -5,7 +5,8 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class KeywordsGenerator {
-    private static final ArrayList<String> POSSIBLE_KEYWORDS = new ArrayList<>(Arrays.asList("ma", "che", "cazzo", "ne", "so", "di", "quali", "siano", "le", "keywords", "giuste"));
+//    private static final ArrayList<String> POSSIBLE_KEYWORDS = new ArrayList<>(Arrays.asList("ma", "che", "cazzo", "ne", "so", "di", "quali", "siano", "le", "keywords", "giuste"));
+private static final ArrayList<String> POSSIBLE_KEYWORDS = new ArrayList<>(Arrays.asList("a"));
     private static final Random random = new Random();
 
     public static Keywords generate(int n) {

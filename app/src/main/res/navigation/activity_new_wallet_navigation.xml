@@ -22,5 +22,13 @@
         <action
             android:id="@+id/action_keywordsCheckFragment_to_keywordsCreationFragment"
             app:destination="@id/keywordsCreationFragment" />
+        <action
+            android:id="@+id/action_keywordsCheckFragment_to_walletCreatedFragment"
+            app:destination="@id/walletCreatedFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/walletCreatedFragment"
+        android:name="eu.farmingpool.farmingwallet.ui.wallet.creation.WalletCreatedFragment"
+        android:label="WalletCreatedFragment"
+        tools:layout="@layout/fragment_wallet_created"></fragment>
 </navigation>

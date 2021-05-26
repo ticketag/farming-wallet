@@ -38,6 +38,7 @@ public class KeywordsTableFragment extends Fragment {
         return fragment;
     }
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_keywords_table, container, false);
@@ -58,7 +59,7 @@ public class KeywordsTableFragment extends Fragment {
     }
 
     private void fillKeywordsTable(View view, ArrayList<Keyword> keywords) {
-        TableLayout tableLayout = view.findViewById(R.id.tl_keywords);
+        TableLayout tableLayout = view.findViewById(R.id.tl_keywords_table_keywords);
 
         int rows = keywords.size() / N_COLS;
         int keywordIndex = 0;
@@ -70,15 +71,15 @@ public class KeywordsTableFragment extends Fragment {
             for (int col = 0; col < N_COLS; col++) {
                 Keyword keyword = keywords.get(keywordIndex);
                 KeywordItem keywordItem = new KeywordItem(requireContext());
-                TableRow.LayoutParams tableParams = new TableRow.LayoutParams();
+                TableRow.LayoutParams tableParams = new TableRow.LayoutParams(0, WRAP_CONTENT);
 
                 tableParams.weight = 1;
                 tableParams.leftMargin = getResources().getDimensionPixelSize(R.dimen.fragment_keywords_keywords_margin);
                 tableParams.rightMargin = getResources().getDimensionPixelSize(R.dimen.fragment_keywords_keywords_margin);
                 tableParams.bottomMargin = getResources().getDimensionPixelSize(R.dimen.fragment_keywords_keywords_margin);
 
-                keywordItem.setNumber(keyword.index);
-                keywordItem.setKeyword(keyword.value);
+                keywordItem.setKeyword(keyword);
+                keywordItem.showText();
                 keywordItem.setEditable(false);
 
                 tableRow.addView(keywordItem, tableParams);

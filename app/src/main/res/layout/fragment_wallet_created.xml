@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_activity_main"
+    android:orientation="vertical"
+    tools:context=".NewWalletActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_fragment_wallet_created_farming_wallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            style="@style/styleTextHuge.Accent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_wallet_created_farming"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/styleTextHuge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_wallet_created_wallet"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/ll_fragment_wallet_created_account_name"
+        app:layout_constraintTop_toBottomOf="@id/ll_fragment_wallet_created_farming_wallet">
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/styleTextHuge.Accent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_wallet_created_success"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/styleTextHuge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_wallet_created_wallet_created"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_fragment_wallet_created_account_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            style="@style/styleTextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/fragment_wallet_created_vertical_margin"
+            android:paddingHorizontal="@dimen/fragment_wallet_created_horizontal_padding"
+            android:text="@string/fragment_wallet_created_give_a_name"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_fragment_wallet_created_account_name"
+            style="@style/styleTextNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:height="@dimen/fragment_wallet_created_account_name_height"
+            android:background="@drawable/background_account_name"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_-."
+            android:focusedByDefault="false"
+            android:maxLines="1"
+            android:paddingHorizontal="@dimen/fragment_wallet_created_horizontal_padding"
+            android:text="@string/fragment_wallet_created_account_name_placeholder" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_fragment_wallet_created_done"
+        style="@style/buttonSplashActivity"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="@dimen/fragment_keywords_creation_text_margin"
+        android:text="@string/fragment_wallet_created_done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

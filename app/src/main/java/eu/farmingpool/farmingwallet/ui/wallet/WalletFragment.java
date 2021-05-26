@@ -20,6 +20,7 @@ public class WalletFragment extends Fragment implements CoinBalancesAdapter.OnCl
     CoinBalancesAdapter.OnClickListener onClickListener;
     RecyclerView rvCoins;
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_wallet, container, false);

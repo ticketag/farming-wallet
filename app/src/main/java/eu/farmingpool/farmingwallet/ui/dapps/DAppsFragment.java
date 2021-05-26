@@ -17,6 +17,7 @@ public class DAppsFragment extends Fragment {
 
     private DAppsViewModel DAppsViewModel;
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         DAppsViewModel =
