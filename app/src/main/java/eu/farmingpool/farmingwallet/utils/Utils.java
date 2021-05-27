@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import java.util.Locale;
 
+import eu.farmingpool.farmingwallet.BuildConfig;
 import eu.farmingpool.farmingwallet.R;
 
 public class Utils {
@@ -29,5 +30,9 @@ public class Utils {
             else
                 mActivity.overridePendingTransition(R.anim.enter_right, R.anim.exit_left);
         }
+    }
+
+    public static boolean isDebug() {
+        return BuildConfig.BUILD_TYPE.contains("debug");
     }
 }

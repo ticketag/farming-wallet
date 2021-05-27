@@ -56,4 +56,8 @@ public class KeywordsViewModel extends ViewModel {
             if (keywords.size() == totalCorrect)
                 allKeywordsCorrect.setValue(true);
     }
+
+    public void forceAllKeywordsCorrect() {
+        allKeywordsCorrect.setValue(true);
+    }
 }

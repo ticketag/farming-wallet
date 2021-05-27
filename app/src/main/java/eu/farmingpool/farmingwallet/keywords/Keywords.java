@@ -23,7 +23,11 @@ public class Keywords implements Serializable {
         this.keywords.addAll(other);
     }
 
-    public Keyword get(int keywordIndex) {
+    public Keyword get(int i) {
+        return keywords.get(i);
+    }
+
+    public Keyword getByIndex(int keywordIndex) {
         for (Keyword keyword : keywords)
             if (keyword.index == keywordIndex)
                 return keyword;

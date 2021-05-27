@@ -1,20 +1,21 @@
 package eu.farmingpool.farmingwallet.ui.wallet.creation;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
 
 import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.keywords.Keyword;
@@ -29,6 +30,7 @@ public class KeywordsCheckFragment extends Fragment implements
     private static final int N_COLS = 2;
 
     private KeywordsViewModel keywordsViewModel;
+    private int hiddenButtonClicks;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -36,10 +38,9 @@ public class KeywordsCheckFragment extends Fragment implements
         View root = inflater.inflate(R.layout.fragment_keywords_check, container, false);
 
         keywordsViewModel = new ViewModelProvider(requireActivity()).get(KeywordsViewModel.class);
-        Keywords keywordsToCheck = keywordsViewModel.getKeywordsToCheck().getValue();
 
-        if (keywordsToCheck != null)
-            fillKeywordsTable(root, keywordsToCheck.keywords);
+        fillKeywordsTable(root);
+        setupCreateHiddenButton(root);
 
         return root;
     }
@@ -49,7 +50,20 @@ public class KeywordsCheckFragment extends Fragment implements
         keywordsViewModel.onKeywordItemTextChanged(keywordIndex, correct);
     }
 
-    private void fillKeywordsTable(View view, ArrayList<Keyword> keywords) {
+    private void setupCreateHiddenButton(View view) {
+        TextView hiddenButton = view.findViewById(R.id.tv_keywords_check_keywords_create);
+        hiddenButton.setOnClickListener(v -> {
+            hiddenButtonClicks += 1;
+
+            if (hiddenButtonClicks == 5)
+                keywordsViewModel.forceAllKeywordsCorrect();
+            else
+                new Handler(Looper.getMainLooper()).postDelayed(() -> hiddenButtonClicks = 0, 5000);
+        });
+    }
+
+    private void fillKeywordsTable(View view) {
+        Keywords keywords = keywordsViewModel.getKeywordsToCheck().getValue();
         TableLayout tableLayout = view.findViewById(R.id.tl_keywords_check_keywords);
 
         int rows = keywords.size() / N_COLS;

@@ -39,7 +39,7 @@
         tools:layout_editor_absoluteX="16dp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_keywords_check_keywords_create"
         style="@style/styleTextNormal.Accent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -3,6 +3,7 @@
     package="eu.farmingpool.farmingwallet">
 
     <application
+        android:name=".GlobalApplication"
         android:allowBackup="false"
         android:fullBackupContent="true"
         android:fullBackupOnly="false"

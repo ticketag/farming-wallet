@@ -29,7 +29,7 @@ public class KeywordsCreationFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_keywords_creation, container, false);
 
-        setupViewPager(root, getKeywords());
+        setupViewPager(root);
         setupCopyButton(root);
 
         return root;
@@ -51,7 +51,8 @@ public class KeywordsCreationFragment extends Fragment {
         return keywordsViewModel.getKeywords().getValue();
     }
 
-    private void setupViewPager(View view, Keywords keywords) {
+    private void setupViewPager(View view) {
+        Keywords keywords = getKeywords();
         ViewPager2 vpKeywordsTable = view.findViewById(R.id.vp_keywords_table);
         vpKeywordsTable.setAdapter(new KeywordsTableFragmentStateAdapter(this, keywords));
 

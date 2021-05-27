@@ -3,6 +3,7 @@ package eu.farmingpool.farmingwallet;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
@@ -30,26 +31,18 @@ public class NewWalletActivity extends AppCompatActivity implements
 
     private NavController navController;
     private KeywordsViewModel keywordsViewModel;
-    private ImageView back;
-    private ImageView close;
+    private ImageView ivBack;
+    private ImageView ivClose;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_new_wallet);
-
         keywordsViewModel = new ViewModelProvider(this).get(KeywordsViewModel.class);
-        keywordsViewModel.getAllKeywordsCorrect().observe(this, allKeywordsCorrect -> {
-            if (allKeywordsCorrect) {
-                navController.navigate(KeywordsCheckFragmentDirections.actionKeywordsCheckFragmentToWalletCreatedFragment());
-                back.setVisibility(View.INVISIBLE);
-                close.setVisibility(View.INVISIBLE);
-            }
-        });
-
+        setupKeywordsViewModelObserver();
 
         generateRandomKeywords();
+        setContentView(R.layout.activity_new_wallet);
 
         setupNavigation();
         setupBackButton();
@@ -69,12 +62,14 @@ public class NewWalletActivity extends AppCompatActivity implements
     public void onNextPressed() {
         navController.navigate(KeywordsCreationFragmentDirections.actionKeywordsCreationFragmentToKeywordsCheckFragment());
         keywordsViewModel.generateKeywordsToCheck(N_KEYWORDS_TO_CHECK);
-        back.setVisibility(View.VISIBLE);
+        ivBack.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onAccountNameChosen(String accountName) {
-        Account account = new Account(0);
+        Keywords keywords = keywordsViewModel.getKeywords().getValue();
+
+        Account account = new Account(0, keywords);
         account.setName(accountName);
 
         openMainActivity();
@@ -85,18 +80,19 @@ public class NewWalletActivity extends AppCompatActivity implements
     }
 
     private void setupCloseButton() {
-        close = findViewById(R.id.iv_activity_new_wallet_close);
+        ivClose = findViewById(R.id.iv_activity_new_wallet_close);
 
-        close.setOnClickListener(v -> openSplashActivity());
+        ivClose.setOnClickListener(v -> openSplashActivity());
     }
 
     private void setupBackButton() {
-        back = findViewById(R.id.iv_activity_new_wallet_back);
+        ivBack = findViewById(R.id.iv_activity_new_wallet_back);
 
-        back.setVisibility(View.INVISIBLE);
-        back.setOnClickListener(v -> {
+        ivBack.setVisibility(View.INVISIBLE);
+        ivBack.setOnClickListener(v -> {
+            hideKeyboard(v);
             navController.navigateUp();
-            back.setVisibility(View.INVISIBLE);
+            ivBack.setVisibility(View.INVISIBLE);
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         });
     }
@@ -106,12 +102,28 @@ public class NewWalletActivity extends AppCompatActivity implements
     }
 
     private void openMainActivity() {
-        openActivity(this, MainActivity.class, true, true, true, true);
+        openActivity(this, MainActivity.class, true, true, false, true);
+    }
+
+    private void setupKeywordsViewModelObserver() {
+        keywordsViewModel.getAllKeywordsCorrect().observe(this, allKeywordsCorrect -> {
+            if (allKeywordsCorrect) {
+                navController.navigate(KeywordsCheckFragmentDirections.actionKeywordsCheckFragmentToWalletCreatedFragment());
+                ivBack.setVisibility(View.INVISIBLE);
+                ivClose.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 
     private void generateRandomKeywords() {
-        Keywords keywords = KeywordsGenerator.generate(N_KEYWORDS_TO_GENERATE);
+        Keywords keywords = KeywordsGenerator.generate(this, N_KEYWORDS_TO_GENERATE);
 
         keywordsViewModel.setKeywords(keywords);
+    }
+
+
+    private void hideKeyboard(View v) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
     }
 }
