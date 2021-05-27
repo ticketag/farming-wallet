@@ -24,6 +24,7 @@ import eu.farmingpool.farmingwallet.views.KeywordItem;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import static eu.farmingpool.farmingwallet.utils.Utils.isDebug;
 
 public class KeywordsCheckFragment extends Fragment implements
         KeywordItem.KeywordItemInterface {
@@ -51,6 +52,9 @@ public class KeywordsCheckFragment extends Fragment implements
     }
 
     private void setupCreateHiddenButton(View view) {
+        if (!isDebug())
+            return;
+
         TextView hiddenButton = view.findViewById(R.id.tv_keywords_check_keywords_create);
         hiddenButton.setOnClickListener(v -> {
             hiddenButtonClicks += 1;
@@ -64,6 +68,9 @@ public class KeywordsCheckFragment extends Fragment implements
 
     private void fillKeywordsTable(View view) {
         Keywords keywords = keywordsViewModel.getKeywordsToCheck().getValue();
+        if (keywords == null)
+            return;
+
         TableLayout tableLayout = view.findViewById(R.id.tl_keywords_check_keywords);
 
         int rows = keywords.size() / N_COLS;

@@ -9,6 +9,8 @@ import eu.farmingpool.farmingwallet.BuildConfig;
 import eu.farmingpool.farmingwallet.R;
 
 public class Utils {
+    public static final String KEY_SEPARATOR = "_";
+
     public static Locale getLocale() {
         return Locale.getDefault();
     }

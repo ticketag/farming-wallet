@@ -12,6 +12,7 @@ import java.security.GeneralSecurityException;
 
 import eu.farmingpool.farmingwallet.GlobalApplication;
 import eu.farmingpool.farmingwallet.keywords.Keywords;
+import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 
 public class SharedDataManager {
     private static final String NAME = "preferences";
@@ -48,6 +49,14 @@ public class SharedDataManager {
 
     public static Keywords getSharedKeywords(String key) {
         return getSharedObject(key, Keywords.class);
+    }
+
+    public static void putSharedTransactionRecords(String key, TransactionRecords transactionRecords) {
+        putSharedObject(key, transactionRecords);
+    }
+
+    public static TransactionRecords getSharedTransactionRecords(String key) {
+        return getSharedObject(key, TransactionRecords.class);
     }
 
     private static <T> T getSharedObject(String key, Class<T> objectType) {

@@ -8,7 +8,6 @@ import eu.farmingpool.farmingwallet.utils.SharedDataManager;
 
 public class Account {
     private static final String KEY_KEYWORDS = "keywords";
-    private static final String PRIVATE_SUFFIX = "private";
     private static final String SEPARATOR = "_";
 
     private final int id;
@@ -37,11 +36,15 @@ public class Account {
         coins.add(coin);
     }
 
+    public boolean hasCoin(Coin coin) {
+        return coins.contains(coin);
+    }
+
     public ArrayList<Coin> getCoins() {
         return coins;
     }
 
-    private Keywords retrieveKeywords() {
+    public Keywords retrieveKeywords() {
         String keywordsTag = getKeywordsTag();
 
         return SharedDataManager.getSharedKeywords(keywordsTag);
@@ -55,12 +58,5 @@ public class Account {
 
     private String getKeywordsTag() {
         return id + SEPARATOR + KEY_KEYWORDS;
-    }
-
-    private void retrievePrivateKey(Coin coin) {
-        if (!coins.contains(coin))
-            throw new IllegalStateException("Unexpected value: " + this);
-
-        String privateKeyTag = id + SEPARATOR + coin.toString() + SEPARATOR + PRIVATE_SUFFIX;
     }
 }
