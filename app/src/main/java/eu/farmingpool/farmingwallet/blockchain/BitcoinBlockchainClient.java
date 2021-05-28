@@ -10,18 +10,18 @@ import eu.farmingpool.farmingwallet.transactions.TransactionRecord;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 import eu.farmingpool.farmingwallet.wallet.Coin;
 
-public class ChiaBlockchainClient extends BlockchainClient {
-    private static ChiaBlockchainClient instance;
+public class BitcoinBlockchainClient extends BlockchainClient {
+    private static BitcoinBlockchainClient instance;
 
-    private ChiaBlockchainClient() {
+    private BitcoinBlockchainClient() {
         super(Coin.XCH);
     }
 
-    public static ChiaBlockchainClient getInstance() {
+    public static BitcoinBlockchainClient getInstance() {
         if (instance == null) {
-            synchronized (ChiaBlockchainClient.class) {
+            synchronized (BitcoinBlockchainClient.class) {
                 if (instance == null) {
-                    instance = new ChiaBlockchainClient();
+                    instance = new BitcoinBlockchainClient();
                 }
             }
         }

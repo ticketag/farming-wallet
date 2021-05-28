@@ -1,6 +1,6 @@
 package eu.farmingpool.farmingwallet.blockchain;
 
-import eu.farmingpool.farmingwallet.coins.Coin;
+import eu.farmingpool.farmingwallet.wallet.Coin;
 
 public class BlockchainClientFactory {
     public static BlockchainClient get(Coin coin) {

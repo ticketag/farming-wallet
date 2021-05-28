@@ -1,8 +1,8 @@
 package eu.farmingpool.farmingwallet.keys;
 
 import eu.farmingpool.farmingwallet.accounts.Account;
-import eu.farmingpool.farmingwallet.coins.Coin;
 import eu.farmingpool.farmingwallet.transactions.Transaction;
+import eu.farmingpool.farmingwallet.wallet.Coin;
 
 public abstract class KeysManager {
     protected final Coin coin;

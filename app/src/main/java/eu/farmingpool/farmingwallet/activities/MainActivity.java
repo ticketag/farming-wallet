@@ -20,13 +20,14 @@ import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.accounts.Accounts;
 import eu.farmingpool.farmingwallet.application.GlobalApplication;
 import eu.farmingpool.farmingwallet.services.MasterService;
-import eu.farmingpool.farmingwallet.ui.wallet.CoinBalancesAdapter;
+import eu.farmingpool.farmingwallet.ui.wallet.WalletsAdapter;
 import eu.farmingpool.farmingwallet.ui.wallet.detail.TransactionRecordsAdapter;
 import eu.farmingpool.farmingwallet.utils.EncryptedSharedDataManager;
+import eu.farmingpool.farmingwallet.wallet.Coin;
 
 public class MainActivity extends AppCompatActivity implements
         TransactionRecordsAdapter.OnClickListener,
-        CoinBalancesAdapter.OnClickListener {
+        WalletsAdapter.OnClickListener {
     private ArrayList<String> bottomNavFragments;
 
     private NavController navController;
@@ -58,8 +59,18 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onCoinBalanceClicked(int i) {
-        navController.navigate(R.id.walletDetailFragment);
+    public void onWalletClicked(int i) {
+        Coin coin = currentAccount.getCoins().get(i);
+
+        Bundle args = new Bundle();
+        args.putSerializable("coin", coin);
+
+        navController.navigate(R.id.walletDetailFragment, args);
+    }
+
+    @Override
+    public void onAddWalletClicked() {
+        currentAccount.addCoin(Coin.BTC);
     }
 
     @Override

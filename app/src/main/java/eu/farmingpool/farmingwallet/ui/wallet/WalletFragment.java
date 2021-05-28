@@ -14,10 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import eu.farmingpool.farmingwallet.R;
-import eu.farmingpool.farmingwallet.coins.Coin;
+import eu.farmingpool.farmingwallet.accounts.Account;
+import eu.farmingpool.farmingwallet.accounts.Accounts;
+import eu.farmingpool.farmingwallet.wallet.Wallet;
 
-public class WalletFragment extends Fragment implements CoinBalancesAdapter.OnClickListener {
-    CoinBalancesAdapter.OnClickListener onClickListener;
+public class WalletFragment extends Fragment implements WalletsAdapter.OnClickListener {
+    WalletsAdapter.OnClickListener onClickListener;
     RecyclerView rvCoins;
 
     @Override
@@ -35,24 +37,28 @@ public class WalletFragment extends Fragment implements CoinBalancesAdapter.OnCl
         super.onAttach(context);
 
         try {
-            onClickListener = (CoinBalancesAdapter.OnClickListener) context;
+            onClickListener = (WalletsAdapter.OnClickListener) context;
         } catch (Exception ignored) {
         }
     }
 
     @Override
-    public void onCoinBalanceClicked(int i) {
-        onClickListener.onCoinBalanceClicked(i);
+    public void onWalletClicked(int i) {
+        onClickListener.onWalletClicked(i);
+    }
+
+    @Override
+    public void onAddWalletClicked() {
+        onClickListener.onAddWalletClicked();
     }
 
     private void setupRecyclerView(View view) {
-        ArrayList<CoinBalance> coinBalances = new ArrayList<>();
+        Account account = Accounts.getInstance().getCurrentAccount();
+        ArrayList<Wallet> wallets = account.getWallets();
 
-        coinBalances.add(new CoinBalance(Coin.XCH, 1.45));
+        WalletsAdapter adapter = new WalletsAdapter(wallets, this);
 
-        CoinBalancesAdapter adapter = new CoinBalancesAdapter(coinBalances, this);
-
-        rvCoins = view.findViewById(R.id.rv_coins);
+        rvCoins = view.findViewById(R.id.rv_fragment_wallet_coins);
         rvCoins.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         rvCoins.setAdapter(adapter);
     }

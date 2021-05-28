@@ -70,11 +70,14 @@
     <!--  Item Send Receive Buttons -->
     <string name="isr_send">Send</string>
     <string name="isr_receive">Receive</string>
-    <string name="icb_coin_name_placeholder">Chia</string>
-    <string name="icb_coin_amount_placeholder">14.0 XCH</string>
-    <string name="icb_value_placeholder">10,000.00$</string>
-    <string name="icb_change_placeholder">+35%</string>
-    <string name="icb_corresponding_placeholder">100,000.00 $</string>
+
+    <!--  Item Wallet -->
+    <string name="iw_coin_name_placeholder">Chia</string>
+    <string name="iw_coin_amount_placeholder">14.0 XCH</string>
+    <string name="iw_value_placeholder">10,000.00$</string>
+    <string name="iw_change_placeholder">+35%</string>
+    <string name="iw_corresponding_placeholder">100,000.00 $</string>
+    <string name="iw_add_coin">Add Coin +</string>
 
     <!--  Item Keyword -->
     <string name="item_keyword_number_placeholder" translatable="false">1.</string>

@@ -2,7 +2,7 @@ package eu.farmingpool.farmingwallet.transactions;
 
 import java.sql.Timestamp;
 
-import eu.farmingpool.farmingwallet.coins.Coin;
+import eu.farmingpool.farmingwallet.wallet.Coin;
 
 public class TransactionRecord {
     public final Coin coin;

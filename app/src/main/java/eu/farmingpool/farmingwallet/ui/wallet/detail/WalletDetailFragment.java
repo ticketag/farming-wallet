@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import eu.farmingpool.farmingwallet.R;
+import eu.farmingpool.farmingwallet.wallet.Coin;
 
 public class WalletDetailFragment extends Fragment {
     private Button btSend;
@@ -24,10 +26,17 @@ public class WalletDetailFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_wallet_detail, container, false);
 
+        Coin coin = (Coin) getArguments().getSerializable("coin");
+        setupIcon(root, coin);
         setupButtons(root);
         setupViewPager(root);
 
         return root;
+    }
+
+    private void setupIcon(View view, Coin coin) {
+        ImageView ivIcon = view.findViewById(R.id.iv_ib_icon);
+        ivIcon.setImageResource(coin.getIconResId());
     }
 
     private void setupButtons(View view) {

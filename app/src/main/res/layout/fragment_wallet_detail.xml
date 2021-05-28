@@ -7,8 +7,8 @@
     android:background="@drawable/background_activity_main"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingHorizontal="@dimen/fragment_wallet_detail_content_padding"
-    android:paddingTop="@dimen/fragment_wallet_detail_content_padding"
+    android:paddingHorizontal="@dimen/fragment_wallet_detail_content_padding_top"
+    android:paddingTop="@dimen/fragment_wallet_detail_content_padding_top"
     tools:context=".ui.wallet.detail.WalletDetailFragment">
 
     <include

@@ -55,16 +55,17 @@
     <dimen name="fragment_keywords_check_text_margin">16dp</dimen>
 
     <!-- Fragment Wallet -->
-    <dimen name="fragment_wallet_detail_content_padding">24dp</dimen>
+    <dimen name="fragment_wallet_detail_content_padding_top">24dp</dimen>
+    <dimen name="fragment_wallet_detail_content_padding_bottom">16dp</dimen>
     <dimen name="fragment_wallet_detail_items_margin">20dp</dimen>
     <dimen name="fragment_wallet_detail_tab_padding">6dp</dimen>
 
     <!--  Item Coin Balance -->
-    <dimen name="icb_card_elevation">4dp</dimen>
-    <dimen name="icb_card_content_padding">12dp</dimen>
-    <dimen name="icb_card_corner_radius">8dp</dimen>
-    <dimen name="icb_card_margin">4dp</dimen>
-    <dimen name="icb_icon_padding">8dp</dimen>
+    <dimen name="iw_card_elevation">4dp</dimen>
+    <dimen name="iw_card_content_padding">12dp</dimen>
+    <dimen name="iw_card_corner_radius">8dp</dimen>
+    <dimen name="iw_card_margin">4dp</dimen>
+    <dimen name="iw_icon_padding">8dp</dimen>
 
     <dimen name="dtr_items_vertical_spacing">8dp</dimen>
     <dimen name="fragment_wallet_created_horizontal_padding">12dp</dimen>

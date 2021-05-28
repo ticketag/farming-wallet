@@ -14,9 +14,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import eu.farmingpool.farmingwallet.R;
-import eu.farmingpool.farmingwallet.coins.Coin;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecord;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
+import eu.farmingpool.farmingwallet.wallet.Coin;
 
 import static eu.farmingpool.farmingwallet.utils.Utils.getLocale;
 

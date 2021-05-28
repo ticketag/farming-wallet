@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/iw_card_margin"
+    android:clipToPadding="false"
+    app:cardBackgroundColor="?colorPrimary"
+    app:cardCornerRadius="@dimen/iw_card_corner_radius"
+    app:elevation="@dimen/iw_card_elevation">
+
+    <TextView
+        style="@style/styleTextNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="4dp"
+        android:text="@string/iw_add_coin" />
+</androidx.cardview.widget.CardView>

@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.blockchain.BlockchainClient;
 import eu.farmingpool.farmingwallet.blockchain.BlockchainClientFactory;
-import eu.farmingpool.farmingwallet.coins.Coin;
 import eu.farmingpool.farmingwallet.keys.Key;
 import eu.farmingpool.farmingwallet.keys.KeysManager;
 import eu.farmingpool.farmingwallet.keys.KeysManagerFactory;
@@ -18,6 +17,7 @@ import eu.farmingpool.farmingwallet.transactions.ObservableTransactionRecords;
 import eu.farmingpool.farmingwallet.transactions.Transaction;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 import eu.farmingpool.farmingwallet.utils.SingleTimerTask;
+import eu.farmingpool.farmingwallet.wallet.Coin;
 
 import static eu.farmingpool.farmingwallet.utils.Utils.MILLISECONDS_IN_SECOND;
 

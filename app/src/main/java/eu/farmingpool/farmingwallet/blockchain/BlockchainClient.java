@@ -9,10 +9,10 @@ import com.android.volley.toolbox.Volley;
 
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.application.GlobalApplication;
-import eu.farmingpool.farmingwallet.coins.Coin;
 import eu.farmingpool.farmingwallet.transactions.Transaction;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 import eu.farmingpool.farmingwallet.utils.SharedDataManager;
+import eu.farmingpool.farmingwallet.wallet.Coin;
 
 import static eu.farmingpool.farmingwallet.utils.Utils.KEY_SEPARATOR;
 
@@ -67,6 +67,6 @@ public abstract class BlockchainClient {
 
     @NonNull
     private String getTransactionRecordsCachingKey(Account account) {
-        return account.getId() + KEY_SEPARATOR + coin + KEY_TRANSACTIONS;
+        return account.getId() + KEY_SEPARATOR + coin + KEY_SEPARATOR + KEY_TRANSACTIONS;
     }
 }

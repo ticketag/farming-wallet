@@ -4,10 +4,9 @@ import java.util.Observable;
 
 public class ObservableTransactionRecords extends Observable {
     private static ObservableTransactionRecords instance;
-    private TransactionRecords transactions;
+    private final TransactionRecords transactions = new TransactionRecords();
 
     private ObservableTransactionRecords() {
-        transactions = new TransactionRecords();
     }
 
     public static ObservableTransactionRecords getInstance() {
@@ -39,7 +38,8 @@ public class ObservableTransactionRecords extends Observable {
     }
 
     public void setTransactions(TransactionRecords transactions) {
-        this.transactions = transactions;
+        this.transactions.clear();
+        this.transactions.insert(transactions);
 
         onChanged();
     }
@@ -47,5 +47,9 @@ public class ObservableTransactionRecords extends Observable {
     private void onChanged() {
         setChanged();
         notifyObservers();
+    }
+
+    private void updateBalance() {
+
     }
 }

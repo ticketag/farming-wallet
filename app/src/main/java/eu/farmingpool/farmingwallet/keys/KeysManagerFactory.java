@@ -1,6 +1,6 @@
 package eu.farmingpool.farmingwallet.keys;
 
-import eu.farmingpool.farmingwallet.coins.Coin;
+import eu.farmingpool.farmingwallet.wallet.Coin;
 
 public class KeysManagerFactory {
     public static KeysManager get(Coin coin) {

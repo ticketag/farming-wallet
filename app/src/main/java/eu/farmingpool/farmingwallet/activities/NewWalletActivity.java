@@ -15,7 +15,6 @@ import androidx.navigation.Navigation;
 import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.accounts.Accounts;
-import eu.farmingpool.farmingwallet.coins.Coin;
 import eu.farmingpool.farmingwallet.keywords.Keywords;
 import eu.farmingpool.farmingwallet.keywords.KeywordsGenerator;
 import eu.farmingpool.farmingwallet.ui.wallet.creation.KeywordsCheckFragmentDirections;
@@ -23,6 +22,7 @@ import eu.farmingpool.farmingwallet.ui.wallet.creation.KeywordsCreationFragment;
 import eu.farmingpool.farmingwallet.ui.wallet.creation.KeywordsCreationFragmentDirections;
 import eu.farmingpool.farmingwallet.ui.wallet.creation.KeywordsViewModel;
 import eu.farmingpool.farmingwallet.ui.wallet.creation.WalletCreatedFragment;
+import eu.farmingpool.farmingwallet.wallet.Coin;
 
 import static eu.farmingpool.farmingwallet.utils.Utils.openActivity;
 

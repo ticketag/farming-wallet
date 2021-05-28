@@ -8,6 +8,7 @@ import com.google.gson.JsonSyntaxException;
 
 import eu.farmingpool.farmingwallet.application.GlobalApplication;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
+import eu.farmingpool.farmingwallet.wallet.Wallet;
 
 public class SharedDataManager {
     private static final String NAME = "preferences";
@@ -29,6 +30,14 @@ public class SharedDataManager {
 
     public static TransactionRecords getSharedTransactionRecords(String key) {
         return getSharedObject(key, TransactionRecords.class);
+    }
+
+    public static void putWallet(String key, Wallet wallet) {
+        putObject(key, wallet);
+    }
+
+    public static Wallet getWallet(String key) {
+        return getSharedObject(key, Wallet.class);
     }
 
     private static <T> T getSharedObject(String key, Class<T> objectType) {
