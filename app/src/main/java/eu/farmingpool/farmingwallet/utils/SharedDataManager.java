@@ -10,7 +10,7 @@ import com.google.gson.JsonSyntaxException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
-import eu.farmingpool.farmingwallet.GlobalApplication;
+import eu.farmingpool.farmingwallet.application.GlobalApplication;
 import eu.farmingpool.farmingwallet.keywords.Keywords;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 

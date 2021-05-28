@@ -1,9 +1,11 @@
-package eu.farmingpool.farmingwallet;
+package eu.farmingpool.farmingwallet.activities;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import eu.farmingpool.farmingwallet.R;
 
 public class LoginActivity extends AppCompatActivity {
 

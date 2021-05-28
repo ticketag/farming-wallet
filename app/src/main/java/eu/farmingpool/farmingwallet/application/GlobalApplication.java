@@ -1,4 +1,4 @@
-package eu.farmingpool.farmingwallet;
+package eu.farmingpool.farmingwallet.application;
 
 import android.app.Application;
 import android.content.Context;

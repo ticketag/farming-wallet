@@ -1,4 +1,4 @@
-package eu.farmingpool.farmingwallet;
+package eu.farmingpool.farmingwallet.activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +21,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.coins.Coin;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecord;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;

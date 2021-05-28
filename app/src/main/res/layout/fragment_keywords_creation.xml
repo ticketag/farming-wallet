@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:orientation="vertical"
-    tools:context=".NewWalletActivity">
+    tools:context=".activities.NewWalletActivity">
 
     <TextView
         android:id="@+id/tv_line_1"
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginVertical="@dimen/fragment_keywords_creation_text_margin"
-        app:layout_constraintBottom_toTopOf="@+id/iv_keywords_creation_copy"
+        app:layout_constraintBottom_toTopOf="@+id/tv_keywords_creation_copy"
         app:layout_constraintTop_toBottomOf="@+id/tv_line_3" />
 
     <androidx.appcompat.widget.AppCompatTextView

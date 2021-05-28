@@ -1,4 +1,4 @@
-package eu.farmingpool.farmingwallet;
+package eu.farmingpool.farmingwallet.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

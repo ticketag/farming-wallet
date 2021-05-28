@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:orientation="vertical"
-    tools:context=".NewWalletActivity">
+    tools:context=".activities.NewWalletActivity">
 
     <LinearLayout
         android:id="@+id/ll_fragment_wallet_created_farming_wallet"

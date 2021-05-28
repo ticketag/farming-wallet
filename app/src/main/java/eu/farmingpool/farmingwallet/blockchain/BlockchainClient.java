@@ -5,8 +5,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import eu.farmingpool.farmingwallet.GlobalApplication;
 import eu.farmingpool.farmingwallet.accounts.Account;
+import eu.farmingpool.farmingwallet.application.GlobalApplication;
 import eu.farmingpool.farmingwallet.coins.Coin;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 import eu.farmingpool.farmingwallet.utils.SharedDataManager;

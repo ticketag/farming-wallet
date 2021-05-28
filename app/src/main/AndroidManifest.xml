@@ -3,7 +3,7 @@
     package="eu.farmingpool.farmingwallet">
 
     <application
-        android:name=".GlobalApplication"
+        android:name=".application.GlobalApplication"
         android:allowBackup="false"
         android:fullBackupContent="true"
         android:fullBackupOnly="false"
@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmingWallet">
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -24,13 +24,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".NewWalletActivity"
+            android:name=".activities.NewWalletActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ImportWalletActivity"
+            android:name=".activities.ImportWalletActivity"
             android:screenOrientation="portrait" />
 
         <meta-data
