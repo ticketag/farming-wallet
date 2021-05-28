@@ -1,39 +1,19 @@
 package eu.farmingpool.farmingwallet.utils;
 
+import android.content.Context;
 import android.content.SharedPreferences;
-
-import androidx.security.crypto.EncryptedSharedPreferences;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-
 import eu.farmingpool.farmingwallet.application.GlobalApplication;
-import eu.farmingpool.farmingwallet.keywords.Keywords;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 
 public class SharedDataManager {
     private static final String NAME = "preferences";
-    private static final String MASTER_KEY_ALIAS = "masterKey";
-    private static SharedPreferences sharedPreferences;
+    private static final SharedPreferences sharedPreferences = GlobalApplication.getAppContext().getSharedPreferences(NAME, Context.MODE_PRIVATE);
 
-    static {
-        try {
-            sharedPreferences = EncryptedSharedPreferences.create(
-                    NAME,
-                    MASTER_KEY_ALIAS,
-                    GlobalApplication.getAppContext(),
-                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            );
-        } catch (GeneralSecurityException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void putSharedString(String key, String value) {
+    public static void putString(String key, String value) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(key, value);
         editor.apply();
@@ -43,16 +23,8 @@ public class SharedDataManager {
         return sharedPreferences.getString(key, defaultValue);
     }
 
-    public static void putSharedKeywords(String key, Keywords keywords) {
-        putSharedObject(key, keywords);
-    }
-
-    public static Keywords getSharedKeywords(String key) {
-        return getSharedObject(key, Keywords.class);
-    }
-
-    public static void putSharedTransactionRecords(String key, TransactionRecords transactionRecords) {
-        putSharedObject(key, transactionRecords);
+    public static void putTransactionRecords(String key, TransactionRecords transactionRecords) {
+        putObject(key, transactionRecords);
     }
 
     public static TransactionRecords getSharedTransactionRecords(String key) {
@@ -75,10 +47,10 @@ public class SharedDataManager {
         }
     }
 
-    private static <T> void putSharedObject(String key, T object) {
+    private static <T> void putObject(String key, T object) {
         Gson gson = new Gson();
         String json = gson.toJson(object);
 
-        putSharedString(key, json);
+        putString(key, json);
     }
 }

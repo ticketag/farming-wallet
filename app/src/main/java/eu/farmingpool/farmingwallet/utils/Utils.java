@@ -10,6 +10,7 @@ import eu.farmingpool.farmingwallet.R;
 
 public class Utils {
     public static final String KEY_SEPARATOR = "_";
+    public static final long MILLISECONDS_IN_SECOND = 1000;
 
     public static Locale getLocale() {
         return Locale.getDefault();

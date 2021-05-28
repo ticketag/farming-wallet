@@ -6,56 +6,53 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.io.FileInputStream;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.PrivateKey;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import eu.farmingpool.farmingwallet.R;
-import eu.farmingpool.farmingwallet.coins.Coin;
-import eu.farmingpool.farmingwallet.transactions.TransactionRecord;
-import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
+import eu.farmingpool.farmingwallet.accounts.Account;
+import eu.farmingpool.farmingwallet.accounts.Accounts;
+import eu.farmingpool.farmingwallet.application.GlobalApplication;
+import eu.farmingpool.farmingwallet.services.MasterService;
 import eu.farmingpool.farmingwallet.ui.wallet.CoinBalancesAdapter;
 import eu.farmingpool.farmingwallet.ui.wallet.detail.TransactionRecordsAdapter;
-import eu.farmingpool.farmingwallet.ui.wallet.detail.TransactionRecordsViewModel;
+import eu.farmingpool.farmingwallet.utils.EncryptedSharedDataManager;
 
 public class MainActivity extends AppCompatActivity implements
         TransactionRecordsAdapter.OnClickListener,
         CoinBalancesAdapter.OnClickListener {
-    private TransactionRecordsViewModel transactionRecordsViewModel;
+    private ArrayList<String> bottomNavFragments;
 
-    protected ArrayList<String> fullScreenFragments;
-    protected ArrayList<String> bottomNavFragments;
     private NavController navController;
     private BottomNavigationView navView;
     private Animation animShow;
     private Animation animHide;
+    private MasterService masterService;
+    private Account currentAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
-
+        setupMasterService();
         setupAnimations();
         setupFragments();
         setupNavigation();
-        setupViewModels();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        currentAccount = Accounts.getInstance().getCurrentAccount();
 
         fetchTransactionRecords();
     }
@@ -70,16 +67,16 @@ public class MainActivity extends AppCompatActivity implements
         navController.navigate(R.id.transactionRecordDialog);
     }
 
+    private void setupMasterService() {
+        masterService = GlobalApplication.getMasterService();
+    }
+
     private void setupAnimations() {
         animShow = AnimationUtils.loadAnimation(this, R.anim.view_show_from_bottom);
         animHide = AnimationUtils.loadAnimation(this, R.anim.view_hide_to_botom);
     }
 
     private void setupFragments() {
-        fullScreenFragments = new ArrayList<>(Arrays.asList(
-                getString(R.string.navigation_title_wallet_detail)
-        ));
-
         bottomNavFragments = new ArrayList<>(Arrays.asList(
                 getString(R.string.navigation_title_wallet),
                 getString(R.string.navigation_title_dapps),
@@ -103,10 +100,6 @@ public class MainActivity extends AppCompatActivity implements
         NavigationUI.setupWithNavController(navView, navController);
     }
 
-    private void setupViewModels() {
-        transactionRecordsViewModel = new ViewModelProvider(this).get(TransactionRecordsViewModel.class);
-    }
-
     private void hideBottomNavView() {
         if (navView.getVisibility() != View.GONE) {
             navView.startAnimation(animHide);
@@ -122,43 +115,40 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void fetchTransactionRecords() {
-        TransactionRecords transactionRecords = new TransactionRecords();
-
-        String testSender = "xch1wh88x8m47dqkw5wuselqs4t0un5ns3k6z5cf92fpju27jwnpx3fsx2lsha";
-
-        transactionRecords.insert(new TransactionRecord(Coin.XCH, new Timestamp(System.currentTimeMillis()), 1.2, testSender));
-        transactionRecords.insert(new TransactionRecord(Coin.XCH, new Timestamp(System.currentTimeMillis() + 1000 * 60 * 5), 2.1, testSender));
-        transactionRecords.insert(new TransactionRecord(Coin.XCH, new Timestamp(System.currentTimeMillis() + 1000 * 60 * 9), -3.45, testSender));
-        transactionRecords.insert(new TransactionRecord(Coin.XCH, new Timestamp(System.currentTimeMillis() - 1000 * 60 * 5), 0.1, testSender));
-        transactionRecords.insert(new TransactionRecord(Coin.XCH, new Timestamp(System.currentTimeMillis() - 1000 * 60 * 7), -0.4, testSender));
-        transactionRecords.insert(new TransactionRecord(Coin.XCH, new Timestamp(System.currentTimeMillis() + 1000 * 60 * 3), 3.7, testSender));
-        transactionRecords.insert(new TransactionRecord(Coin.XCH, new Timestamp(System.currentTimeMillis() - 1000 * 60 * 2), -4.1, testSender));
-
-        transactionRecordsViewModel.setTransactionRecords(transactionRecords);
+        if (currentAccount != null)
+            masterService.fetchTransactionRecords(currentAccount);
     }
 
-    void test() {
-        KeyStore keyStore = null;
-        char[] password = "password".toCharArray();
+    private void switchCurrentAccount(int accountId) {
+        if (currentAccount.getId() == accountId)
+            return;
 
-        try {
-            keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        }
-
-        assert keyStore != null;
-
-        try (FileInputStream fis = new FileInputStream((String) null)) {
-            keyStore.load(fis, password);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
-            PrivateKey privateKey = (PrivateKey) keyStore.getKey("keyName", password);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Accounts accounts = EncryptedSharedDataManager.getAccounts();
+        currentAccount = accounts.getAccount(accountId);
     }
+
+//    void test() {
+//        KeyStore keyStore = null;
+//        char[] password = "password".toCharArray();
+//
+//        try {
+//            keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+//        } catch (KeyStoreException e) {
+//            e.printStackTrace();
+//        }
+//
+//        assert keyStore != null;
+//
+//        try (FileInputStream fis = new FileInputStream((String) null)) {
+//            keyStore.load(fis, password);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            PrivateKey privateKey = (PrivateKey) keyStore.getKey("keyName", password);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

@@ -1,5 +1,7 @@
 package eu.farmingpool.farmingwallet.blockchain;
 
+import androidx.annotation.NonNull;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -8,6 +10,7 @@ import com.android.volley.toolbox.Volley;
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.application.GlobalApplication;
 import eu.farmingpool.farmingwallet.coins.Coin;
+import eu.farmingpool.farmingwallet.transactions.Transaction;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 import eu.farmingpool.farmingwallet.utils.SharedDataManager;
 
@@ -22,11 +25,12 @@ public abstract class BlockchainClient {
         this.coin = coin;
     }
 
-    protected abstract void postTransaction(String transaction);
+    protected abstract void postTransaction(Transaction transaction);
 
-    protected abstract TransactionRecords fetchTransactions(Account account);
+    @NonNull
+    protected abstract TransactionRecords fetchTransactionRecords(Account account);
 
-    public void executeTransaction(String transaction) {
+    public void executeTransaction(Transaction transaction) {
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 "",
@@ -39,27 +43,30 @@ public abstract class BlockchainClient {
         requestQueue.add(stringRequest);
     }
 
-    public TransactionRecords getTransactions(Account account) {
-        TransactionRecords transactionRecords = fetchTransactions(account);
+    @NonNull
+    public TransactionRecords fetchAndCacheTransactionRecords(Account account) {
+        TransactionRecords transactionRecords = fetchTransactionRecords(account);
 
-        cacheTransactions(account, transactionRecords);
+        cacheTransactionRecords(account, transactionRecords);
 
         return transactionRecords;
     }
 
-    private TransactionRecords getCachedTransactions(Account account) {
-        String key = getTransactionsCachingKey(account);
+    @NonNull
+    private TransactionRecords getCachedTransactionRecords(Account account) {
+        String key = getTransactionRecordsCachingKey(account);
 
         return SharedDataManager.getSharedTransactionRecords(key);
     }
 
-    private void cacheTransactions(Account account, TransactionRecords transactionRecords) {
-        String key = getTransactionsCachingKey(account);
+    private void cacheTransactionRecords(Account account, TransactionRecords transactionRecords) {
+        String key = getTransactionRecordsCachingKey(account);
 
-        SharedDataManager.putSharedTransactionRecords(key, transactionRecords);
+        SharedDataManager.putTransactionRecords(key, transactionRecords);
     }
 
-    private String getTransactionsCachingKey(Account account) {
+    @NonNull
+    private String getTransactionRecordsCachingKey(Account account) {
         return account.getId() + KEY_SEPARATOR + coin + KEY_TRANSACTIONS;
     }
 }

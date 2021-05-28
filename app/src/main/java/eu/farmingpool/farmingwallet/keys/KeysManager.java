@@ -2,6 +2,7 @@ package eu.farmingpool.farmingwallet.keys;
 
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.coins.Coin;
+import eu.farmingpool.farmingwallet.transactions.Transaction;
 
 public abstract class KeysManager {
     protected final Coin coin;
@@ -10,7 +11,7 @@ public abstract class KeysManager {
         this.coin = coin;
     }
 
-    public abstract String generateTransaction(Account account, double amount, Key receivingAddress);
+    public abstract Transaction generateTransaction(Account account, double amount, Key receivingAddress);
 
     public abstract Key getMasterKey(Account account);
 

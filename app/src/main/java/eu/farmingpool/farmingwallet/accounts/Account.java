@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import eu.farmingpool.farmingwallet.coins.Coin;
 import eu.farmingpool.farmingwallet.keywords.Keywords;
-import eu.farmingpool.farmingwallet.utils.SharedDataManager;
+import eu.farmingpool.farmingwallet.utils.EncryptedSharedDataManager;
 
 public class Account {
     private static final String KEY_KEYWORDS = "keywords";
@@ -14,7 +14,7 @@ public class Account {
     private final ArrayList<Coin> coins = new ArrayList<>();
     private String name;
 
-    public Account(int id, Keywords keywords) {
+    Account(int id, Keywords keywords) {
         this.id = id;
 
         saveKeywords(keywords);
@@ -47,13 +47,13 @@ public class Account {
     public Keywords retrieveKeywords() {
         String keywordsTag = getKeywordsTag();
 
-        return SharedDataManager.getSharedKeywords(keywordsTag);
+        return EncryptedSharedDataManager.getSharedKeywords(keywordsTag);
     }
 
     private void saveKeywords(Keywords keywords) {
         String keywordsTag = getKeywordsTag();
 
-        SharedDataManager.putSharedKeywords(keywordsTag, keywords);
+        EncryptedSharedDataManager.putKeywords(keywordsTag, keywords);
     }
 
     private String getKeywordsTag() {

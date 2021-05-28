@@ -14,6 +14,8 @@ import androidx.navigation.Navigation;
 
 import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.accounts.Account;
+import eu.farmingpool.farmingwallet.accounts.Accounts;
+import eu.farmingpool.farmingwallet.coins.Coin;
 import eu.farmingpool.farmingwallet.keywords.Keywords;
 import eu.farmingpool.farmingwallet.keywords.KeywordsGenerator;
 import eu.farmingpool.farmingwallet.ui.wallet.creation.KeywordsCheckFragmentDirections;
@@ -70,8 +72,11 @@ public class NewWalletActivity extends AppCompatActivity implements
     public void onAccountNameChosen(String accountName) {
         Keywords keywords = keywordsViewModel.getKeywords().getValue();
 
-        Account account = new Account(0, keywords);
+        Accounts accounts = Accounts.getInstance();
+        Account account = accounts.addAccount(keywords);
         account.setName(accountName);
+        account.addCoin(Coin.XCH);
+        accounts.setCurrentAccount(account.getId());
 
         openMainActivity();
     }

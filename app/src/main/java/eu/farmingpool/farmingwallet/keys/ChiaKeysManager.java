@@ -2,6 +2,7 @@ package eu.farmingpool.farmingwallet.keys;
 
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.coins.Coin;
+import eu.farmingpool.farmingwallet.transactions.Transaction;
 
 public class ChiaKeysManager extends KeysManager {
     private static ChiaKeysManager instance;
@@ -23,7 +24,7 @@ public class ChiaKeysManager extends KeysManager {
     }
 
     @Override
-    public String generateTransaction(Account account, double amount, Key receivingAddress) {
+    public Transaction generateTransaction(Account account, double amount, Key receivingAddress) {
         return null;
     }
 
@@ -37,7 +38,11 @@ public class ChiaKeysManager extends KeysManager {
         return null;
     }
 
-    public String getFarmingKey(Account account) {
+    public Key getFarmingKey(Account account) {
+        return null;
+    }
+
+    public Key getPoolKey(Account account) {
         return null;
     }
 }

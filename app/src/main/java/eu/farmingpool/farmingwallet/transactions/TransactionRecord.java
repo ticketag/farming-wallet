@@ -9,11 +9,17 @@ public class TransactionRecord {
     public final Timestamp timestamp;
     public final double amount;
     public final String sender;
+    private TransactionStatus transactionStatus;
 
     public TransactionRecord(Coin coin, Timestamp timestamp, double amount, String sender) {
         this.coin = coin;
         this.timestamp = timestamp;
         this.amount = amount;
         this.sender = sender;
+        this.transactionStatus = TransactionStatus.UNKNOWN;
+    }
+
+    public void setTransactionStatus(TransactionStatus transactionStatus) {
+        this.transactionStatus = transactionStatus;
     }
 }

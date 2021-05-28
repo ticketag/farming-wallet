@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import eu.farmingpool.farmingwallet.R;
+import eu.farmingpool.farmingwallet.accounts.Accounts;
 import eu.farmingpool.farmingwallet.utils.Utils;
 
 public class SplashActivity extends AppCompatActivity {
@@ -46,6 +47,6 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private boolean existsAtLeasOneAccount() {
-        return false;
+        return Accounts.getInstance().getCount() > 0;
     }
 }
