@@ -41,13 +41,13 @@ public class BitcoinBlockchainClient extends BlockchainClient {
 
         String testSender = "xch1wh88x8m47dqkw5wuselqs4t0un5ns3k6z5cf92fpju27jwnpx3fsx2lsha";
 
-        transactionRecords.insert(new TransactionRecord(Coin.XCH, new Timestamp(System.currentTimeMillis()), 1.2, testSender));
-        transactionRecords.insert(new TransactionRecord(Coin.XCH, new Timestamp(System.currentTimeMillis() + 1000 * 60 * 5), 2.1, testSender));
-        transactionRecords.insert(new TransactionRecord(Coin.XCH, new Timestamp(System.currentTimeMillis() + 1000 * 60 * 9), -3.45, testSender));
-        transactionRecords.insert(new TransactionRecord(Coin.XCH, new Timestamp(System.currentTimeMillis() - 1000 * 60 * 5), 0.1, testSender));
-        transactionRecords.insert(new TransactionRecord(Coin.XCH, new Timestamp(System.currentTimeMillis() - 1000 * 60 * 7), -0.4, testSender));
-        transactionRecords.insert(new TransactionRecord(Coin.XCH, new Timestamp(System.currentTimeMillis() + 1000 * 60 * 3), 3.7, testSender));
-        transactionRecords.insert(new TransactionRecord(Coin.XCH, new Timestamp(System.currentTimeMillis() - 1000 * 60 * 2), -4.1, testSender));
+        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis()), 1.2, testSender, 0));
+        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() + 1000 * 60 * 5), 2.1, testSender, 0));
+        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() + 1000 * 60 * 9), -3.45, testSender, 0));
+        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() - 1000 * 60 * 5), 0.1, testSender, 0));
+        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() - 1000 * 60 * 7), -0.4, testSender, 0));
+        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() + 1000 * 60 * 3), 3.7, testSender, 0));
+        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() - 1000 * 60 * 2), -4.1, testSender, 0));
 
         return transactionRecords;
     }
