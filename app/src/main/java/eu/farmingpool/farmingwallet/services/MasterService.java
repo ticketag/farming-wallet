@@ -41,6 +41,8 @@ public class MasterService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        startForeground(0, null);
     }
 
     @Override
