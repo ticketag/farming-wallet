@@ -1,4 +1,4 @@
-package eu.farmingpool.farmingwallet.ui.wallet;
+package eu.farmingpool.farmingwallet.ui.account;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,12 +72,8 @@ public class WalletsAdapter extends RecyclerView.Adapter<WalletsAdapter.BaseView
     }
 
     protected static class BaseViewHolder extends RecyclerView.ViewHolder {
-        private final View itemView;
-
         public BaseViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            this.itemView = itemView;
         }
 
         public void setOnClickListener(View.OnClickListener listener) {

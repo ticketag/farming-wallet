@@ -10,6 +10,7 @@ import com.google.gson.JsonSyntaxException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
+import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.accounts.Accounts;
 import eu.farmingpool.farmingwallet.application.GlobalApplication;
 import eu.farmingpool.farmingwallet.keywords.Keywords;
@@ -17,6 +18,7 @@ import eu.farmingpool.farmingwallet.keywords.Keywords;
 public class EncryptedSharedDataManager {
     private static final String NAME = "encryptedPreferences";
     private static final String MASTER_KEY_ALIAS = "masterKey";
+    private static final String KEY_ACCOUNT = "account_";
     private static final String KEY_ACCOUNTS = "accounts";
     private static SharedPreferences sharedPreferences;
 
@@ -32,6 +34,18 @@ public class EncryptedSharedDataManager {
         } catch (GeneralSecurityException | IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void clearSharedData(String key) {
+        SharedPreferences.Editor mEditor = sharedPreferences.edit();
+        mEditor.remove(key);
+        mEditor.apply();
+    }
+
+    public static void clearSharedData() {
+        SharedPreferences.Editor mEditor = sharedPreferences.edit();
+        mEditor.clear();
+        mEditor.apply();
     }
 
     public static void putString(String key, String value) {
@@ -50,6 +64,18 @@ public class EncryptedSharedDataManager {
 
     public static Keywords getSharedKeywords(String key) {
         return getSharedObject(key, Keywords.class);
+    }
+
+    public static void putAccount(Account account) {
+        putObject(KEY_ACCOUNT + account.getId(), account);
+    }
+
+    public static Account getAccount(int accountId) {
+        return getSharedObject(KEY_ACCOUNT + accountId, Account.class);
+    }
+
+    public static void removeAccount(int accountId) {
+        clearSharedData(KEY_ACCOUNT + accountId);
     }
 
     public static void putAccounts(Accounts accounts) {

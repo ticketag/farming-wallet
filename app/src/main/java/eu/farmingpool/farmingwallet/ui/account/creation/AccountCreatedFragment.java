@@ -1,4 +1,4 @@
-package eu.farmingpool.farmingwallet.ui.wallet.creation;
+package eu.farmingpool.farmingwallet.ui.account.creation;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import eu.farmingpool.farmingwallet.R;
 
-public class WalletCreatedFragment extends Fragment {
+public class AccountCreatedFragment extends Fragment {
     private AppCompatButton btDone;
     private AppCompatEditText etAccountName;
     private WalletCreatedFragmentInterface walletCreatedFragmentInterface;
@@ -23,7 +23,7 @@ public class WalletCreatedFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_wallet_created, container, false);
+        View root = inflater.inflate(R.layout.fragment_account_created, container, false);
 
         setupDoneButton(root);
         setupAccountNameEditText(root);

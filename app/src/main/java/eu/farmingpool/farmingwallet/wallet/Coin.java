@@ -2,13 +2,32 @@ package eu.farmingpool.farmingwallet.wallet;
 
 import androidx.annotation.DrawableRes;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import eu.farmingpool.farmingwallet.R;
+import eu.farmingpool.farmingwallet.accounts.Account;
 
 public enum Coin {
     EUR,
     USD,
     XCH,
-    BTC;
+    BTC,
+    ETH;
+
+    private static final ArrayList<Coin> NON_ADDABLE_COINS = new ArrayList<>(Arrays.asList(USD, EUR));
+
+    public static ArrayList<Coin> getAvailableCoins(Account account) {
+        ArrayList<Coin> availableCoins = new ArrayList<>();
+        ArrayList<Coin> coins = account.getCoins();
+
+        for (Coin coin : Coin.values()) {
+            if (!coins.contains(coin) && !NON_ADDABLE_COINS.contains(coin))
+                availableCoins.add(coin);
+        }
+
+        return availableCoins;
+    }
 
     public String getCoinName() {
         switch (this) {
@@ -20,6 +39,8 @@ public enum Coin {
                 return "Chia";
             case BTC:
                 return "Bitcoin";
+            case ETH:
+                return "Ethereum";
             default:
                 throw new IllegalStateException("Unexpected value: " + this);
         }
@@ -32,6 +53,8 @@ public enum Coin {
                 return R.drawable.ic_coin_chia;
             case BTC:
                 return R.drawable.ic_coin_bitcoin;
+            case ETH:
+                return R.drawable.ic_coin_ethereum;
             default:
                 throw new IllegalStateException("Unexpected value: " + this);
         }
@@ -43,7 +66,20 @@ public enum Coin {
             case USD:
             case XCH:
             case BTC:
+            case ETH:
                 return "%.2f " + this;
+            default:
+                throw new IllegalStateException("Unexpected value: " + this);
+        }
+    }
+
+    public boolean isImplemented() {
+        switch (this) {
+            case XCH:
+            case BTC:
+                return true;
+            case ETH:
+                return false;
             default:
                 throw new IllegalStateException("Unexpected value: " + this);
         }

@@ -1,4 +1,4 @@
-package eu.farmingpool.farmingwallet.ui.wallet.creation;
+package eu.farmingpool.farmingwallet.ui.account.creation;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

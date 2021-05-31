@@ -1,4 +1,4 @@
-package eu.farmingpool.farmingwallet.ui.wallet.detail;
+package eu.farmingpool.farmingwallet.ui.wallet;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -6,8 +6,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import eu.farmingpool.farmingwallet.R;
 
-public class WalletDetailFragmentStateAdapter extends FragmentStateAdapter {
-    public WalletDetailFragmentStateAdapter(@NonNull Fragment fragment) {
+public class WalletFragmentStateAdapter extends FragmentStateAdapter {
+    public WalletFragmentStateAdapter(@NonNull Fragment fragment) {
         super(fragment);
     }
 

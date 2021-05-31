@@ -1,4 +1,4 @@
-package eu.farmingpool.farmingwallet.ui.wallet.creation;
+package eu.farmingpool.farmingwallet.ui.account.creation;
 
 import android.os.Bundle;
 import android.os.Handler;

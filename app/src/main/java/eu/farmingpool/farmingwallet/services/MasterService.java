@@ -13,18 +13,17 @@ import eu.farmingpool.farmingwallet.blockchain.BlockchainClientFactory;
 import eu.farmingpool.farmingwallet.keys.Key;
 import eu.farmingpool.farmingwallet.keys.KeysManager;
 import eu.farmingpool.farmingwallet.keys.KeysManagerFactory;
-import eu.farmingpool.farmingwallet.transactions.ObservableTransactionRecords;
 import eu.farmingpool.farmingwallet.transactions.Transaction;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 import eu.farmingpool.farmingwallet.utils.SingleTimerTask;
 import eu.farmingpool.farmingwallet.wallet.Coin;
+import eu.farmingpool.farmingwallet.wallet.Wallet;
 
 import static eu.farmingpool.farmingwallet.utils.Utils.MILLISECONDS_IN_SECOND;
 
 public class MasterService extends Service {
     private static final long TRANSACTION_UPDATE_PERIOD = 60 * MILLISECONDS_IN_SECOND;
 
-    private static final ObservableTransactionRecords transactionRecords = ObservableTransactionRecords.getInstance();
     private final IBinder binder = new LocalBinder();
     private final SingleTimerTask transactionsUpdateTimerTask = new SingleTimerTask(this::fetchTransactionRecords, 0, TRANSACTION_UPDATE_PERIOD);
 
@@ -60,8 +59,9 @@ public class MasterService extends Service {
     public void fetchTransactionRecords(Account account, Coin coin) {
         BlockchainClient blockchainClient = BlockchainClientFactory.get(coin);
         TransactionRecords transactions = blockchainClient.fetchAndCacheTransactionRecords(account);
+        Wallet wallet = account.getWallet(coin);
 
-        transactionRecords.insertTransactions(transactions);
+        wallet.insertTransactions(transactions);
     }
 
 

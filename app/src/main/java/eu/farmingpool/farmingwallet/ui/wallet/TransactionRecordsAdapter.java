@@ -1,4 +1,4 @@
-package eu.farmingpool.farmingwallet.ui.wallet.detail;
+package eu.farmingpool.farmingwallet.ui.wallet;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,8 +54,6 @@ public class TransactionRecordsAdapter extends RecyclerView.Adapter<TransactionR
     }
 
     protected static class TransactionRecordViewHolder extends RecyclerView.ViewHolder {
-        private final View itemView;
-
         private final ImageView ivIcon;
         private final TextView tvOperation;
         private final TextView tvAmount;
@@ -64,8 +62,6 @@ public class TransactionRecordsAdapter extends RecyclerView.Adapter<TransactionR
 
         public TransactionRecordViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            this.itemView = itemView;
 
             ivIcon = itemView.findViewById(R.id.iv_itr_icon);
             tvOperation = itemView.findViewById(R.id.tv_itr_operation);

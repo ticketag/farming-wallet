@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/keywordsCreationFragment"
-        android:name="eu.farmingpool.farmingwallet.ui.wallet.creation.KeywordsCreationFragment"
+        android:name="eu.farmingpool.farmingwallet.ui.account.creation.KeywordsCreationFragment"
         android:label="KeywordsCreationFragment"
         tools:layout="@layout/fragment_keywords_creation">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/keywordsCheckFragment"
-        android:name="eu.farmingpool.farmingwallet.ui.wallet.creation.KeywordsCheckFragment"
+        android:name="eu.farmingpool.farmingwallet.ui.account.creation.KeywordsCheckFragment"
         android:label="KeywordsCheckFragment"
         tools:layout="@layout/fragment_keywords_check">
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/walletCreatedFragment"
-        android:name="eu.farmingpool.farmingwallet.ui.wallet.creation.WalletCreatedFragment"
+        android:name="eu.farmingpool.farmingwallet.ui.account.creation.AccountCreatedFragment"
         android:label="WalletCreatedFragment"
-        tools:layout="@layout/fragment_wallet_created"></fragment>
+        tools:layout="@layout/fragment_account_created"></fragment>
 </navigation>

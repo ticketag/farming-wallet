@@ -54,11 +54,20 @@
     <!-- Fragment Keywords Check -->
     <dimen name="fragment_keywords_check_text_margin">16dp</dimen>
 
+    <!-- Fragment Account -->
+    <dimen name="fragment_account_content_padding_top">24dp</dimen>
+    <dimen name="fragment_account_content_padding_bottom">16dp</dimen>
+
     <!-- Fragment Wallet -->
-    <dimen name="fragment_wallet_detail_content_padding_top">24dp</dimen>
-    <dimen name="fragment_wallet_detail_content_padding_bottom">16dp</dimen>
-    <dimen name="fragment_wallet_detail_items_margin">20dp</dimen>
-    <dimen name="fragment_wallet_detail_tab_padding">6dp</dimen>
+    <dimen name="fragment_wallet_content_padding_top">24dp</dimen>
+    <dimen name="fragment_wallet_content_padding_bottom">16dp</dimen>
+    <dimen name="fragment_wallet_items_margin">20dp</dimen>
+    <dimen name="fragment_wallet_tab_padding">6dp</dimen>
+
+    <!-- Fragment Account Created -->
+    <dimen name="fragment_account_created_horizontal_padding">12dp</dimen>
+    <dimen name="fragment_account_created_vertical_margin">8dp</dimen>
+    <dimen name="fragment_account_created_account_name_height">48dp</dimen>
 
     <!--  Item Coin Balance -->
     <dimen name="iw_card_elevation">4dp</dimen>
@@ -67,8 +76,21 @@
     <dimen name="iw_card_margin">4dp</dimen>
     <dimen name="iw_icon_padding">8dp</dimen>
 
+    <!--  Dialog Transaction Record -->
     <dimen name="dtr_items_vertical_spacing">8dp</dimen>
-    <dimen name="fragment_wallet_created_horizontal_padding">12dp</dimen>
-    <dimen name="fragment_wallet_created_vertical_margin">8dp</dimen>
-    <dimen name="fragment_wallet_created_account_name_height">48dp</dimen>
+    <dimen name="dtr_padding">16dp</dimen>
+    <dimen name="dtr_card_corner_radius">20dp</dimen>
+    <dimen name="dtr_margin_bottom">16dp</dimen>
+    <dimen name="dtr_transaction_icon_size">30dp</dimen>
+
+    <!--  Dialog Add Coin -->
+    <dimen name="dac_items_vertical_spacing">8dp</dimen>
+    <dimen name="dac_padding">16dp</dimen>
+    <dimen name="dac_card_corner_radius">20dp</dimen>
+    <dimen name="dac_margin_bottom">16dp</dimen>
+    <dimen name="dac_transaction_icon_size">30dp</dimen>
+
+    <!--  Item New Coin -->
+    <dimen name="iac_radius">16dp</dimen>
+    <dimen name="iac_icon_size">50dp</dimen>
 </resources>

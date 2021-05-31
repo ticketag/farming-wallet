@@ -17,18 +17,18 @@ import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.accounts.Accounts;
 import eu.farmingpool.farmingwallet.keywords.Keywords;
 import eu.farmingpool.farmingwallet.keywords.KeywordsGenerator;
-import eu.farmingpool.farmingwallet.ui.wallet.creation.KeywordsCheckFragmentDirections;
-import eu.farmingpool.farmingwallet.ui.wallet.creation.KeywordsCreationFragment;
-import eu.farmingpool.farmingwallet.ui.wallet.creation.KeywordsCreationFragmentDirections;
-import eu.farmingpool.farmingwallet.ui.wallet.creation.KeywordsViewModel;
-import eu.farmingpool.farmingwallet.ui.wallet.creation.WalletCreatedFragment;
+import eu.farmingpool.farmingwallet.ui.account.creation.AccountCreatedFragment;
+import eu.farmingpool.farmingwallet.ui.account.creation.KeywordsCheckFragmentDirections;
+import eu.farmingpool.farmingwallet.ui.account.creation.KeywordsCreationFragment;
+import eu.farmingpool.farmingwallet.ui.account.creation.KeywordsCreationFragmentDirections;
+import eu.farmingpool.farmingwallet.ui.account.creation.KeywordsViewModel;
 import eu.farmingpool.farmingwallet.wallet.Coin;
 
 import static eu.farmingpool.farmingwallet.utils.Utils.openActivity;
 
 public class NewWalletActivity extends AppCompatActivity implements
         KeywordsCreationFragment.KeywordsCreationFragmentInterface,
-        WalletCreatedFragment.WalletCreatedFragmentInterface {
+        AccountCreatedFragment.WalletCreatedFragmentInterface {
     public static final int N_KEYWORDS_TO_GENERATE = 16;
     private static final int N_KEYWORDS_TO_CHECK = 6;
 

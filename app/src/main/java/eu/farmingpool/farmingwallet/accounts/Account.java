@@ -3,6 +3,7 @@ package eu.farmingpool.farmingwallet.accounts;
 import java.util.ArrayList;
 
 import eu.farmingpool.farmingwallet.keywords.Keywords;
+import eu.farmingpool.farmingwallet.ui.ObservableChanges;
 import eu.farmingpool.farmingwallet.utils.EncryptedSharedDataManager;
 import eu.farmingpool.farmingwallet.utils.SharedDataManager;
 import eu.farmingpool.farmingwallet.wallet.Coin;
@@ -21,6 +22,7 @@ public class Account {
         this.id = id;
 
         saveKeywords(keywords);
+        onChange();
     }
 
     public int getId() {
@@ -33,13 +35,19 @@ public class Account {
 
     public void setName(String name) {
         this.name = name;
+        onChange();
     }
 
     public void addCoin(Coin coin) {
+        if (coins.contains(coin))
+            throw new IllegalStateException("Coin " + coin + " already in account");
+
         coins.add(coin);
 
         String walletKey = getWalletKey(coin);
         SharedDataManager.putWallet(walletKey, new Wallet(coin));
+
+        onChange();
     }
 
     public boolean hasCoin(Coin coin) {
@@ -83,5 +91,10 @@ public class Account {
 
     private String getWalletKey(Coin coin) {
         return id + SEPARATOR + coin + SEPARATOR + KEY_WALLET;
+    }
+
+    private void onChange() {
+        EncryptedSharedDataManager.putAccount(this);
+        ObservableChanges.getInstance().onAccountChanged();
     }
 }

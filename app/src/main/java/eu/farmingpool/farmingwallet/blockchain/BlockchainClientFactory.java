@@ -7,6 +7,10 @@ public class BlockchainClientFactory {
         switch (coin) {
             case XCH:
                 return ChiaBlockchainClient.getInstance();
+            case BTC:
+                return BitcoinBlockchainClient.getInstance();
+            case ETH:
+                return EthereumBlockchainClient.getInstance();
             default:
                 throw new IllegalStateException("Unexpected value: " + coin);
         }

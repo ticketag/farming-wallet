@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/walletFragment"
-        android:name="eu.farmingpool.farmingwallet.ui.wallet.WalletFragment"
+        android:name="eu.farmingpool.farmingwallet.ui.account.AccountFragment"
         android:label="@string/navigation_title_wallet"
-        tools:layout="@layout/fragment_wallet" />
+        tools:layout="@layout/fragment_account" />
 
     <fragment
         android:id="@+id/dAppsFragment"
@@ -25,13 +25,13 @@
 
     <fragment
         android:id="@+id/walletDetailFragment"
-        android:name="eu.farmingpool.farmingwallet.ui.wallet.detail.WalletDetailFragment"
+        android:name="eu.farmingpool.farmingwallet.ui.wallet.WalletFragment"
         android:label="@string/navigation_title_wallet_detail"
-        tools:layout="@layout/fragment_wallet_detail" />
+        tools:layout="@layout/fragment_wallet" />
 
     <dialog
         android:id="@+id/transactionRecordDialog"
-        android:name="eu.farmingpool.farmingwallet.ui.wallet.detail.TransactionRecordDialog"
+        android:name="eu.farmingpool.farmingwallet.ui.wallet.TransactionRecordDialog"
         android:label="@string/navigation_title_transaction_record_dialog"
         tools:layout="@layout/dialog_transaction_record" />
 </navigation>

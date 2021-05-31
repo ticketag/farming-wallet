@@ -1,20 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
+    android:background="@drawable/background_activity_main"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingHorizontal="@dimen/fragment_wallet_detail_content_padding_top"
-    android:paddingTop="@dimen/fragment_wallet_detail_content_padding_top"
-    android:paddingBottom="@dimen/fragment_wallet_detail_content_padding_bottom"
-    tools:context=".ui.wallet.detail.WalletDetailFragment">
+    android:paddingHorizontal="@dimen/fragment_wallet_content_padding_top"
+    android:paddingTop="@dimen/fragment_wallet_content_padding_top"
+    tools:context=".ui.wallet.WalletFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_fragment_wallet_coins"
+    <include
+        layout="@layout/item_balance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/fragment_wallet_items_margin" />
+
+    <include
+        layout="@layout/item_send_receive_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/fragment_wallet_items_margin" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tl_wallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:foregroundGravity="center"
+        android:paddingBottom="@dimen/fragment_wallet_tab_padding"
+        app:tabIndicatorColor="?colorAccent"
+        app:tabIndicatorHeight="3dp"
+        app:tabSelectedTextColor="?colorAccent"
+        app:tabTextAppearance="@style/tabWidgetStyle"
+        app:tabTextColor="?colorControlNormal" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/fragment_wallet_host_fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        tools:listitem="@layout/item_wallet" />
+        android:background="@android:color/transparent" />
 </LinearLayout>

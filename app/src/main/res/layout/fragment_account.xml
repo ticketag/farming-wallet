@@ -6,11 +6,15 @@
     android:background="@android:color/transparent"
     android:gravity="center"
     android:orientation="vertical"
+    android:paddingHorizontal="@dimen/fragment_account_content_padding_top"
+    android:paddingTop="@dimen/fragment_account_content_padding_top"
+    android:paddingBottom="@dimen/fragment_account_content_padding_bottom"
     tools:context=".ui.wallet.WalletFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_transaction_records"
+        android:id="@+id/rv_fragment_wallet_wallets"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_transaction_record" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:listitem="@layout/item_wallet" />
 </LinearLayout>

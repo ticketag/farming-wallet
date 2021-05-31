@@ -10,18 +10,18 @@ import eu.farmingpool.farmingwallet.transactions.TransactionRecord;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 import eu.farmingpool.farmingwallet.wallet.Coin;
 
-public class BitcoinBlockchainClient extends BlockchainClient {
-    private static BitcoinBlockchainClient instance;
+public class EthereumBlockchainClient extends BlockchainClient {
+    private static EthereumBlockchainClient instance;
 
-    private BitcoinBlockchainClient() {
-        super(Coin.BTC);
+    private EthereumBlockchainClient() {
+        super(Coin.ETH);
     }
 
-    public static BitcoinBlockchainClient getInstance() {
+    public static EthereumBlockchainClient getInstance() {
         if (instance == null) {
-            synchronized (BitcoinBlockchainClient.class) {
+            synchronized (EthereumBlockchainClient.class) {
                 if (instance == null) {
-                    instance = new BitcoinBlockchainClient();
+                    instance = new EthereumBlockchainClient();
                 }
             }
         }

@@ -68,8 +68,8 @@
             style="@style/styleTextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/fragment_wallet_created_vertical_margin"
-            android:paddingHorizontal="@dimen/fragment_wallet_created_horizontal_padding"
+            android:layout_marginBottom="@dimen/fragment_account_created_vertical_margin"
+            android:paddingHorizontal="@dimen/fragment_account_created_horizontal_padding"
             android:text="@string/fragment_wallet_created_give_a_name"
             android:textStyle="bold" />
 
@@ -78,12 +78,12 @@
             style="@style/styleTextNormal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:height="@dimen/fragment_wallet_created_account_name_height"
+            android:height="@dimen/fragment_account_created_account_name_height"
             android:background="@drawable/background_account_name"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_-."
             android:focusedByDefault="false"
             android:maxLines="1"
-            android:paddingHorizontal="@dimen/fragment_wallet_created_horizontal_padding"
+            android:paddingHorizontal="@dimen/fragment_account_created_horizontal_padding"
             android:text="@string/fragment_wallet_created_account_name_placeholder" />
     </LinearLayout>
 
