@@ -5,7 +5,7 @@
     <!--  Navigation -->
     <string name="navigation_title_wallet">Wallet</string>
     <string name="navigation_title_wallet_detail">Wallet Detail</string>
-    <string name="navigation_title_dapps">DApps</string>
+    <string name="navigation_title_swap">Swap</string>
     <string name="navigation_title_pool">Pool</string>
     <string name="navigation_title_transaction_record_dialog">Transaction Record</string>
 

@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements
     private void setupFragments() {
         bottomNavFragments = new ArrayList<>(Arrays.asList(
                 getString(R.string.navigation_title_wallet),
-                getString(R.string.navigation_title_dapps),
+                getString(R.string.navigation_title_swap),
                 getString(R.string.navigation_title_pool)
         ));
     }

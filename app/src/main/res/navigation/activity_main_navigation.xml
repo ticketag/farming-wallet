@@ -11,10 +11,10 @@
         tools:layout="@layout/fragment_account" />
 
     <fragment
-        android:id="@+id/dAppsFragment"
-        android:name="eu.farmingpool.farmingwallet.ui.dapps.DAppsFragment"
-        android:label="@string/navigation_title_dapps"
-        tools:layout="@layout/fragment_d_apps" />
+        android:id="@+id/swapFragment"
+        android:name="eu.farmingpool.farmingwallet.ui.swap.SwapFragment"
+        android:label="@string/navigation_title_swap"
+        tools:layout="@layout/fragment_swap" />
 
     <fragment
         android:id="@+id/poolFragment"

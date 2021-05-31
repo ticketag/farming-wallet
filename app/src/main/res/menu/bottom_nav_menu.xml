@@ -7,9 +7,9 @@
         android:title="@string/navigation_title_wallet" />
 
     <item
-        android:id="@+id/dAppsFragment"
-        android:icon="@drawable/ic_dapps_24"
-        android:title="@string/navigation_title_dapps" />
+        android:id="@+id/swapFragment"
+        android:icon="@drawable/ic_swap_24"
+        android:title="@string/navigation_title_swap" />
 
     <item
         android:id="@+id/poolFragment"
