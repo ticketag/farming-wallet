@@ -41,7 +41,6 @@
         app:layout_constraintTop_toBottomOf="@id/ll_fragment_account_created_farming_wallet">
 
         <TextView
-            android:id="@+id/textView2"
             style="@style/styleTextLarge.Accent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -13,8 +13,6 @@
 
     <!-- Activities -->
     <integer name="activity_animation_duration">1000</integer>
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
 
     <!-- Activity Splash -->
     <dimen name="activity_splash_button_radius">8dp</dimen>
@@ -26,7 +24,6 @@
     <dimen name="activity_splash_icon_size">56dp</dimen>
 
     <!-- Activity New Wallet -->
-    <dimen name="activity_new_wallet_toolbar_height">30dp</dimen>
     <dimen name="activity_new_wallet_close_icon_margin">12dp</dimen>
     <dimen name="activity_new_wallet_close_icon_padding">20dp</dimen>
 
@@ -65,7 +62,6 @@
 
     <!-- Fragment Wallet -->
     <dimen name="fragment_wallet_content_padding_top">24dp</dimen>
-    <dimen name="fragment_wallet_content_padding_bottom">16dp</dimen>
     <dimen name="fragment_wallet_items_margin">20dp</dimen>
     <dimen name="fragment_wallet_tab_padding">6dp</dimen>
 
@@ -75,7 +71,7 @@
     <dimen name="fragment_account_created_account_name_height">48dp</dimen>
 
     <!--  Item Wallet -->
-    <dimen name="item_wallet_card_elevation">4dp</dimen>
+    <dimen name="item_wallet_card_elevation">40dp</dimen>
     <dimen name="item_wallet_card_content_padding">12dp</dimen>
     <dimen name="item_wallet_card_corner_radius">8dp</dimen>
     <dimen name="item_wallet_card_margin">4dp</dimen>
@@ -83,11 +79,6 @@
 
     <!--  Item Account -->
     <dimen name="item_account_height">80dp</dimen>
-    <dimen name="item_account_card_elevation">4dp</dimen>
-    <dimen name="item_account_card_content_padding">12dp</dimen>
-    <dimen name="item_account_card_corner_radius">8dp</dimen>
-    <dimen name="item_account_card_margin">4dp</dimen>
-    <dimen name="item_account_icon_padding">8dp</dimen>
 
     <!--  Dialog Transaction Record -->
     <dimen name="dialog_transaction_record_items_vertical_spacing">8dp</dimen>
@@ -108,7 +99,6 @@
     <!--  Dialog Change Account -->
     <dimen name="dialog_change_account_padding">16dp</dimen>
     <dimen name="dialog_change_account_card_corner_radius">20dp</dimen>
-    <dimen name="dialog_change_account_title_bottom_margin">8dp</dimen>
     <dimen name="dialog_change_account_content_padding">16dp</dimen>
     <dimen name="dialog_change_account_buttons_height">48dp</dimen>
     <dimen name="dialog_change_account_buttons_margin">100dp</dimen>
