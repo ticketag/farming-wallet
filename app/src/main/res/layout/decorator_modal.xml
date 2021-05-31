@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<View xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/decorator_modal_width"
+    android:layout_height="@dimen/decorator_modal_height"
+    android:layout_gravity="center"
+    android:layout_marginBottom="@dimen/decorator_modal_bottom_margin"
+    android:background="@drawable/background_modal_decoration"
+    tools:showIn="@layout/dialog_change_account" />
+
+    

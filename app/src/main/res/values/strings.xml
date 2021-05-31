@@ -75,6 +75,10 @@
     <!--  Dialog Add Wallet -->
     <string name="dialog_add_wallet_select_a_coin_to_add">Select a Coin to add:</string>
 
+    <!--  Dialog Change Account -->
+    <string name="dialog_change_account_add_new_account">Add New Account</string>
+    <string name="dialog_change_account_import_existing_one">Import Existing One</string>
+
     <!--  Item Wallet -->
     <string name="item_wallet_coin_name_placeholder">Chia</string>
     <string name="item_wallet_coin_amount_placeholder">14.0 XCH</string>
@@ -87,12 +91,9 @@
     <string name="item_keyword_number_placeholder" translatable="false">1.</string>
     <string name="item_keyword_word_placeholder" translatable="false">word</string>
 
-    <!--  Item Add Coin -->
-    <string name="item_add_coin_coin_name_placeholder">Chia</string>
-    <string name="item_add_coin_coin_symbol_placeholder">XCH</string>
-
-    <!--  Dialog Change Account -->
-    <string name="dialog_change_account_select_an_account">Select an Account</string>
+    <!--  Item Add Wallet -->
+    <string name="item_add_wallet_coin_name_placeholder">Chia</string>
+    <string name="item_add_wallet_coin_symbol_placeholder">XCH</string>
 
     <!--  Item Account -->
     <string name="item_account_account_name_placeholder">Account Name Placeholder</string>

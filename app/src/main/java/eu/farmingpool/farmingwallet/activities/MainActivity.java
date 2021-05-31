@@ -23,7 +23,6 @@ import eu.farmingpool.farmingwallet.services.MasterService;
 import eu.farmingpool.farmingwallet.ui.account.AccountFragment;
 import eu.farmingpool.farmingwallet.ui.account.AddWalletAdapter;
 import eu.farmingpool.farmingwallet.ui.account.AddWalletDialog;
-import eu.farmingpool.farmingwallet.ui.account.ChangeAccountAdapter;
 import eu.farmingpool.farmingwallet.ui.account.ChangeAccountDialog;
 import eu.farmingpool.farmingwallet.ui.account.WalletsAdapter;
 import eu.farmingpool.farmingwallet.ui.wallet.TransactionRecordsAdapter;
@@ -33,7 +32,7 @@ import eu.farmingpool.farmingwallet.wallet.Coin;
 public class MainActivity extends AppCompatActivity implements
         TransactionRecordsAdapter.OnClickListener,
         AccountFragment.Interface,
-        ChangeAccountAdapter.OnClickListener,
+        ChangeAccountDialog.Interface,
         WalletsAdapter.OnClickListener,
         AddWalletAdapter.OnClickListener {
     private ArrayList<String> bottomNavFragments;
@@ -79,6 +78,11 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onAddAccountClicked() {
         openNewAccountActivity();
+    }
+
+    @Override
+    public void onImportAccountClicked() {
+
     }
 
     // AddWalletAdapter.OnClickListener

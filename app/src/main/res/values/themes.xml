@@ -29,7 +29,7 @@
 
     <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">
-            @drawable/dialog_transaction_record_background
+            @drawable/modal_background
         </item>
     </style>
 </resources>

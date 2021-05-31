@@ -12,9 +12,7 @@ import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.accounts.Accounts;
 
-public class ChangeAccountAdapter extends RecyclerView.Adapter<ChangeAccountAdapter.BaseViewHolder> {
-    private static final int TYPE_ADD_ACCOUNT = 0;
-    private static final int TYPE_ACCOUNT = 1;
+public class ChangeAccountAdapter extends RecyclerView.Adapter<ChangeAccountAdapter.AccountViewHolder> {
     private final OnClickListener onClickListener;
 
     public ChangeAccountAdapter(OnClickListener onClickListener) {
@@ -23,58 +21,29 @@ public class ChangeAccountAdapter extends RecyclerView.Adapter<ChangeAccountAdap
 
     @NonNull
     @Override
-    public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AccountViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.item_account, parent, false);
 
-        if (viewType == TYPE_ACCOUNT) {
-            View view = inflater.inflate(R.layout.item_account, parent, false);
-            return new AccountViewHolder(view);
-        } else {
-            View view = inflater.inflate(R.layout.item_account_add, parent, false);
-            return new AddAccountViewHolder(view);
-        }
+        return new AccountViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
-        if (position == Accounts.getInstance().getCount())
-            holder.setOnClickListener(v -> onClickListener.onAddAccountClicked());
-        else {
-            ((AccountViewHolder) holder).setup(Accounts.getInstance().getAccount(position));
-            holder.setOnClickListener(v -> onClickListener.onAccountClicked(position));
-        }
+    public void onBindViewHolder(@NonNull AccountViewHolder holder, int position) {
+        holder.setup(Accounts.getInstance().getAccount(position));
+        holder.setOnClickListener(v -> onClickListener.onAccountClicked(position));
     }
 
     @Override
     public int getItemCount() {
-        return Accounts.getInstance().getCount() + 1;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        if (position == Accounts.getInstance().getCount())
-            return TYPE_ADD_ACCOUNT;
-
-        return TYPE_ACCOUNT;
+        return Accounts.getInstance().getCount();
     }
 
     public interface OnClickListener {
         void onAccountClicked(int i);
-
-        void onAddAccountClicked();
     }
 
-    protected static class BaseViewHolder extends RecyclerView.ViewHolder {
-        public BaseViewHolder(@NonNull View itemView) {
-            super(itemView);
-        }
-
-        public void setOnClickListener(View.OnClickListener listener) {
-            itemView.setOnClickListener(listener);
-        }
-    }
-
-    protected static class AccountViewHolder extends BaseViewHolder {
+    protected static class AccountViewHolder extends RecyclerView.ViewHolder {
         private final TextView tvAccountName;
 
         public AccountViewHolder(@NonNull View itemView) {
@@ -83,14 +52,12 @@ public class ChangeAccountAdapter extends RecyclerView.Adapter<ChangeAccountAdap
             tvAccountName = itemView.findViewById(R.id.tv_item_account_account_name);
         }
 
+        public void setOnClickListener(View.OnClickListener listener) {
+            itemView.setOnClickListener(listener);
+        }
+
         public void setup(Account account) {
             tvAccountName.setText(account.getName());
-        }
-    }
-
-    protected static class AddAccountViewHolder extends BaseViewHolder {
-        public AddAccountViewHolder(@NonNull View itemView) {
-            super(itemView);
         }
     }
 }

@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/item_account_card_margin"
-    android:clipToPadding="false"
-    android:theme="@style/Theme.FarmingWallet"
-    app:cardBackgroundColor="?colorPrimary"
-    app:cardCornerRadius="@dimen/item_account_card_corner_radius"
-    app:contentPadding="@dimen/item_account_card_content_padding"
-    app:elevation="@dimen/item_account_card_elevation">
+    android:layout_height="@dimen/item_account_height"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_item_account_account_name"
+        style="@style/styleTextNormal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/dialog_change_account_padding"
+        android:gravity="center_vertical"
+        android:text="@string/item_account_account_name_placeholder" />
 
-        <TextView
-            android:id="@+id/tv_item_account_account_name"
-            style="@style/styleTextNormal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/item_account_account_name_placeholder" />
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+    <include layout="@layout/separator_accounts" />
+</LinearLayout>
