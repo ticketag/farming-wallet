@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="?bottomSheetDialogTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_transaction_record_background"
+    android:orientation="vertical"
+    android:padding="@dimen/dialog_change_account_padding"
+    app:cardCornerRadius="@dimen/dialog_change_account_card_corner_radius"
+    tools:context=".ui.wallet.TransactionRecordDialog">
+
+    <TextView
+        style="@style/styleTextNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dialog_change_account_card_corner_radius"
+        android:text="@string/dialog_change_account_select_an_account" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_dialog_change_account_accounts_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_account" />
+</LinearLayout>

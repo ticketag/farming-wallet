@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="#1A81E1FF" />
-    <corners android:radius="@dimen/ib_wallet_address_radius" />
+    <corners android:radius="@dimen/item_balance_wallet_address_radius" />
 </shape>

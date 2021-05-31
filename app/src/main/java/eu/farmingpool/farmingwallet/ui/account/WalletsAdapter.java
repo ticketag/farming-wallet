@@ -19,8 +19,9 @@ import static eu.farmingpool.farmingwallet.utils.Utils.getLocale;
 
 public class WalletsAdapter extends RecyclerView.Adapter<WalletsAdapter.BaseViewHolder> {
     private static final int TYPE_ADD_WALLET = 0;
-    private final OnClickListener onClickListener;
     private static final int TYPE_WALLET = 1;
+
+    private final OnClickListener onClickListener;
     private final ArrayList<Wallet> wallets;
 
     public WalletsAdapter(ArrayList<Wallet> wallets, OnClickListener onClickListener) {
@@ -37,7 +38,7 @@ public class WalletsAdapter extends RecyclerView.Adapter<WalletsAdapter.BaseView
             View view = inflater.inflate(R.layout.item_wallet, parent, false);
             return new WalletViewHolder(view);
         } else {
-            View view = inflater.inflate(R.layout.item_wallet_add, parent, false);
+            View view = inflater.inflate(R.layout.item_add_wallet_add, parent, false);
             return new AddWalletViewHolder(view);
         }
     }
@@ -92,12 +93,12 @@ public class WalletsAdapter extends RecyclerView.Adapter<WalletsAdapter.BaseView
         public WalletViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ivIcon = itemView.findViewById(R.id.iv_iw_icon);
-            tvCoinName = itemView.findViewById(R.id.iw_coin_name);
-            tvCoinAmount = itemView.findViewById(R.id.iw_coin_amount);
-            tvCoinValue = itemView.findViewById(R.id.iw_coin_value);
-            tvCoinChange = itemView.findViewById(R.id.iw_coin_change);
-            tvCoinCorresponding = itemView.findViewById(R.id.iw_coin_corresponding);
+            ivIcon = itemView.findViewById(R.id.iv_item_wallet_icon);
+            tvCoinName = itemView.findViewById(R.id.item_wallet_coin_name);
+            tvCoinAmount = itemView.findViewById(R.id.item_wallet_coin_amount);
+            tvCoinValue = itemView.findViewById(R.id.item_wallet_coin_value);
+            tvCoinChange = itemView.findViewById(R.id.item_wallet_coin_change);
+            tvCoinCorresponding = itemView.findViewById(R.id.item_wallet_coin_corresponding);
         }
 
         public void setup(Wallet wallet) {

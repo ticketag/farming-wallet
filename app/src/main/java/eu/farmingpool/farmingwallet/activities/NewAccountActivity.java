@@ -26,7 +26,7 @@ import eu.farmingpool.farmingwallet.wallet.Coin;
 
 import static eu.farmingpool.farmingwallet.utils.Utils.openActivity;
 
-public class NewWalletActivity extends AppCompatActivity implements
+public class NewAccountActivity extends AppCompatActivity implements
         KeywordsCreationFragment.KeywordsCreationFragmentInterface,
         AccountCreatedFragment.WalletCreatedFragmentInterface {
     public static final int N_KEYWORDS_TO_GENERATE = 16;

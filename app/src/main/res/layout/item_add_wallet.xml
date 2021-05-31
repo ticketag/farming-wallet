@@ -5,31 +5,32 @@
     android:layout_marginTop="8dp"
     android:background="@drawable/background_add_coin"
     android:gravity="center"
-    android:padding="@dimen/iac_radius">
+    android:padding="@dimen/item_add_wallet_radius"
+    android:theme="@style/Theme.FarmingWallet">
 
     <ImageView
-        android:id="@+id/iv_iac_coin_icon"
+        android:id="@+id/iv_item_add_coin_coin_icon"
         android:layout_width="50dp"
-        android:layout_height="@dimen/iac_icon_size"
+        android:layout_height="@dimen/item_add_wallet_icon_size"
         android:contentDescription="@null"
         android:src="@drawable/ic_coin_chia" />
 
     <TextView
-        android:id="@+id/tv_iac_coin_name"
+        android:id="@+id/tv_item_add_coin_coin_name"
         style="@style/styleTextNormal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:paddingHorizontal="@dimen/iac_radius"
-        android:text="@string/iac_coin_name_placeholder"
+        android:paddingHorizontal="@dimen/item_add_wallet_radius"
+        android:text="@string/item_add_coin_coin_name_placeholder"
         android:textAllCaps="false" />
 
     <TextView
-        android:id="@+id/tv_iac_coin_symbol"
+        android:id="@+id/tv_item_add_coin_coin_symbol"
         style="@style/styleTextNormal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/iac_radius"
-        android:text="@string/iac_coin_symbol_placeholder"
+        android:paddingHorizontal="@dimen/item_add_wallet_radius"
+        android:text="@string/item_add_coin_coin_symbol_placeholder"
         android:textAllCaps="false" />
 </LinearLayout>

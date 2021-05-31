@@ -45,9 +45,9 @@ public class ObservableChanges extends Observable {
     }
 
     public enum EntityChanged {
+        CURRENT_ACCOUNT,
         ACCOUNTS,
         ACCOUNT,
-        CURRENT_ACCOUNT,
         CURRENT_WALLET,
         CURRENT_COINS
     }

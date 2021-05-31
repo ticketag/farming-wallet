@@ -63,11 +63,11 @@ public class TransactionRecordsAdapter extends RecyclerView.Adapter<TransactionR
         public TransactionRecordViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ivIcon = itemView.findViewById(R.id.iv_itr_icon);
-            tvOperation = itemView.findViewById(R.id.tv_itr_operation);
-            tvAmount = itemView.findViewById(R.id.tv_itr_amount);
-            tvDate = itemView.findViewById(R.id.tv_itr_date);
-            tvCorresponding = itemView.findViewById(R.id.tv_itr_corresponding);
+            ivIcon = itemView.findViewById(R.id.iv_item_transaction_record_icon);
+            tvOperation = itemView.findViewById(R.id.tv_item_transaction_record_operation);
+            tvAmount = itemView.findViewById(R.id.tv_item_transaction_record_amount);
+            tvDate = itemView.findViewById(R.id.tv_item_transaction_record_date);
+            tvCorresponding = itemView.findViewById(R.id.tv_item_transaction_record_corresponding);
         }
 
         public void setup(TransactionRecord transactionRecord) {
@@ -82,7 +82,7 @@ public class TransactionRecordsAdapter extends RecyclerView.Adapter<TransactionR
             DateFormat f = new SimpleDateFormat("HH:mm   dd/MM/yyyy", getLocale());
 
             ivIcon.setImageResource(iconId);
-            tvOperation.setText(isPositive ? R.string.itr_operation_received : R.string.itr_operation_sent);
+            tvOperation.setText(isPositive ? R.string.item_transaction_record_operation_received : R.string.item_transaction_record_operation_sent);
             tvOperation.setTextColor(color);
             tvAmount.setText(String.format(getLocale(), coin.getFormat(), amount));
             tvAmount.setTextColor(color);

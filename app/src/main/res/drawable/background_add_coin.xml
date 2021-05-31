@@ -3,13 +3,13 @@
     <item android:state_pressed="true">
         <shape>
             <solid android:color="?colorPrimaryDark" />
-            <corners android:radius="@dimen/iac_radius" />
+            <corners android:radius="@dimen/item_add_wallet_radius" />
         </shape>
     </item>
     <item android:state_pressed="false">
         <shape>
             <solid android:color="?colorPrimary" />
-            <corners android:radius="@dimen/iac_radius" />
+            <corners android:radius="@dimen/item_add_wallet_radius" />
         </shape>
     </item>
 </selector>

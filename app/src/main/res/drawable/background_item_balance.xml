@@ -4,5 +4,5 @@
         android:angle="270"
         android:endColor="#00091E2D"
         android:startColor="#F2194666" />
-    <corners android:radius="@dimen/ib_radius" />
+    <corners android:radius="@dimen/item_balance_radius" />
 </shape>

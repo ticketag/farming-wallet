@@ -54,13 +54,13 @@ public class WalletFragment extends Fragment {
     }
 
     private void setupIcon(View view) {
-        ImageView ivIcon = view.findViewById(R.id.iv_ib_icon);
+        ImageView ivIcon = view.findViewById(R.id.iv_item_balance_icon);
         ivIcon.setImageResource(coin.getIconResId());
     }
 
     private void setupBalance(View view) {
-        TextView tvBalance = view.findViewById(R.id.tv_ib_balance);
-        TextView tvCorresponding = view.findViewById(R.id.tv_ib_corresponding);
+        TextView tvBalance = view.findViewById(R.id.tv_item_balance_balance);
+        TextView tvCorresponding = view.findViewById(R.id.tv_item_balance_corresponding);
 
         Account account = Accounts.getInstance().getCurrentAccount();
         double balance = account.getWallet(coin).getBalance();

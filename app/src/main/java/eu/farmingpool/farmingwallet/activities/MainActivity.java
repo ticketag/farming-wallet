@@ -20,14 +20,20 @@ import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.accounts.Accounts;
 import eu.farmingpool.farmingwallet.application.GlobalApplication;
 import eu.farmingpool.farmingwallet.services.MasterService;
+import eu.farmingpool.farmingwallet.ui.account.AccountFragment;
 import eu.farmingpool.farmingwallet.ui.account.AddWalletAdapter;
 import eu.farmingpool.farmingwallet.ui.account.AddWalletDialog;
+import eu.farmingpool.farmingwallet.ui.account.ChangeAccountAdapter;
+import eu.farmingpool.farmingwallet.ui.account.ChangeAccountDialog;
 import eu.farmingpool.farmingwallet.ui.account.WalletsAdapter;
 import eu.farmingpool.farmingwallet.ui.wallet.TransactionRecordsAdapter;
+import eu.farmingpool.farmingwallet.utils.Utils;
 import eu.farmingpool.farmingwallet.wallet.Coin;
 
 public class MainActivity extends AppCompatActivity implements
         TransactionRecordsAdapter.OnClickListener,
+        AccountFragment.Interface,
+        ChangeAccountAdapter.OnClickListener,
         WalletsAdapter.OnClickListener,
         AddWalletAdapter.OnClickListener {
     private ArrayList<String> bottomNavFragments;
@@ -57,6 +63,25 @@ public class MainActivity extends AppCompatActivity implements
         fetchTransactionRecords();
     }
 
+    // AccountFragment.Interface
+    @Override
+    public void onAccountNameClicked() {
+        ChangeAccountDialog changeAccountDialog = new ChangeAccountDialog(this);
+        changeAccountDialog.show(getSupportFragmentManager(), "changeAccountDialog");
+    }
+
+    // ChangeAccountAdapter.OnClickListener
+    @Override
+    public void onAccountClicked(int i) {
+        setCurrentAccount(i);
+    }
+
+    @Override
+    public void onAddAccountClicked() {
+        openNewAccountActivity();
+    }
+
+    // AddWalletAdapter.OnClickListener
     @Override
     public void onWalletClicked(int i) {
         Account currentAccount = Accounts.getInstance().getCurrentAccount();
@@ -76,16 +101,20 @@ public class MainActivity extends AppCompatActivity implements
         addWalletDialog.show(getSupportFragmentManager(), "addCoinDialog");
     }
 
+    // WalletsAdapter.OnClickListener
     @Override
-    public void onCoinToAddSelected(Coin coin) {
+    public void onWalletToAddSelected(Coin coin) {
         Account currentAccount = Accounts.getInstance().getCurrentAccount();
         currentAccount.addCoin(coin);
     }
 
+
+    // TransactionRecordsAdapter.OnClickListener
     @Override
     public void onTransactionClicked(int i) {
         navController.navigate(R.id.transactionRecordDialog);
     }
+    // AccountFragment.Interface
 
     private void setupMasterService() {
         masterService = GlobalApplication.getMasterService();
@@ -134,6 +163,10 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
+    private void openNewAccountActivity() {
+        Utils.openActivity(this, NewAccountActivity.class, true, true, false, true);
+    }
+
     private void fetchTransactionRecords() {
         Account currentAccount = Accounts.getInstance().getCurrentAccount();
 
@@ -141,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements
             masterService.fetchTransactionRecords(currentAccount);
     }
 
-    private void switchCurrentAccount(int accountId) {
+    private void setCurrentAccount(int accountId) {
         Account currentAccount = Accounts.getInstance().getCurrentAccount();
 
         if (currentAccount.getId() == accountId)

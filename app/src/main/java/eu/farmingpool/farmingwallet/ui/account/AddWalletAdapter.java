@@ -29,7 +29,7 @@ public class AddWalletAdapter extends Adapter<AddWalletAdapter.AddCoinViewHolder
     @Override
     public AddCoinViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.item_add_coin, parent, false);
+        View itemView = inflater.inflate(R.layout.item_add_wallet, parent, false);
 
         return new AddCoinViewHolder(itemView);
     }
@@ -45,7 +45,7 @@ public class AddWalletAdapter extends Adapter<AddWalletAdapter.AddCoinViewHolder
     }
 
     public interface OnClickListener {
-        void onCoinToAddSelected(Coin coin);
+        void onWalletToAddSelected(Coin coin);
     }
 
     class AddCoinViewHolder extends RecyclerView.ViewHolder {
@@ -54,11 +54,11 @@ public class AddWalletAdapter extends Adapter<AddWalletAdapter.AddCoinViewHolder
         }
 
         public void setup(Coin coin) {
-            itemView.setOnClickListener(v -> onClickListener.onCoinToAddSelected(coin));
+            itemView.setOnClickListener(v -> onClickListener.onWalletToAddSelected(coin));
 
-            ImageView ivCoinIcon = itemView.findViewById(R.id.iv_iac_coin_icon);
-            TextView tvCoinName = itemView.findViewById(R.id.tv_iac_coin_name);
-            TextView tvCoinSymbol = itemView.findViewById(R.id.tv_iac_coin_symbol);
+            ImageView ivCoinIcon = itemView.findViewById(R.id.iv_item_add_coin_coin_icon);
+            TextView tvCoinName = itemView.findViewById(R.id.tv_item_add_coin_coin_name);
+            TextView tvCoinSymbol = itemView.findViewById(R.id.tv_item_add_coin_coin_symbol);
 
             ivCoinIcon.setImageResource(coin.getIconResId());
             tvCoinName.setText(coin.getCoinName());

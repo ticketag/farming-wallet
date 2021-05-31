@@ -13,7 +13,12 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.Fragment;
 
+import org.jetbrains.annotations.NotNull;
+
 import eu.farmingpool.farmingwallet.R;
+import eu.farmingpool.farmingwallet.accounts.Accounts;
+
+import static eu.farmingpool.farmingwallet.utils.Utils.getLocale;
 
 public class AccountCreatedFragment extends Fragment {
     private AppCompatButton btDone;
@@ -42,13 +47,15 @@ public class AccountCreatedFragment extends Fragment {
     }
 
     private void setupDoneButton(View view) {
-        btDone = view.findViewById(R.id.bt_fragment_wallet_created_done);
+        btDone = view.findViewById(R.id.bt_fragment_account_created_done);
         btDone.setOnClickListener(v -> createAccountAndProceed());
     }
 
     private void setupAccountNameEditText(View view) {
-        etAccountName = view.findViewById(R.id.et_fragment_wallet_created_account_name);
+        String accountName = getNextAccountName();
 
+        etAccountName = view.findViewById(R.id.et_fragment_account_created_account_name);
+        etAccountName.setText(accountName);
         etAccountName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -67,12 +74,22 @@ public class AccountCreatedFragment extends Fragment {
         });
     }
 
+    @NotNull
+    private String getNextAccountName() {
+        int nAccount = Accounts.getInstance().getCount() + 1;
+        String placeholder = getString(R.string.fragment_account_created_account);
+        return String.format(getLocale(), placeholder, nAccount);
+    }
+
     private void checkAccountNameValidity(String accountName) {
         btDone.setEnabled(isValidAccountName(accountName));
     }
 
     private boolean isValidAccountName(String accountName) {
-        return accountName.length() != 0;
+        if (accountName.length() == 0)
+            return false;
+
+        return !Accounts.getInstance().getNames().contains(accountName);
     }
 
     private void createAccountAndProceed() {

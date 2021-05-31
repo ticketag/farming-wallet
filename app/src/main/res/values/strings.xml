@@ -34,56 +34,69 @@
     <string name="fragment_keywords_check_write_the_word">Write the word corresponding to the provided number.</string>
 
     <!--  Fragment Wallet Created -->
-    <string name="fragment_wallet_created_farming">Farming</string>
-    <string name="fragment_wallet_created_wallet">Wallet</string>
-    <string name="fragment_wallet_created_success">Success!</string>
-    <string name="fragment_wallet_created_wallet_created">Wallet Created</string>
-    <string name="fragment_wallet_created_give_a_name">Give a name to your account</string>
-    <string name="fragment_wallet_created_account_name_placeholder">Account1</string>
-    <string name="fragment_wallet_created_done">Done</string>
+    <string name="fragment_account_created_farming">Farming</string>
+    <string name="fragment_account_created_wallet">Wallet</string>
+    <string name="fragment_account_created_success">Success!</string>
+    <string name="fragment_account_created_wallet_created">Wallet Created</string>
+    <string name="fragment_account_created_give_a_name">Give a name to your account</string>
+    <string name="fragment_account_created_account_name_placeholder">Account1</string>
+    <string name="fragment_account_created_done">Done</string>
+    <string name="fragment_account_created_account">Account %d</string>
 
     <!--  Fragment Wallet -->
     <string name="fragment_transactions_title">Transactions</string>
     <string name="fragment_prices_title">Prices</string>
 
     <!--  Item Transaction Record -->
-    <string name="itr_operation_received">Received</string>
-    <string name="itr_operation_sent">Sent</string>
-    <string name="itr_amount_placeholder" translatable="false">+1.45 XHC</string>
-    <string name="itr_date_placeholder" translatable="false">09:30 - 12/12/2021</string>
-    <string name="itr_corresponding_placeholder" translatable="false">1,800.00 €</string>
+    <string name="item_transaction_record_operation_received">Received</string>
+    <string name="item_transaction_record_operation_sent">Sent</string>
+    <string name="item_transaction_record_amount_placeholder" translatable="false">+1.45 XHC</string>
+    <string name="item_transaction_record_date_placeholder" translatable="false">09:30 - 12/12/2021</string>
+    <string name="item_transaction_record_corresponding_placeholder" translatable="false">1,800.00 €</string>
 
     <!--  Item Balance -->
-    <string name="ib_wallet_address_placeholder">xch13…45fe</string>
-    <string name="ib_balance">Balance</string>
-    <string name="ib_amount_placeholder">1,35 XCH</string>
-    <string name="ib_corresponding_placeholder">1,834,34 $</string>
+    <string name="item_balance_wallet_address_placeholder">xch13…45fe</string>
+    <string name="item_balance_balance">Balance</string>
+    <string name="item_balance_amount_placeholder">1,35 XCH</string>
+    <string name="item_balance_corresponding_placeholder">1,834,34 $</string>
 
     <!--  Dialog Transaction Record -->
-    <string name="dtr_amount">Amount</string>
-    <string name="dtr_date">Date</string>
-    <string name="dtr_sender">Sender</string>
-    <string name="dtr_receiver">Receiver</string>
-    <string name="dtr_sender_placeholder">xch13…45fe</string>
-    <string name="dtr_receiver_placeholder">xch13…45fe</string>
+    <string name="dialog_transaction_record_amount">Amount</string>
+    <string name="dialog_transaction_record_date">Date</string>
+    <string name="dialog_transaction_record_sender">Sender</string>
+    <string name="dialog_transaction_record_receiver">Receiver</string>
+    <string name="dialog_transaction_record_sender_placeholder">xch13…45fe</string>
+    <string name="dialog_transaction_record_receiver_placeholder">xch13…45fe</string>
 
     <!--  Item Send Receive Buttons -->
     <string name="isr_send">Send</string>
     <string name="isr_receive">Receive</string>
 
+    <!--  Dialog Add Wallet -->
+    <string name="dialog_add_wallet_select_a_coin_to_add">Select a Coin to add:</string>
+
     <!--  Item Wallet -->
-    <string name="iw_coin_name_placeholder">Chia</string>
-    <string name="iw_coin_amount_placeholder">14.0 XCH</string>
-    <string name="iw_value_placeholder">10,000.00$</string>
-    <string name="iw_change_placeholder">+35%</string>
-    <string name="iw_corresponding_placeholder">100,000.00 $</string>
-    <string name="iw_add_coin">+ Add Coin</string>
+    <string name="item_wallet_coin_name_placeholder">Chia</string>
+    <string name="item_wallet_coin_amount_placeholder">14.0 XCH</string>
+    <string name="item_wallet_value_placeholder">10,000.00$</string>
+    <string name="item_wallet_change_placeholder">+35%</string>
+    <string name="item_wallet_corresponding_placeholder">100,000.00 $</string>
+    <string name="item_wallet_add_coin">+ Add Coin</string>
 
     <!--  Item Keyword -->
     <string name="item_keyword_number_placeholder" translatable="false">1.</string>
     <string name="item_keyword_word_placeholder" translatable="false">word</string>
 
-    <!--  Item New Coin -->
-    <string name="iac_coin_name_placeholder">Chia</string>
-    <string name="iac_coin_symbol_placeholder">XCH</string>
+    <!--  Item Add Coin -->
+    <string name="item_add_coin_coin_name_placeholder">Chia</string>
+    <string name="item_add_coin_coin_symbol_placeholder">XCH</string>
+
+    <!--  Dialog Change Account -->
+    <string name="dialog_change_account_select_an_account">Select an Account</string>
+
+    <!--  Item Account -->
+    <string name="item_account_account_name_placeholder">Account Name Placeholder</string>
+
+    <!--  Item Account Add-->
+    <string name="item_account_add_add">+ Add Account</string>
 </resources>

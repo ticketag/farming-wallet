@@ -26,21 +26,21 @@
     <dimen name="activity_new_wallet_close_icon_padding">20dp</dimen>
 
     <!-- Item Transaction Record -->
-    <dimen name="itr_card_elevation">4dp</dimen>
-    <dimen name="itr_card_content_padding">12dp</dimen>
-    <dimen name="itr_card_corner_radius">8dp</dimen>
-    <dimen name="itr_card_margin">4dp</dimen>
-    <dimen name="itr_icon_padding">8dp</dimen>
+    <dimen name="item_transaction_record_card_elevation">4dp</dimen>
+    <dimen name="item_transaction_record_card_content_padding">12dp</dimen>
+    <dimen name="item_transaction_record_card_corner_radius">8dp</dimen>
+    <dimen name="item_transaction_record_card_margin">4dp</dimen>
+    <dimen name="item_transaction_record_icon_padding">8dp</dimen>
 
     <!-- Item Balance -->
-    <dimen name="ib_separator_width">2dp</dimen>
-    <dimen name="ib_separator_height">60dp</dimen>
-    <dimen name="ib_content_padding">20dp</dimen>
-    <dimen name="ib_elements_margin">12dp</dimen>
-    <dimen name="ib_radius">20dp</dimen>
-    <dimen name="ib_wallet_address_radius">20dp</dimen>
-    <dimen name="ib_half_icon_size">30dp</dimen>
-    <dimen name="ib_icon_size">60dp</dimen>
+    <dimen name="item_balance_separator_width">2dp</dimen>
+    <dimen name="item_balance_separator_height">60dp</dimen>
+    <dimen name="item_balance_content_padding">20dp</dimen>
+    <dimen name="item_balance_elements_margin">12dp</dimen>
+    <dimen name="item_balance_radius">20dp</dimen>
+    <dimen name="item_balance_wallet_address_radius">20dp</dimen>
+    <dimen name="item_balance_half_icon_size">30dp</dimen>
+    <dimen name="item_balance_icon_size">60dp</dimen>
     <dimen name="isr_buttons_spacing">20dp</dimen>
 
     <!-- Send receive buttons -->
@@ -69,28 +69,36 @@
     <dimen name="fragment_account_created_vertical_margin">8dp</dimen>
     <dimen name="fragment_account_created_account_name_height">48dp</dimen>
 
-    <!--  Item Coin Balance -->
-    <dimen name="iw_card_elevation">4dp</dimen>
-    <dimen name="iw_card_content_padding">12dp</dimen>
-    <dimen name="iw_card_corner_radius">8dp</dimen>
-    <dimen name="iw_card_margin">4dp</dimen>
-    <dimen name="iw_icon_padding">8dp</dimen>
+    <!--  Item Wallet -->
+    <dimen name="item_wallet_card_elevation">4dp</dimen>
+    <dimen name="item_wallet_card_content_padding">12dp</dimen>
+    <dimen name="item_wallet_card_corner_radius">8dp</dimen>
+    <dimen name="item_wallet_card_margin">4dp</dimen>
+    <dimen name="item_wallet_icon_padding">8dp</dimen>
+
+    <!--  Item Account -->
+    <dimen name="item_account_card_elevation">4dp</dimen>
+    <dimen name="item_account_card_content_padding">12dp</dimen>
+    <dimen name="item_account_card_corner_radius">8dp</dimen>
+    <dimen name="item_account_card_margin">4dp</dimen>
+    <dimen name="item_account_icon_padding">8dp</dimen>
 
     <!--  Dialog Transaction Record -->
-    <dimen name="dtr_items_vertical_spacing">8dp</dimen>
-    <dimen name="dtr_padding">16dp</dimen>
-    <dimen name="dtr_card_corner_radius">20dp</dimen>
-    <dimen name="dtr_margin_bottom">16dp</dimen>
-    <dimen name="dtr_transaction_icon_size">30dp</dimen>
+    <dimen name="dialog_transaction_record_items_vertical_spacing">8dp</dimen>
+    <dimen name="dialog_transaction_record_padding">16dp</dimen>
+    <dimen name="dialog_transaction_record_card_corner_radius">20dp</dimen>
+    <dimen name="dialog_transaction_record_margin_bottom">16dp</dimen>
+    <dimen name="dialog_transaction_record_transaction_icon_size">30dp</dimen>
 
-    <!--  Dialog Add Coin -->
-    <dimen name="dac_items_vertical_spacing">8dp</dimen>
-    <dimen name="dac_padding">16dp</dimen>
-    <dimen name="dac_card_corner_radius">20dp</dimen>
-    <dimen name="dac_margin_bottom">16dp</dimen>
-    <dimen name="dac_transaction_icon_size">30dp</dimen>
+    <!--  Dialog Add Wallet -->
+    <dimen name="dialog_add_wallet_padding">16dp</dimen>
+    <dimen name="dialog_add_wallet_card_corner_radius">20dp</dimen>
 
-    <!--  Item New Coin -->
-    <dimen name="iac_radius">16dp</dimen>
-    <dimen name="iac_icon_size">50dp</dimen>
+    <!--  Item Add Wallet -->
+    <dimen name="item_add_wallet_radius">16dp</dimen>
+    <dimen name="item_add_wallet_icon_size">50dp</dimen>
+
+    <!--  Dialog Change Account -->
+    <dimen name="dialog_change_account_padding">16dp</dimen>
+    <dimen name="dialog_change_account_card_corner_radius">20dp</dimen>
 </resources>

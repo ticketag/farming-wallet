@@ -7,20 +7,20 @@
     android:layout_height="match_parent"
     android:background="@drawable/dialog_transaction_record_background"
     android:orientation="vertical"
-    android:padding="@dimen/dtr_padding"
-    app:cardCornerRadius="@dimen/dtr_card_corner_radius"
+    android:padding="@dimen/dialog_add_wallet_padding"
+    app:cardCornerRadius="@dimen/dialog_add_wallet_card_corner_radius"
     tools:context=".ui.wallet.TransactionRecordDialog">
 
     <TextView
         style="@style/styleTextNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/iac_radius"
-        android:text="Select a Coin to add:" />
+        android:layout_marginHorizontal="@dimen/dialog_add_wallet_card_corner_radius"
+        android:text="@string/dialog_add_wallet_select_a_coin_to_add" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_iac_coins_list"
+        android:id="@+id/rv_dialog_add_wallet_coins_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_add_coin" />
+        tools:listitem="@layout/item_add_wallet" />
 </LinearLayout>

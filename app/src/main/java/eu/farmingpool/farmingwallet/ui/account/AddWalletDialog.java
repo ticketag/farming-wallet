@@ -28,7 +28,7 @@ public class AddWalletDialog extends BottomSheetDialogFragment implements AddWal
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.dialog_add_coin, container, false);
+        View root = inflater.inflate(R.layout.dialog_add_wallet, container, false);
 
         setupRecyclerView(root);
 
@@ -36,13 +36,13 @@ public class AddWalletDialog extends BottomSheetDialogFragment implements AddWal
     }
 
     @Override
-    public void onCoinToAddSelected(Coin coin) {
-        onClickListener.onCoinToAddSelected(coin);
+    public void onWalletToAddSelected(Coin coin) {
+        onClickListener.onWalletToAddSelected(coin);
         dismiss();
     }
 
     private void setupRecyclerView(View view) {
-        RecyclerView rvCoinsList = view.findViewById(R.id.rv_iac_coins_list);
+        RecyclerView rvCoinsList = view.findViewById(R.id.rv_dialog_add_wallet_coins_list);
         rvCoinsList.setAdapter(new AddWalletAdapter(coins, this));
         rvCoinsList.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
     }

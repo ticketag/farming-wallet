@@ -66,10 +66,20 @@ public class Accounts {
         currentAccountId = accountId;
 
         onChanged();
+        ObservableChanges.getInstance().onCurrentAccountChanged();
     }
 
     public int getCount() {
         return accountIds.size();
+    }
+
+    public ArrayList<String> getNames() {
+        ArrayList<String> names = new ArrayList<>();
+
+        for (int accountId : accountIds)
+            names.add(getAccount(accountId).getName());
+
+        return names;
     }
 
     private void onChanged() {

@@ -42,7 +42,7 @@ public class SplashActivity extends AppCompatActivity {
         btCreateNewWallet.setVisibility(View.VISIBLE);
         btImportExistingWallet.setVisibility(View.VISIBLE);
 
-        btCreateNewWallet.setOnClickListener(v -> openActivity(NewWalletActivity.class));
+        btCreateNewWallet.setOnClickListener(v -> openActivity(NewAccountActivity.class));
         btImportExistingWallet.setOnClickListener(v -> openActivity(ImportWalletActivity.class));
     }
 
