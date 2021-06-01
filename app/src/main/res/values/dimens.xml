@@ -102,4 +102,5 @@
     <dimen name="dialog_change_account_content_padding">16dp</dimen>
     <dimen name="dialog_change_account_buttons_height">48dp</dimen>
     <dimen name="dialog_change_account_buttons_margin">100dp</dimen>
+    <dimen name="fragment_account_wallet_list_top_margin">16dp</dimen>
 </resources>
