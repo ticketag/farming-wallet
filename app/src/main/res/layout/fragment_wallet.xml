@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_activity_main"
     android:gravity="center"
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/fragment_wallet_content_padding_top"
@@ -12,7 +11,7 @@
     tools:context=".ui.wallet.WalletFragment">
 
     <include
-        layout="@layout/item_balance"
+        layout="@layout/item_wallet_balance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/fragment_wallet_items_margin" />

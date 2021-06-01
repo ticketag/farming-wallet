@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_account_send_receive"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/fragment_account_send_receive_top_margin"
+    android:orientation="horizontal"
+    app:layout_constraintTop_toBottomOf="@+id/item_account_balance"
+    tools:showIn="@layout/fragment_account">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_receive"
+        style="@style/buttonStyleSendReceive"
+        android:drawableStart="@drawable/ic_receive_24"
+        android:text="@string/isr_receive" />
+
+    <Space
+        android:layout_width="@dimen/isr_buttons_spacing"
+        android:layout_height="match_parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_send"
+        style="@style/buttonStyleSendReceive"
+        android:drawableEnd="@drawable/ic_send_24"
+        android:text="@string/isr_send" />
+</LinearLayout>

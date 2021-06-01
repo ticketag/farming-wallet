@@ -9,8 +9,9 @@
     <!--    <color name="white">#FFFFFFFF</color>-->
 
     <color name="white">#F1F7FB</color>
-    <color name="primary">#102c41</color>
+    <color name="primary">#133C58</color>
     <color name="primary_light">#C4C4C4</color>
+    <color name="gray_light">#4DFFFFFF</color>
     <color name="primary_dark">#0d293e</color>
     <color name="primary_ultra_dark">#081b29</color>
     <color name="primary_iper_dark">#040E15</color>

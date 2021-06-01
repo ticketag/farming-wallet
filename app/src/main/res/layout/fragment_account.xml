@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
+    android:background="@drawable/background_activity_main"
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/fragment_account_content_padding_top"
     android:paddingTop="@dimen/fragment_account_content_padding_top"
-    android:paddingBottom="@dimen/fragment_account_content_padding_bottom"
     tools:context=".activities.MainActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -23,19 +22,52 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/item_wallet_card_corner_radius"
+        android:contentDescription="@null"
         android:src="@drawable/ic_settings_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <include layout="@layout/item_account_balance" />
+
+    <include
+        android:id="@+id/include4"
+        layout="@layout/item_account_send_receive_buttons"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="259dp" />
+
+    <LinearLayout
+        android:id="@+id/ll_tokens"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/include4">
+
+        <TextView
+            style="@style/styleTextNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Tokens" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_light" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_fragment_wallet_wallets"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/fragment_account_wallet_list_top_margin"
-        android:layout_weight="1"
-        app:layout_constraintTop_toBottomOf="@+id/tv_fragment_account_account_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_tokens"
         tools:listitem="@layout/item_wallet" />
 </androidx.constraintlayout.widget.ConstraintLayout>

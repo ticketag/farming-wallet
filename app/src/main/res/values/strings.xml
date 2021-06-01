@@ -54,11 +54,14 @@
     <string name="item_transaction_record_date_placeholder" translatable="false">09:30 - 12/12/2021</string>
     <string name="item_transaction_record_corresponding_placeholder" translatable="false">1,800.00 €</string>
 
-    <!--  Item Balance -->
-    <string name="item_balance_wallet_address_placeholder">xch13…45fe</string>
-    <string name="item_balance_balance">Balance</string>
-    <string name="item_balance_amount_placeholder">1,35 XCH</string>
-    <string name="item_balance_corresponding_placeholder">1,834,34 $</string>
+    <!--  Item Account Balance -->
+    <string name="item_account_balance_balance">Balance</string>
+
+    <!--  Item Wallet Balance -->
+    <string name="item_wallet_balance_wallet_address_placeholder">xch13…45fe</string>
+    <string name="item_wallet_balance_balance">Balance</string>
+    <string name="item_wallet_balance_amount_placeholder">1,35 XCH</string>
+    <string name="item_wallet_balance_corresponding_placeholder">1,834,34 $</string>
 
     <!--  Dialog Transaction Record -->
     <string name="dialog_transaction_record_amount">Amount</string>

@@ -22,7 +22,7 @@
             style="@style/styleTextNormal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/item_balance_balance" />
+            android:text="@string/item_wallet_balance_balance" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="start"
-                android:text="@string/item_balance_amount_placeholder" />
+                android:text="@string/item_wallet_balance_amount_placeholder" />
 
             <View
                 android:layout_width="@dimen/item_balance_separator_width"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="@string/item_balance_corresponding_placeholder" />
+                android:text="@string/item_wallet_balance_corresponding_placeholder" />
         </LinearLayout>
 
 
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/background_wallet_address"
             android:gravity="center"
-            android:text="@string/item_balance_wallet_address_placeholder"
+            android:text="@string/item_wallet_balance_wallet_address_placeholder"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_small" />
     </LinearLayout>

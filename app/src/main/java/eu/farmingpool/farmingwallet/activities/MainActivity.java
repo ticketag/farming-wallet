@@ -69,6 +69,14 @@ public class MainActivity extends AppCompatActivity implements
         changeAccountDialog.show(getSupportFragmentManager(), "changeAccountDialog");
     }
 
+    @Override
+    public void onWalletsScroll(int dy) {
+        if (dy > 0)
+            hideBottomNavView();
+        else
+            showBottomNavView();
+    }
+
     // ChangeAccountAdapter.OnClickListener
     @Override
     public void onAccountClicked(int i) {

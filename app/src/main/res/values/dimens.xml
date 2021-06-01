@@ -16,9 +16,9 @@
 
     <!-- Activity Splash -->
     <dimen name="activity_splash_button_radius">8dp</dimen>
-    <dimen name="activity_splash_vertical_space">12dp</dimen>
+    <dimen name="activity_splash_vertical_space">20dp</dimen>
     <dimen name="activity_splash_padding">8dp</dimen>
-    <dimen name="activity_splash_button_height">36dp</dimen>
+    <dimen name="activity_splash_button_height">44dp</dimen>
     <dimen name="activity_splash_button_width">300dp</dimen>
     <dimen name="activity_splash_button_padding">12dp</dimen>
     <dimen name="activity_splash_icon_size">56dp</dimen>
@@ -46,7 +46,7 @@
     <dimen name="isr_buttons_spacing">20dp</dimen>
 
     <!-- Send receive buttons -->
-    <dimen name="srb_radius">12dp</dimen>
+    <dimen name="srb_radius">8dp</dimen>
     <dimen name="srb_padding">16dp</dimen>
 
     <!-- Fragment Keywords Creation -->
@@ -59,6 +59,8 @@
     <!-- Fragment Account -->
     <dimen name="fragment_account_content_padding_top">24dp</dimen>
     <dimen name="fragment_account_content_padding_bottom">16dp</dimen>
+    <dimen name="fragment_account_wallet_list_top_margin">16dp</dimen>
+    <dimen name="fragment_account_send_receive_top_margin">20dp</dimen>
 
     <!-- Fragment Wallet -->
     <dimen name="fragment_wallet_content_padding_top">24dp</dimen>
@@ -102,5 +104,4 @@
     <dimen name="dialog_change_account_content_padding">16dp</dimen>
     <dimen name="dialog_change_account_buttons_height">48dp</dimen>
     <dimen name="dialog_change_account_buttons_margin">100dp</dimen>
-    <dimen name="fragment_account_wallet_list_top_margin">16dp</dimen>
 </resources>

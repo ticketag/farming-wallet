@@ -83,13 +83,13 @@
             style="@style/buttonSplashActivity"
             android:layout_marginBottom="@dimen/activity_splash_vertical_space"
             android:text="@string/activity_splash_create_new_wallet"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_import_existing_wallet"
             style="@style/buttonSplashActivity"
             android:text="@string/activity_splash_import_existing_one"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
     </LinearLayout>
 

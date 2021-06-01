@@ -97,6 +97,18 @@ public class AccountFragment extends Fragment implements WalletsAdapter.OnClickL
     private void setupRecyclerView(View view) {
         rvWallets = view.findViewById(R.id.rv_fragment_wallet_wallets);
         rvWallets.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+        rvWallets.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                accountFragmentInterface.onWalletsScroll(dy);
+            }
+        });
     }
 
     private void setRvWalletsAdapter() {
@@ -113,5 +125,7 @@ public class AccountFragment extends Fragment implements WalletsAdapter.OnClickL
 
     public interface Interface {
         void onAccountNameClicked();
+
+        void onWalletsScroll(int dy);
     }
 }
