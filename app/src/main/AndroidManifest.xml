@@ -42,7 +42,7 @@
             android:name=".activities.NewAccountActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.ImportWalletActivity"
+            android:name=".activities.ImportAccountActivity"
             android:screenOrientation="portrait" />
 
         <meta-data
