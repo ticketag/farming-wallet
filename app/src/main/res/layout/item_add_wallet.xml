@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="@dimen/item_add_wallet_radius"
-            android:text="@string/item_add_wallet_coin_symbol_placeholder"
+            android:text="@string/coin_symbol_placeholder"
             android:textAllCaps="false" />
     </LinearLayout>
 

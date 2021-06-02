@@ -39,15 +39,17 @@ dependencies {
     implementation "androidx.security:security-crypto:1.0.0"
     implementation "androidx.security:security-identity-credential:1.0.0-alpha02"
 
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation "androidx.security:security-crypto:1.0.0"
     implementation "androidx.security:security-identity-credential:1.0.0-alpha02"
-    implementation 'com.android.volley:volley:1.1.1'
+    implementation 'com.android.volley:volley:1.2.0'
 
+    // Qr Code scanner
+    implementation 'me.dm7.barcodescanner:zxing:1.9.13'
 }
 
 apply plugin: "androidx.navigation.safeargs"

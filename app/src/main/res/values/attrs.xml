@@ -8,4 +8,6 @@
         <attr name="keywordGridCols" format="integer" />
         <attr name="keywordGridRows" format="integer" />
     </declare-styleable>
+
+    <attr name="colorEditTextBackground" format="color" />
 </resources>

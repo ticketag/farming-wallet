@@ -39,5 +39,5 @@
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_activity_new_wallet_close"
-        app:navGraph="@navigation/activity_new_wallet_navigation" />
+        app:navGraph="@navigation/navigation_activity_new_wallet" />
 </androidx.constraintlayout.widget.ConstraintLayout>

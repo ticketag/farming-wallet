@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    tools:context=".activities.SendActivity"
+    tools:showIn="@layout/activity_send">
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/styleTextNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fragment_select_receiver_large_margin"
+        android:gravity="center"
+        android:labelFor="@id/et_fragment_select_receiver_receiver_address"
+        android:text="@string/fragment_select_receiver_receiver_address"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_fragment_select_receiver_receiver_address"
+        style="@style/styleTextNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/fragment_select_receiver_margin_horizontal"
+        android:layout_marginTop="@dimen/fragment_select_receiver_margin_top"
+        android:autofillHints="@null"
+        android:background="@drawable/background_receiver_address"
+        android:gravity="center"
+        android:inputType="text"
+        android:paddingHorizontal="@dimen/fragment_select_receiver_padding_horizontal"
+        android:paddingVertical="@dimen/fragment_select_receiver_padding_vertical"
+        android:text="@string/item_wallet_balance_wallet_address_placeholder"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fragment_select_receiver_margin_top_buttons"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/et_fragment_select_receiver_receiver_address"
+        tools:layout_editor_absoluteX="16dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_fragment_select_receiver_qr_code"
+            style="@style/styleTextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/fragment_select_receiver_margin_horizontal_bt"
+            android:drawableStart="@drawable/ic_qr_code_scanner_24"
+            android:drawablePadding="8dp"
+            android:text="@string/fragment_select_receiver_qr"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="@dimen/fragment_select_receiver_separator_width"
+            android:layout_height="@dimen/fragment_select_receiver_separator_height"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_fragment_select_receiver_contact"
+            style="@style/styleTextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:text="@string/fragment_select_receiver_contact"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        style="@style/buttonSplashActivity"
+        android:layout_marginBottom="16dp"
+        android:text="@string/fragment_select_receiver_next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
