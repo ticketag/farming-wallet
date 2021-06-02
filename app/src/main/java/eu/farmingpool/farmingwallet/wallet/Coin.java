@@ -1,5 +1,6 @@
 package eu.farmingpool.farmingwallet.wallet;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 
 import java.util.ArrayList;
@@ -55,6 +56,20 @@ public enum Coin {
                 return R.drawable.ic_coin_bitcoin;
             case ETH:
                 return R.drawable.ic_coin_ethereum;
+            default:
+                throw new IllegalStateException("Unexpected value: " + this);
+        }
+    }
+
+    @ColorRes
+    public int getColorResId() {
+        switch (this) {
+            case XCH:
+                return R.color.xch;
+            case BTC:
+                return R.color.btc;
+            case ETH:
+                return R.color.eth;
             default:
                 throw new IllegalStateException("Unexpected value: " + this);
         }

@@ -22,8 +22,13 @@ import eu.farmingpool.farmingwallet.accounts.Accounts;
 import eu.farmingpool.farmingwallet.ui.ObservableChanges;
 import eu.farmingpool.farmingwallet.wallet.Wallet;
 
+import static eu.farmingpool.farmingwallet.ui.ObservableChanges.EntityChanged.ACCOUNT;
+import static eu.farmingpool.farmingwallet.ui.ObservableChanges.EntityChanged.ACCOUNTS;
+import static eu.farmingpool.farmingwallet.ui.ObservableChanges.EntityChanged.CURRENT_ACCOUNT;
+
 public class AccountFragment extends Fragment implements WalletsAdapter.OnClickListener, Observer {
     WalletsAdapter.OnClickListener onClickListener;
+    RecyclerView rvWalletsPercentage;
     RecyclerView rvWallets;
     TextView tvAccountName;
     Interface accountFragmentInterface;
@@ -34,7 +39,8 @@ public class AccountFragment extends Fragment implements WalletsAdapter.OnClickL
         View root = inflater.inflate(R.layout.fragment_account, container, false);
 
         setupAccountName(root);
-        setupRecyclerView(root);
+        setupWalletsRecyclerView(root);
+        setupWalletsPercentageRecyclerView(root);
 
         return root;
     }
@@ -55,7 +61,7 @@ public class AccountFragment extends Fragment implements WalletsAdapter.OnClickL
         super.onResume();
 
         ObservableChanges.getInstance().addObserver(this);
-        setRvWalletsAdapter();
+        setRvAdapters();
     }
 
     @Override
@@ -68,12 +74,10 @@ public class AccountFragment extends Fragment implements WalletsAdapter.OnClickL
     @Override
     public void update(Observable observable, Object observation) {
         if (observable instanceof ObservableChanges) {
-            if (observation == ObservableChanges.EntityChanged.ACCOUNT)
-                setRvWalletsAdapter();
-            if (observation == ObservableChanges.EntityChanged.CURRENT_ACCOUNT)
+            if (observation == ACCOUNT || observation == ACCOUNTS)
+                setRvAdapters();
+            if (observation == CURRENT_ACCOUNT)
                 refreshAccountName();
-            if (observation == ObservableChanges.EntityChanged.ACCOUNTS)
-                setRvWalletsAdapter();
         }
     }
 
@@ -94,8 +98,8 @@ public class AccountFragment extends Fragment implements WalletsAdapter.OnClickL
         refreshAccountName();
     }
 
-    private void setupRecyclerView(View view) {
-        rvWallets = view.findViewById(R.id.rv_fragment_wallet_wallets);
+    private void setupWalletsRecyclerView(View view) {
+        rvWallets = view.findViewById(R.id.rv_fragment_account_wallets);
         rvWallets.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         rvWallets.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -111,11 +115,28 @@ public class AccountFragment extends Fragment implements WalletsAdapter.OnClickL
         });
     }
 
+    private void setupWalletsPercentageRecyclerView(View view) {
+        rvWalletsPercentage = view.findViewById(R.id.rv_fragment_account_wallets_percentage);
+        rvWalletsPercentage.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+    }
+
+    private void setRvAdapters() {
+        setRvWalletsAdapter();
+        setRvWalletsPercentageAdapter();
+    }
+
     private void setRvWalletsAdapter() {
         Account account = Accounts.getInstance().getCurrentAccount();
         ArrayList<Wallet> wallets = account.getWallets();
         WalletsAdapter adapter = new WalletsAdapter(wallets, this);
         rvWallets.setAdapter(adapter);
+    }
+
+    private void setRvWalletsPercentageAdapter() {
+        Account account = Accounts.getInstance().getCurrentAccount();
+        ArrayList<Wallet> wallets = account.getWallets();
+        WalletsPercentageAdapter adapter = new WalletsPercentageAdapter(wallets);
+        rvWalletsPercentage.setAdapter(adapter);
     }
 
     private void refreshAccountName() {
