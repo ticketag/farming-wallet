@@ -104,15 +104,21 @@
     <!--  Item Account -->
     <string name="item_account_account_name_placeholder">Account Name Placeholder</string>
 
-    <!--  Fragment Select Receiver -->
+    <!--  Activity Send -->
     <string name="activity_send_send">Send</string>
+
+    <!--  Fragment Select Receiver -->
     <string name="fragment_select_receiver_contact">Contact</string>
     <string name="fragment_select_receiver_qr">QR</string>
     <string name="fragment_select_receiver_next">Next</string>
     <string name="fragment_select_receiver_receiver_address">Receiver Address</string>
     <string name="fragment_select_amount_amount">Amount</string>
-    <string name="_0">0</string>
+
+    <!--  Fragment Select Amount -->
+    <string name="fragment_select_amount_0">0</string>
     <string name="fragment_select_amount_expected_fees_placeholder">Expected fees: 0.005€</string>
     <string name="fragment_select_amount_min">min</string>
     <string name="fragment_select_amount_half">half</string>
+    <string name="fragment_select_amount_max">max</string>
+    <string name="item_contact_name_placeholder">John Mayer</string>
 </resources>

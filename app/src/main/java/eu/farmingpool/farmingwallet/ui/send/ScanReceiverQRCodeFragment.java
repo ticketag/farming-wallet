@@ -11,11 +11,11 @@ import androidx.fragment.app.Fragment;
 
 import eu.farmingpool.farmingwallet.R;
 
-public class SelectAmountFragment extends Fragment {
+public class ScanReceiverQRCodeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_select_amount, container, false);
+        View root = inflater.inflate(R.layout.fragment_scan_receiver_qr_code, container, false);
 
         return root;
     }

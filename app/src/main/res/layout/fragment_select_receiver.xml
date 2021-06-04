@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
-    tools:context=".activities.SendActivity"
-    tools:showIn="@layout/activity_send">
+    android:background="@color/primary"
+    tools:context=".activities.SendActivity">
 
     <TextView
         android:id="@+id/textView3"
@@ -80,6 +79,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_fragment_select_receiver_next"
         style="@style/buttonSplashActivity"
         android:layout_marginBottom="16dp"
         android:text="@string/fragment_select_receiver_next"

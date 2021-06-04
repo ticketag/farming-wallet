@@ -29,7 +29,7 @@ public class SharedDataManager {
     }
 
     public static TransactionRecords getSharedTransactionRecords(String key) {
-        return getSharedObject(key, TransactionRecords.class);
+        return getObject(key, TransactionRecords.class);
     }
 
     public static void putWallet(String key, Wallet wallet) {
@@ -37,10 +37,10 @@ public class SharedDataManager {
     }
 
     public static Wallet getWallet(String key) {
-        return getSharedObject(key, Wallet.class);
+        return getObject(key, Wallet.class);
     }
 
-    private static <T> T getSharedObject(String key, Class<T> objectType) {
+    private static <T> T getObject(String key, Class<T> objectType) {
         try {
             String json = getSharedString(key, "");
 

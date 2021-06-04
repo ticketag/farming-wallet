@@ -8,16 +8,15 @@
     tools:context=".activities.SendActivity"
     tools:showIn="@layout/activity_send">
 
-    <TextView
-        android:id="@+id/textView3"
-        style="@style/styleTextNormal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/fragment_select_receiver_large_margin"
-        android:gravity="center"
-        android:labelFor="@id/et_fragment_select_receiver_receiver_address"
-        android:text="@string/fragment_select_amount_amount"
-        app:layout_constraintTop_toTopOf="parent" />
+<TextView
+    android:id="@+id/textView3"
+    style="@style/styleTextNormal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/fragment_select_amount_large_margin"
+    android:gravity="center"
+    android:text="@string/fragment_select_amount_amount"
+    app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -61,7 +60,7 @@
             android:gravity="center"
             android:hint="@null"
             android:inputType="number"
-            android:text="@string/_0"
+            android:text="@string/fragment_select_amount_0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/view2"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,8 +68,8 @@
 
         <View
             android:id="@+id/view2"
-            android:layout_width="@dimen/fragment_select_receiver_separator_width"
-            android:layout_height="@dimen/fragment_select_receiver_separator_height"
+            android:layout_width="@dimen/fragment_select_amount_separator_width"
+            android:layout_height="@dimen/fragment_select_amount_separator_height"
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +89,7 @@
             android:gravity="center"
             android:hint="@null"
             android:inputType="number"
-            android:text="@string/_0"
+            android:text="@string/fragment_select_amount_0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/view2"
@@ -148,7 +147,7 @@
             style="@style/styleTextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="max"
+            android:text="@string/fragment_select_amount_max"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sb_fragment_select_amount_amount" />
     </androidx.constraintlayout.widget.ConstraintLayout>

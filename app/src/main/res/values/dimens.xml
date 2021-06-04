@@ -120,4 +120,9 @@
     <dimen name="fragment_select_receiver_margin_horizontal_bt">16dp</dimen>
     <dimen name="fragment_select_receiver_separator_height">24dp</dimen>
     <dimen name="fragment_select_receiver_separator_width">1dp</dimen>
+
+    <!--  Fragment Select Amount -->
+    <dimen name="fragment_select_amount_separator_height">48dp</dimen>
+    <dimen name="fragment_select_amount_large_margin">80dp</dimen>
+    <dimen name="fragment_select_amount_separator_width">1dp</dimen>
 </resources>

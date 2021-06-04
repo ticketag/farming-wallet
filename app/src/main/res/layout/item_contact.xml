@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primary"
+
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:theme="@style/Theme.FarmingWallet">
+
+    <TextView
+        android:id="@+id/tv_item_contact_full_name"
+        style="@style/styleTextNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:text="@string/item_contact_name_placeholder" />
+
+    <TextView
+        android:id="@+id/tv_item_contact_receiving_address"
+        style="@style/styleTextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_contact_receiver_address"
+        android:paddingHorizontal="16dp"
+        android:text="@string/dialog_transaction_record_receiver_placeholder"
+        android:textColor="@color/accent_blue" />
+
+    <include layout="@layout/separator_accounts" />
+</LinearLayout>

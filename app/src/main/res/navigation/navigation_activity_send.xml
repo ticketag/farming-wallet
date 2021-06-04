@@ -9,5 +9,31 @@
         android:id="@+id/selectReceiverFragment"
         android:name="eu.farmingpool.farmingwallet.ui.send.SelectReceiverFragment"
         android:label="SelectReceiverFragment"
-        tools:layout="@layout/fragment_select_receiver" />
+        tools:layout="@layout/fragment_select_receiver">
+        <action
+            android:id="@+id/action_selectReceiverFragment_to_scanReceiverQRCodeFragment"
+            app:destination="@id/scanReceiverQRCodeFragment" />
+        <action
+            android:id="@+id/action_selectReceiverFragment_to_selectAmountFragment"
+            app:destination="@id/selectAmountFragment" />
+        <action
+            android:id="@+id/action_selectReceiverFragment_to_selectContactDialog"
+            app:destination="@id/selectContactDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectAmountFragment"
+        android:name="eu.farmingpool.farmingwallet.ui.send.SelectAmountFragment"
+        android:label="SelectAmountFragment"
+        tools:layout="@layout/fragment_select_amount" />
+    <fragment
+        android:id="@+id/scanReceiverQRCodeFragment"
+        android:name="eu.farmingpool.farmingwallet.ui.send.ScanReceiverQRCodeFragment"
+        android:label="ScanReceiverQRCodeFragment"
+        tools:layout="@layout/fragment_scan_receiver_qr_code" />
+    <dialog
+        android:id="@+id/selectContactDialog"
+        android:name="eu.farmingpool.farmingwallet.ui.send.SelectContactDialog"
+        android:label="SelectContactDialog"
+        tools:layout="@layout/dialog_select_contact" />
+
 </navigation>
