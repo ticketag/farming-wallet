@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements
     private void fetchTransactionRecords() {
         Account currentAccount = Accounts.getInstance().getCurrentAccount();
 
-        if (currentAccount != null)
+        if (currentAccount != null && masterService != null)
             masterService.fetchTransactionRecords(currentAccount);
     }
 

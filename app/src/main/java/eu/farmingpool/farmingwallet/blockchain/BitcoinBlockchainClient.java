@@ -10,6 +10,8 @@ import eu.farmingpool.farmingwallet.transactions.TransactionRecord;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 import eu.farmingpool.farmingwallet.wallet.Coin;
 
+import static eu.farmingpool.farmingwallet.utils.Utils.MOCK_RECEIVING_ADDRESS;
+
 public class BitcoinBlockchainClient extends BlockchainClient {
     private static BitcoinBlockchainClient instance;
 
@@ -39,15 +41,13 @@ public class BitcoinBlockchainClient extends BlockchainClient {
     protected TransactionRecords fetchTransactionRecords(Account account) {
         TransactionRecords transactionRecords = new TransactionRecords();
 
-        String testSender = "xch1wh88x8m47dqkw5wuselqs4t0un5ns3k6z5cf92fpju27jwnpx3fsx2lsha";
-
-        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis()), 1.2, testSender, 0));
-        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() + 1000 * 60 * 5), 2.1, testSender, 0));
-        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() + 1000 * 60 * 9), -3.45, testSender, 0));
-        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() - 1000 * 60 * 5), 0.1, testSender, 0));
-        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() - 1000 * 60 * 7), -0.4, testSender, 0));
-        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() + 1000 * 60 * 3), 3.7, testSender, 0));
-        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() - 1000 * 60 * 2), -4.1, testSender, 0));
+        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis()), 1.2, MOCK_RECEIVING_ADDRESS, 0));
+        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() + 1000 * 60 * 5), 2.1, MOCK_RECEIVING_ADDRESS, 0));
+        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() + 1000 * 60 * 9), -3.45, MOCK_RECEIVING_ADDRESS, 0));
+        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() - 1000 * 60 * 5), 0.1, MOCK_RECEIVING_ADDRESS, 0));
+        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() - 1000 * 60 * 7), -0.4, MOCK_RECEIVING_ADDRESS, 0));
+        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() + 1000 * 60 * 3), 3.7, MOCK_RECEIVING_ADDRESS, 0));
+        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis() - 1000 * 60 * 2), -4.1, MOCK_RECEIVING_ADDRESS, 0));
 
         return transactionRecords;
     }

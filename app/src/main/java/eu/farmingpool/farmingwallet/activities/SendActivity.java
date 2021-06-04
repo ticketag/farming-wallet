@@ -1,5 +1,6 @@
 package eu.farmingpool.farmingwallet.activities;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -14,6 +15,9 @@ import java.util.ArrayList;
 import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.accounts.Accounts;
 import eu.farmingpool.farmingwallet.application.GlobalApplication;
+import eu.farmingpool.farmingwallet.keys.Key;
+import eu.farmingpool.farmingwallet.permissions.PermissionsHandler;
+import eu.farmingpool.farmingwallet.ui.send.ScanReceiverQRCodeDialog;
 import eu.farmingpool.farmingwallet.ui.send.SelectContactDialog;
 import eu.farmingpool.farmingwallet.ui.send.SelectReceiverFragment;
 import eu.farmingpool.farmingwallet.ui.send.SendViewModel;
@@ -22,13 +26,19 @@ import eu.farmingpool.farmingwallet.utils.DBManager;
 import eu.farmingpool.farmingwallet.wallet.Coin;
 
 import static eu.farmingpool.farmingwallet.utils.Utils.KEY_SERIALIZABLE_COIN;
+import static eu.farmingpool.farmingwallet.utils.Utils.MOCK_RECEIVING_ADDRESS;
 
 public class SendActivity extends AppCompatActivity implements
         SelectReceiverFragment.Interface,
-        SelectContactDialog.Interface {
+        SelectContactDialog.Interface,
+        ScanReceiverQRCodeDialog.Interface,
+        PermissionsHandler.Interface {
     private NavController navController;
     private SendViewModel sendViewModel;
     private DBManager dbManager;
+    private final PermissionsHandler permissionsHandler = new PermissionsHandler(this, this);
+
+    private static final String[] mandatoryPermissions = {Manifest.permission.CAMERA};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,10 +53,18 @@ public class SendActivity extends AppCompatActivity implements
         setupNavigation();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        permissionsHandler.check(mandatoryPermissions, null);
+    }
+
     // SelectReceiverFragment.Interface
     @Override
     public void onQRCodeClicked() {
-
+        ScanReceiverQRCodeDialog scanReceiverQRCodeDialog = new ScanReceiverQRCodeDialog(this);
+        scanReceiverQRCodeDialog.show(getSupportFragmentManager(), "scanReceiverQRCodeDialog");
     }
 
     @Override
@@ -60,7 +78,7 @@ public class SendActivity extends AppCompatActivity implements
         Contact fakeContact = new Contact();
         fakeContact.setName("Gino");
         fakeContact.setSurname("Pino");
-        fakeContact.setReceivingAddress(Coin.XCH, "aaazzzsssxxxdddccfffvvf1231234124");
+        fakeContact.setReceivingAddress(Coin.XCH, MOCK_RECEIVING_ADDRESS);
         contacts.add(fakeContact);
 
         SelectContactDialog selectContactDialog = new SelectContactDialog(coin, contacts, this);
@@ -69,6 +87,13 @@ public class SendActivity extends AppCompatActivity implements
 
     @Override
     public void onNextClicked() {
+
+    }
+
+
+    // ScanReceiverQRCodeDialog.Interface
+    @Override
+    public void onQrCodeScanned(Key key) {
 
     }
 
@@ -81,6 +106,17 @@ public class SendActivity extends AppCompatActivity implements
     @Override
     public void onContactSelected(Contact contact) {
         sendViewModel.setContact(contact);
+    }
+
+    // PermissionsHandler.Interface
+    @Override
+    public void onMandatoryPermissionsGranted() {
+
+    }
+
+    @Override
+    public void onMandatoryPermissionsDenied() {
+
     }
 
     private void setupAccountName() {

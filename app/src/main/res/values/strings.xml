@@ -6,6 +6,14 @@
     <string name="coin_symbol_placeholder">XCH</string>
     <string name="currency_symbol_placeholder">EUR</string>
 
+    <string name="rationale_title">Permission needed</string>
+    <string name="rationale_message">These permissions are required for the application to work</string>
+    <string name="enable">Enable</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="error">Error!</string>
+    <string name="error_cannot_run_without_permissions">The application can\'t work without these permissions: %s. Please manually set them</string>
+
     <!--  Navigation -->
     <string name="navigation_title_wallet">Wallet</string>
     <string name="navigation_title_wallet_detail">Wallet Detail</string>
