@@ -46,6 +46,16 @@ public class DBHelper extends SQLiteOpenHelper {
                     " ON " + CONTACTS_TABLE_NAME + "." + COL_CONTACT_ID + " = " + ADDRESSES_TABLE_NAME + "." + COL_ADDRESS_CONTACT_ID +
                     " WHERE " + ADDRESSES_TABLE_NAME + "." + COL_COIN + "= ?;";
 
+    final static String CONTACT_FROM_KEY_QUERY =
+            "SELECT " +
+                    CONTACTS_TABLE_NAME + "." + COL_CONTACT_ID + "," +
+                    COL_CONTACT_NAME + "," +
+                    COL_CONTACT_SURNAME +
+                    " FROM " + CONTACTS_TABLE_NAME +
+                    " JOIN " + ADDRESSES_TABLE_NAME +
+                    " ON " + CONTACTS_TABLE_NAME + "." + COL_CONTACT_ID + " = " + ADDRESSES_TABLE_NAME + "." + COL_ADDRESS_CONTACT_ID +
+                    " WHERE " + COL_COIN + "= ? AND " + COL_ADDRESS + " = ?;";
+
     private DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

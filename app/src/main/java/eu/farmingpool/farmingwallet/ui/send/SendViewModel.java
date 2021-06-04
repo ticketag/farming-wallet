@@ -1,5 +1,6 @@
 package eu.farmingpool.farmingwallet.ui.send;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -19,6 +20,7 @@ public class SendViewModel extends ViewModel {
         this.contact.setValue(contact);
     }
 
+    @NonNull
     public MutableLiveData<Coin> getCoin() {
         return coin;
     }
@@ -27,6 +29,7 @@ public class SendViewModel extends ViewModel {
         this.coin.setValue(coin);
     }
 
+    @NonNull
     public MutableLiveData<Double> getAmount() {
         return amount;
     }

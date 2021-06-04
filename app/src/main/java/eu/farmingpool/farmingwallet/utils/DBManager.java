@@ -10,12 +10,14 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import eu.farmingpool.farmingwallet.keys.Key;
 import eu.farmingpool.farmingwallet.wallet.Coin;
 
 import static eu.farmingpool.farmingwallet.utils.DBHelper.COL_ADDRESS;
 import static eu.farmingpool.farmingwallet.utils.DBHelper.COL_CONTACT_NAME;
 import static eu.farmingpool.farmingwallet.utils.DBHelper.COL_CONTACT_SURNAME;
 import static eu.farmingpool.farmingwallet.utils.DBHelper.CONTACT_ADDRESSES_QUERY;
+import static eu.farmingpool.farmingwallet.utils.DBHelper.CONTACT_FROM_KEY_QUERY;
 
 public class DBManager extends Observable {
     private final Context context;
@@ -50,6 +52,23 @@ public class DBManager extends Observable {
         return contacts;
     }
 
+    public Contact getContactFromKey(Coin coin, Key key) {
+        String[] args = new String[]{coin.toString(), key.getValue()};
+        Cursor cursor = database.rawQuery(CONTACT_FROM_KEY_QUERY, args);
+
+        if (!cursor.moveToNext())
+            return null;
+
+        Contact contact = new Contact();
+        contact.setName(cursor.getString(cursor.getColumnIndex(COL_CONTACT_NAME)));
+        contact.setSurname(cursor.getString(cursor.getColumnIndex(COL_CONTACT_SURNAME)));
+        contact.setReceivingAddress(cursor.getString(cursor.getColumnIndex(COL_ADDRESS)));
+
+        cursor.close();
+
+        return contact;
+    }
+
     @NotNull
     private ArrayList<Contact> getContacts(Coin coin, Cursor cursor) {
         ArrayList<Contact> contacts = new ArrayList<>();
@@ -57,7 +76,7 @@ public class DBManager extends Observable {
             Contact contact = new Contact();
             contact.setName(cursor.getString(cursor.getColumnIndex(COL_CONTACT_NAME)));
             contact.setSurname(cursor.getString(cursor.getColumnIndex(COL_CONTACT_SURNAME)));
-            contact.setReceivingAddress(coin, cursor.getString(cursor.getColumnIndex(COL_ADDRESS)));
+            contact.setReceivingAddress(cursor.getString(cursor.getColumnIndex(COL_ADDRESS)));
             contacts.add(contact);
         }
         return contacts;

@@ -78,7 +78,7 @@ public class SendActivity extends AppCompatActivity implements
         Contact fakeContact = new Contact();
         fakeContact.setName("Gino");
         fakeContact.setSurname("Pino");
-        fakeContact.setReceivingAddress(Coin.XCH, MOCK_RECEIVING_ADDRESS);
+        fakeContact.setReceivingAddress(MOCK_RECEIVING_ADDRESS);
         contacts.add(fakeContact);
 
         SelectContactDialog selectContactDialog = new SelectContactDialog(coin, contacts, this);
@@ -94,7 +94,17 @@ public class SendActivity extends AppCompatActivity implements
     // ScanReceiverQRCodeDialog.Interface
     @Override
     public void onQrCodeScanned(Key key) {
+        Coin coin = sendViewModel.getCoin().getValue();
 
+        assert coin != null;
+        Contact contact = dbManager.getContactFromKey(coin, key);
+
+        if (contact == null) {
+            contact = new Contact();
+            contact.setReceivingAddress(key);
+        }
+
+        sendViewModel.setContact(contact);
     }
 
     // SelectContactDialog.Interface

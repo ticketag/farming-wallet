@@ -78,7 +78,8 @@ public class ScanReceiverQRCodeDialog extends BottomSheetDialogFragment {
     }
 
     private void validateQrCode(String result) {
-
+        requireActivity().runOnUiThread(() -> scanQRCodeDialogInterface.onQrCodeScanned(new Key(result)));
+        dismiss();
     }
 
     public interface Interface {

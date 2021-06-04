@@ -48,7 +48,7 @@ public class SelectContactDialog extends BottomSheetDialogFragment implements Se
 
     private void setupRecyclerView(View view) {
         RecyclerView rvCoinsList = view.findViewById(R.id.rv_dialog_select_contact_contacts);
-        rvCoinsList.setAdapter(new SelectContactAdapter(coin, contacts, this));
+        rvCoinsList.setAdapter(new SelectContactAdapter(contacts, this));
         rvCoinsList.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
     }
 

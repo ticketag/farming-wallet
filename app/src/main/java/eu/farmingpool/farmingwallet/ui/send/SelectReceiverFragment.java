@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.logging.Event;
-import eu.farmingpool.farmingwallet.wallet.Coin;
+import eu.farmingpool.farmingwallet.utils.Contact;
 
 import static eu.farmingpool.farmingwallet.logging.Log.E;
 import static eu.farmingpool.farmingwallet.logging.Log.logEvent;
@@ -26,6 +26,8 @@ public class SelectReceiverFragment extends Fragment {
     private SendViewModel sendViewModel;
     private EditText etReceiverAddress;
     private Interface selectReceiverFragmentInterface;
+
+    private static final int N_CHARACTERS_TO_SHOW = 6;
 
     @Nullable
     @Override
@@ -75,10 +77,17 @@ public class SelectReceiverFragment extends Fragment {
     private void setupViewModel() {
         sendViewModel = new ViewModelProvider(requireActivity()).get(SendViewModel.class);
 
-        sendViewModel.getContact().observe(getViewLifecycleOwner(), contact -> {
-            Coin coin = sendViewModel.getCoin().getValue();
-            etReceiverAddress.setText(contact.getReceivingAddress(coin).getValue());
-        });
+        sendViewModel.getContact().observe(getViewLifecycleOwner(), this::setReceiverAddress);
+    }
+
+    private void setReceiverAddress(Contact contact) {
+        String receiverAddress = contact.getReceivingAddress().getValue();
+
+        String firstPart = receiverAddress.substring(0, N_CHARACTERS_TO_SHOW);
+        String lastPart = receiverAddress.substring(receiverAddress.length() - N_CHARACTERS_TO_SHOW);
+        String compressedAddress = firstPart + "..." + lastPart;
+
+        etReceiverAddress.setText(compressedAddress);
     }
 
     public interface Interface {

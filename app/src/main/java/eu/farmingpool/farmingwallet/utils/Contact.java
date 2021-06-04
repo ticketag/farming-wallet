@@ -1,19 +1,18 @@
 package eu.farmingpool.farmingwallet.utils;
 
-import java.util.HashMap;
-
 import eu.farmingpool.farmingwallet.keys.Key;
-import eu.farmingpool.farmingwallet.wallet.Coin;
 
 public class Contact {
-    private final HashMap<Coin, Key> receivingAddresses = new HashMap<>();
+    private Key receivingAddress;
     private String name;
     private String surname;
 
-    public void setReceivingAddress(Coin coin, String keyString) {
-        Key key = new Key(keyString);
+    public void setReceivingAddress(String keyString) {
+        receivingAddress = new Key(keyString);
+    }
 
-        this.receivingAddresses.put(coin, key);
+    public void setReceivingAddress(Key key) {
+        receivingAddress = key;
     }
 
     public String getName() {
@@ -36,7 +35,7 @@ public class Contact {
         return name + " " + surname;
     }
 
-    public Key getReceivingAddress(Coin coin) {
-        return receivingAddresses.get(coin);
+    public Key getReceivingAddress() {
+        return receivingAddress;
     }
 }

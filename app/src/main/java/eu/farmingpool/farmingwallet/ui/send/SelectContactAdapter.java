@@ -14,15 +14,12 @@ import java.util.ArrayList;
 
 import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.utils.Contact;
-import eu.farmingpool.farmingwallet.wallet.Coin;
 
 public class SelectContactAdapter extends Adapter<SelectContactAdapter.ContactViewHolder> {
-    private final Coin coin;
     private final ArrayList<Contact> contacts;
     private final OnClickListener onClickListener;
 
-    public SelectContactAdapter(Coin coin, ArrayList<Contact> contacts, OnClickListener onClickListener) {
-        this.coin = coin;
+    public SelectContactAdapter(ArrayList<Contact> contacts, OnClickListener onClickListener) {
         this.contacts = contacts;
         this.onClickListener = onClickListener;
     }
@@ -62,7 +59,7 @@ public class SelectContactAdapter extends Adapter<SelectContactAdapter.ContactVi
             TextView tvReceivingAddress = itemView.findViewById(R.id.tv_item_contact_receiving_address);
 
             tvFullName.setText(contact.getFullName());
-            tvReceivingAddress.setText(contact.getReceivingAddress(coin).getValue());
+            tvReceivingAddress.setText(contact.getReceivingAddress().getValue());
         }
     }
 }
