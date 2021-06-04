@@ -57,6 +57,7 @@ public class GlobalApplication extends Application {
 
         appContext = new WeakReference<>(getApplicationContext());
         dbManager = new DBManager(appContext.get());
+        dbManager.open();
 
         Intent intent = new Intent(getAppContext(), MasterService.class);
         ContextCompat.startForegroundService(getAppContext(), intent);

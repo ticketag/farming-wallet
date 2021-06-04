@@ -1,6 +1,7 @@
 package eu.farmingpool.farmingwallet.activities;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,19 +12,20 @@ import androidx.navigation.Navigation;
 import java.util.ArrayList;
 
 import eu.farmingpool.farmingwallet.R;
+import eu.farmingpool.farmingwallet.accounts.Accounts;
 import eu.farmingpool.farmingwallet.application.GlobalApplication;
-import eu.farmingpool.farmingwallet.ui.send.SelectContactAdapter;
 import eu.farmingpool.farmingwallet.ui.send.SelectContactDialog;
 import eu.farmingpool.farmingwallet.ui.send.SelectReceiverFragment;
 import eu.farmingpool.farmingwallet.ui.send.SendViewModel;
 import eu.farmingpool.farmingwallet.utils.Contact;
 import eu.farmingpool.farmingwallet.utils.DBManager;
 import eu.farmingpool.farmingwallet.wallet.Coin;
-import eu.farmingpool.farmingwallet.wallet.Wallet;
+
+import static eu.farmingpool.farmingwallet.utils.Utils.KEY_SERIALIZABLE_COIN;
 
 public class SendActivity extends AppCompatActivity implements
         SelectReceiverFragment.Interface,
-        SelectContactAdapter.OnClickListener {
+        SelectContactDialog.Interface {
     private NavController navController;
     private SendViewModel sendViewModel;
     private DBManager dbManager;
@@ -35,7 +37,9 @@ public class SendActivity extends AppCompatActivity implements
         dbManager = GlobalApplication.getDBManager();
 
         setContentView(R.layout.activity_send);
+
         setupViewModel();
+        setupAccountName();
         setupNavigation();
     }
 
@@ -47,14 +51,13 @@ public class SendActivity extends AppCompatActivity implements
 
     @Override
     public void onContactClicked() {
-        Wallet wallet = sendViewModel.getWallet().getValue();
+        Coin coin = sendViewModel.getCoin().getValue();
 
-        if (wallet == null)
+        if (coin == null)
             return;
 
-        ArrayList<Contact> contacts = dbManager.getContacts(wallet.coin);
+        ArrayList<Contact> contacts = dbManager.getContacts(coin);
 
-        Coin coin = wallet.coin;
         SelectContactDialog selectContactDialog = new SelectContactDialog(coin, contacts, this);
         selectContactDialog.show(getSupportFragmentManager(), "selectContactDialog");
     }
@@ -64,14 +67,32 @@ public class SendActivity extends AppCompatActivity implements
 
     }
 
-    // SelectContactAdapter.OnClickListener
+    // SelectContactDialog.Interface
+    @Override
+    public void onAddContactClicked() {
+
+    }
+
     @Override
     public void onContactSelected(Contact contact) {
 
     }
 
+    private void setupAccountName() {
+        String accountName = Accounts.getInstance().getCurrentAccount().getName();
+        TextView tvAccountName = findViewById(R.id.tv_activity_send_account);
+        tvAccountName.setText(accountName);
+    }
+
     private void setupViewModel() {
         sendViewModel = new ViewModelProvider(this).get(SendViewModel.class);
+
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            Coin coin = (Coin) extras.getSerializable(KEY_SERIALIZABLE_COIN);
+            sendViewModel.setCoin(coin);
+        }
     }
 
     private void setupNavigation() {

@@ -3,13 +3,14 @@ package eu.farmingpool.farmingwallet.wallet;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.accounts.Account;
 
-public enum Coin {
+public enum Coin implements Serializable {
     EUR,
     USD,
     XCH,

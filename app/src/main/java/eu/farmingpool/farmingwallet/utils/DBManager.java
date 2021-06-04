@@ -29,6 +29,7 @@ public class DBManager extends Observable {
     public DBManager open() throws SQLException {
         dbHelper = DBHelper.getInstance(context);
         database = dbHelper.getWritableDatabase();
+
         return this;
     }
 

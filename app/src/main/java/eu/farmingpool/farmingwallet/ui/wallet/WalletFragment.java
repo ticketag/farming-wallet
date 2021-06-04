@@ -1,5 +1,6 @@
 package eu.farmingpool.farmingwallet.ui.wallet;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,21 +19,28 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.accounts.Accounts;
+import eu.farmingpool.farmingwallet.logging.Event;
 import eu.farmingpool.farmingwallet.wallet.Coin;
 
+import static eu.farmingpool.farmingwallet.logging.Log.E;
+import static eu.farmingpool.farmingwallet.logging.Log.logEvent;
+import static eu.farmingpool.farmingwallet.logging.Tag.EVENT_ACTIVITY_SEND;
+import static eu.farmingpool.farmingwallet.utils.Utils.KEY_SERIALIZABLE_COIN;
 import static eu.farmingpool.farmingwallet.utils.Utils.getLocale;
 
 public class WalletFragment extends Fragment {
-    private Button btSend;
-    private Button btReceive;
     private Coin coin;
+    private Interface walletFragmentInterface;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_wallet, container, false);
 
-        coin = (Coin) getArguments().getSerializable("coin");
+        Bundle args = getArguments();
+
+        if (args != null)
+            coin = (Coin) args.getSerializable(KEY_SERIALIZABLE_COIN);
 
         setupIcon(root);
         setupBalance(root);
@@ -53,6 +61,17 @@ public class WalletFragment extends Fragment {
         super.onPause();
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        try {
+            walletFragmentInterface = (Interface) context;
+        } catch (ClassCastException e) {
+            logEvent(E, new Event("onAttach", e.getMessage(), EVENT_ACTIVITY_SEND));
+        }
+    }
+
     private void setupIcon(View view) {
         ImageView ivIcon = view.findViewById(R.id.iv_item_balance_icon);
         ivIcon.setImageResource(coin.getIconResId());
@@ -70,8 +89,11 @@ public class WalletFragment extends Fragment {
     }
 
     private void setupButtons(View view) {
-        btSend = view.findViewById(R.id.bt_send);
-        btReceive = view.findViewById(R.id.bt_receive);
+        Button btSend = view.findViewById(R.id.bt_send);
+        btSend.setOnClickListener(v -> walletFragmentInterface.onSendClicked(coin));
+
+        Button btReceive = view.findViewById(R.id.bt_receive);
+        btReceive.setOnClickListener(v -> walletFragmentInterface.onReceiveClicked());
     }
 
     private void setupViewPager(View view) {
@@ -85,5 +107,11 @@ public class WalletFragment extends Fragment {
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> tab.setText(adapter.getTabTitle(position))
         ).attach();
+    }
+
+    public interface Interface {
+        void onSendClicked(Coin coin);
+
+        void onReceiveClicked();
     }
 }

@@ -26,13 +26,17 @@ import eu.farmingpool.farmingwallet.ui.account.AddWalletDialog;
 import eu.farmingpool.farmingwallet.ui.account.ChangeAccountDialog;
 import eu.farmingpool.farmingwallet.ui.account.WalletsAdapter;
 import eu.farmingpool.farmingwallet.ui.wallet.TransactionRecordsAdapter;
-import eu.farmingpool.farmingwallet.utils.Utils;
+import eu.farmingpool.farmingwallet.ui.wallet.WalletFragment;
 import eu.farmingpool.farmingwallet.wallet.Coin;
+
+import static eu.farmingpool.farmingwallet.utils.Utils.KEY_SERIALIZABLE_COIN;
+import static eu.farmingpool.farmingwallet.utils.Utils.openActivity;
 
 public class MainActivity extends AppCompatActivity implements
         TransactionRecordsAdapter.OnClickListener,
         AccountFragment.Interface,
         ChangeAccountDialog.Interface,
+        WalletFragment.Interface,
         WalletsAdapter.OnClickListener,
         AddWalletAdapter.OnClickListener {
     private ArrayList<String> bottomNavFragments;
@@ -93,6 +97,17 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
+    // WalletFragment.Interface
+    @Override
+    public void onSendClicked(Coin coin) {
+        openSendActivity(coin);
+    }
+
+    @Override
+    public void onReceiveClicked() {
+
+    }
+
     // AddWalletAdapter.OnClickListener
     @Override
     public void onWalletClicked(int i) {
@@ -100,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements
         Coin coin = currentAccount.getCoins().get(i);
 
         Bundle args = new Bundle();
-        args.putSerializable("coin", coin);
+        args.putSerializable(KEY_SERIALIZABLE_COIN, coin);
 
         navController.navigate(R.id.walletDetailFragment, args);
     }
@@ -176,7 +191,16 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void openNewAccountActivity() {
-        Utils.openActivity(this, NewAccountActivity.class, true, true, false, true);
+        openActivity(this, NewAccountActivity.class, true, true, false, true);
+    }
+
+    private void openSendActivity(Coin coin) {
+        Bundle extras = new Bundle();
+
+        if (coin != null)
+            extras.putSerializable(KEY_SERIALIZABLE_COIN, coin);
+
+        openActivity(this, SendActivity.class, extras, true, true, false, true);
     }
 
     private void fetchTransactionRecords() {
@@ -194,29 +218,4 @@ public class MainActivity extends AppCompatActivity implements
 
         Accounts.getInstance().setCurrentAccount(accountId);
     }
-
-//    void test() {
-//        KeyStore keyStore = null;
-//        char[] password = "password".toCharArray();
-//
-//        try {
-//            keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-//        } catch (KeyStoreException e) {
-//            e.printStackTrace();
-//        }
-//
-//        assert keyStore != null;
-//
-//        try (FileInputStream fis = new FileInputStream((String) null)) {
-//            keyStore.load(fis, password);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        try {
-//            PrivateKey privateKey = (PrivateKey) keyStore.getKey("keyName", password);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 }

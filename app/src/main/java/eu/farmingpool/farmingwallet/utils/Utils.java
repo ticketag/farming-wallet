@@ -2,6 +2,7 @@ package eu.farmingpool.farmingwallet.utils;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 
 import java.util.Locale;
 
@@ -12,26 +13,36 @@ public class Utils {
     public static final String KEY_SEPARATOR = "_";
     public static final long MILLISECONDS_IN_SECOND = 1000;
 
+    public static final String KEY_SERIALIZABLE_COIN = "coin";
+
     public static Locale getLocale() {
         return Locale.getDefault();
     }
 
-    public static void openActivity(Activity mActivity, Class<?> className, boolean finish, boolean animate, boolean reverseAnimate, boolean clearTask) {
-        if (className != null) {
-            if (clearTask) {
-                mActivity.startActivity(new Intent(mActivity, className).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
-            } else {
-                mActivity.startActivity(new Intent(mActivity, className).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-            }
-        }
+    public static void openActivity(Activity activity, Class<?> className, boolean finish, boolean animate, boolean reverseAnimate, boolean clearTask) {
+        openActivity(activity, className, null, finish, animate, reverseAnimate, clearTask);
+    }
+
+    public static void openActivity(Activity activity, Class<?> className, Bundle extras, boolean finish, boolean animate, boolean reverseAnimate, boolean clearTask) {
+        Intent intent = new Intent(activity, className);
+
+        if (extras != null)
+            intent.putExtras(extras);
+
+        if (clearTask)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        else
+            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+
+        activity.startActivity(intent);
 
         if (finish)
-            mActivity.finish();
+            activity.finish();
         if (animate) {
             if (reverseAnimate)
-                mActivity.overridePendingTransition(R.anim.enter_left, R.anim.exit_right);
+                activity.overridePendingTransition(R.anim.enter_left, R.anim.exit_right);
             else
-                mActivity.overridePendingTransition(R.anim.enter_right, R.anim.exit_left);
+                activity.overridePendingTransition(R.anim.enter_right, R.anim.exit_left);
         }
     }
 

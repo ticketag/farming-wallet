@@ -125,4 +125,5 @@
     <dimen name="fragment_select_amount_separator_height">48dp</dimen>
     <dimen name="fragment_select_amount_large_margin">80dp</dimen>
     <dimen name="fragment_select_amount_separator_width">1dp</dimen>
+    <dimen name="dialog_select_contact_search_horizontal_margin">16dp</dimen>
 </resources>

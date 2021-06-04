@@ -121,4 +121,5 @@
     <string name="fragment_select_amount_half">half</string>
     <string name="fragment_select_amount_max">max</string>
     <string name="item_contact_name_placeholder">John Mayer</string>
+    <string name="dialog_select_contact_contact">Contact</string>
 </resources>

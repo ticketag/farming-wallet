@@ -12,4 +12,66 @@
     tools:context=".ui.wallet.TransactionRecordDialog">
 
     <include layout="@layout/decorator_modal" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dialog_select_contact_search_horizontal_margin">
+
+        <TextView
+            android:id="@+id/textView8"
+            style="@style/styleTextLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/dialog_select_contact_contact"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_dialog_select_contact_add_contact"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_add_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/dialog_select_contact_search_horizontal_margin"
+        android:layout_marginVertical="16dp"
+        android:background="@drawable/background_search_contact"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            style="@style/styleTextNormal"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginVertical="4dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:paddingHorizontal="12dp" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="12dp"
+            android:src="@drawable/ic_search_24" />
+    </LinearLayout>
+
+    <include layout="@layout/separator_accounts" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_dialog_select_contact_contacts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:listitem="@layout/item_contact" />
 </LinearLayout>

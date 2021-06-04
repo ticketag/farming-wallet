@@ -6,6 +6,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
+    private static DBHelper instance;
+
+    private static final String DATABASE_NAME = "FarmingWallet";
+    private static final int DATABASE_VERSION = 0;
+
     static final String CONTACTS_TABLE_NAME = "contacts";
     static final String COL_CONTACT_ID = "id";
     static final String COL_CONTACT_NAME = "name";
@@ -15,19 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
     static final String COL_ADDRESS_CONTACT_ID = "contact_id";
     static final String COL_COIN = "coin";
     static final String COL_ADDRESS = "address";
-    final static String CONTACT_ADDRESSES_QUERY =
-            "SELECT " +
-                    COL_CONTACT_ID + "," +
-                    COL_CONTACT_NAME + "," +
-                    COL_CONTACT_SURNAME + "," +
-                    COL_COIN + "," +
-                    COL_ADDRESS +
-                    " FROM " + CONTACTS_TABLE_NAME +
-                    " JOIN " + ADDRESSES_TABLE_NAME +
-                    " ON " + CONTACTS_TABLE_NAME + "." + COL_CONTACT_ID + " = " + ADDRESSES_TABLE_NAME + "." + COL_ADDRESS_CONTACT_ID +
-                    " WHERE " + ADDRESSES_TABLE_NAME + "." + COL_COIN + "= ?;";
-    private static final String DATABASE_NAME = "FarmingWallet";
-    private static final int DATABASE_VERSION = 0;
+
     private static final String CREATE_CONTACTS_TABLE =
             "create table if not exists " + CONTACTS_TABLE_NAME + " ("
                     + COL_CONTACT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -40,7 +33,18 @@ public class DBHelper extends SQLiteOpenHelper {
                     + COL_ADDRESS_CONTACT_ID + " TEXT, "
                     + COL_COIN + " TEXT, "
                     + COL_ADDRESS + " TEXT);";
-    private static DBHelper instance;
+
+    final static String CONTACT_ADDRESSES_QUERY =
+            "SELECT " +
+                    COL_CONTACT_ID + "," +
+                    COL_CONTACT_NAME + "," +
+                    COL_CONTACT_SURNAME + "," +
+                    COL_COIN + "," +
+                    COL_ADDRESS +
+                    " FROM " + CONTACTS_TABLE_NAME +
+                    " JOIN " + ADDRESSES_TABLE_NAME +
+                    " ON " + CONTACTS_TABLE_NAME + "." + COL_CONTACT_ID + " = " + ADDRESSES_TABLE_NAME + "." + COL_ADDRESS_CONTACT_ID +
+                    " WHERE " + ADDRESSES_TABLE_NAME + "." + COL_COIN + "= ?;";
 
     private DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

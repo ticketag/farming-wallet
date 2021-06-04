@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,12 +21,12 @@ import eu.farmingpool.farmingwallet.wallet.Coin;
 public class SelectContactDialog extends BottomSheetDialogFragment implements SelectContactAdapter.OnClickListener {
     private final Coin coin;
     private final ArrayList<Contact> contacts;
-    private final SelectContactAdapter.OnClickListener onClickListener;
+    private final Interface selectContactDialogInterface;
 
-    public SelectContactDialog(Coin coin, ArrayList<Contact> contacts, SelectContactAdapter.OnClickListener onClickListener) {
+    public SelectContactDialog(Coin coin, ArrayList<Contact> contacts, Interface selectContactDialogInterface) {
         this.coin = coin;
         this.contacts = contacts;
-        this.onClickListener = onClickListener;
+        this.selectContactDialogInterface = selectContactDialogInterface;
     }
 
     @Override
@@ -34,19 +35,31 @@ public class SelectContactDialog extends BottomSheetDialogFragment implements Se
         View root = inflater.inflate(R.layout.dialog_select_contact, container, false);
 
         setupRecyclerView(root);
+        setupAddButton(root);
 
         return root;
     }
 
     @Override
     public void onContactSelected(Contact contact) {
-        onClickListener.onContactSelected(contact);
+        selectContactDialogInterface.onContactSelected(contact);
         dismiss();
     }
 
     private void setupRecyclerView(View view) {
-        RecyclerView rvCoinsList = view.findViewById(R.id.rv_dialog_add_wallet_coins_list);
+        RecyclerView rvCoinsList = view.findViewById(R.id.rv_dialog_select_contact_contacts);
         rvCoinsList.setAdapter(new SelectContactAdapter(coin, contacts, this));
         rvCoinsList.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+    }
+
+    private void setupAddButton(View view) {
+        AppCompatImageView tvAddContact = view.findViewById(R.id.iv_dialog_select_contact_add_contact);
+        tvAddContact.setOnClickListener((v) -> selectContactDialogInterface.onAddContactClicked());
+    }
+
+    public interface Interface {
+        void onContactSelected(Contact contact);
+
+        void onAddContactClicked();
     }
 }
