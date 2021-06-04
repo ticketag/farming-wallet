@@ -6,20 +6,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.logging.Event;
+import eu.farmingpool.farmingwallet.wallet.Coin;
 
 import static eu.farmingpool.farmingwallet.logging.Log.E;
 import static eu.farmingpool.farmingwallet.logging.Log.logEvent;
 import static eu.farmingpool.farmingwallet.logging.Tag.EVENT_ACTIVITY_SEND;
 
 public class SelectReceiverFragment extends Fragment {
+    private SendViewModel sendViewModel;
+    private EditText etReceiverAddress;
     private Interface selectReceiverFragmentInterface;
 
     @Nullable
@@ -27,9 +32,12 @@ public class SelectReceiverFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_select_receiver, container, false);
 
+        setupReceiverAddressEditText(root);
         setupQRCodeButton(root);
         setupContactButton(root);
         setupNextButton(root);
+
+        setupViewModel();
 
         return root;
     }
@@ -45,6 +53,10 @@ public class SelectReceiverFragment extends Fragment {
         }
     }
 
+    private void setupReceiverAddressEditText(View view) {
+        etReceiverAddress = view.findViewById(R.id.et_fragment_select_receiver_receiver_address);
+    }
+
     private void setupQRCodeButton(View view) {
         TextView tvQRCode = view.findViewById(R.id.tv_fragment_select_receiver_qr_code);
         tvQRCode.setOnClickListener(v -> selectReceiverFragmentInterface.onQRCodeClicked());
@@ -58,6 +70,15 @@ public class SelectReceiverFragment extends Fragment {
     private void setupNextButton(View view) {
         Button btNext = view.findViewById(R.id.bt_fragment_select_receiver_next);
         btNext.setOnClickListener(v -> selectReceiverFragmentInterface.onNextClicked());
+    }
+
+    private void setupViewModel() {
+        sendViewModel = new ViewModelProvider(requireActivity()).get(SendViewModel.class);
+
+        sendViewModel.getContact().observe(getViewLifecycleOwner(), contact -> {
+            Coin coin = sendViewModel.getCoin().getValue();
+            etReceiverAddress.setText(contact.getReceivingAddress(coin).getValue());
+        });
     }
 
     public interface Interface {

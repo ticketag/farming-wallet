@@ -57,6 +57,11 @@ public class SendActivity extends AppCompatActivity implements
             return;
 
         ArrayList<Contact> contacts = dbManager.getContacts(coin);
+        Contact fakeContact = new Contact();
+        fakeContact.setName("Gino");
+        fakeContact.setSurname("Pino");
+        fakeContact.setReceivingAddress(Coin.XCH, "aaazzzsssxxxdddccfffvvf1231234124");
+        contacts.add(fakeContact);
 
         SelectContactDialog selectContactDialog = new SelectContactDialog(coin, contacts, this);
         selectContactDialog.show(getSupportFragmentManager(), "selectContactDialog");
@@ -75,7 +80,7 @@ public class SendActivity extends AppCompatActivity implements
 
     @Override
     public void onContactSelected(Contact contact) {
-
+        sendViewModel.setContact(contact);
     }
 
     private void setupAccountName() {

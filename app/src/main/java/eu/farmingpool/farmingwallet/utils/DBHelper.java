@@ -9,7 +9,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static DBHelper instance;
 
     private static final String DATABASE_NAME = "FarmingWallet";
-    private static final int DATABASE_VERSION = 0;
+    private static final int DATABASE_VERSION = 1;
 
     static final String CONTACTS_TABLE_NAME = "contacts";
     static final String COL_CONTACT_ID = "id";
@@ -36,7 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     final static String CONTACT_ADDRESSES_QUERY =
             "SELECT " +
-                    COL_CONTACT_ID + "," +
+                    CONTACTS_TABLE_NAME + "." + COL_CONTACT_ID + "," +
                     COL_CONTACT_NAME + "," +
                     COL_CONTACT_SURNAME + "," +
                     COL_COIN + "," +

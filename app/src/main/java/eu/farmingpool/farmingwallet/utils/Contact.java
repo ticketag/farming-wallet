@@ -6,7 +6,7 @@ import eu.farmingpool.farmingwallet.keys.Key;
 import eu.farmingpool.farmingwallet.wallet.Coin;
 
 public class Contact {
-    HashMap<Coin, Key> receivingAddresses;
+    private final HashMap<Coin, Key> receivingAddresses = new HashMap<>();
     private String name;
     private String surname;
 
