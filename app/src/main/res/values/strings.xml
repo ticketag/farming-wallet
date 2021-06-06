@@ -128,6 +128,8 @@
     <string name="fragment_select_amount_min">min</string>
     <string name="fragment_select_amount_half">half</string>
     <string name="fragment_select_amount_max">max</string>
+    <string name="fragment_select_amount_amount_max_placeholder">100.00 XCH</string>
+    <string name="fragment_select_amount_amount_min_placeholder">0.01 XCH</string>
 
     <!--  Item Contact Name -->
     <string name="item_contact_name_placeholder">John Mayer</string>

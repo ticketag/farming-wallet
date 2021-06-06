@@ -11,6 +11,11 @@ public class SendViewModel extends ViewModel {
     private final MutableLiveData<Contact> contact = new MutableLiveData<>();
     private final MutableLiveData<Coin> coin = new MutableLiveData<>();
     private final MutableLiveData<Double> amount = new MutableLiveData<>();
+    private final MutableLiveData<Double> temporaryAmount = new MutableLiveData<>();
+
+    public SendViewModel() {
+        amount.setValue(0.0);
+    }
 
     public MutableLiveData<Contact> getContact() {
         return contact;
@@ -35,6 +40,12 @@ public class SendViewModel extends ViewModel {
     }
 
     public void setAmount(double amount) {
-        this.amount.setValue(amount);
+        Double currentAmount = this.amount.getValue();
+
+        if (currentAmount != null) {
+            if (currentAmount != amount)
+                this.amount.setValue(amount);
+        } else
+            this.amount.setValue(amount);
     }
 }
