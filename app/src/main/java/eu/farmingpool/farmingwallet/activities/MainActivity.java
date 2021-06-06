@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void openNewAccountActivity() {
-        openActivity(this, NewAccountActivity.class, true, true, false, true);
+        openActivity(this, NewAccountActivity.class, false, true, false, false);
     }
 
     private void openSendActivity(Coin coin) {
@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements
         if (coin != null)
             extras.putSerializable(KEY_SERIALIZABLE_COIN, coin);
 
-        openActivity(this, SendActivity.class, extras, true, true, false, true);
+        openActivity(this, SendActivity.class, extras, false, true, false, false);
     }
 
     private void fetchTransactionRecords() {

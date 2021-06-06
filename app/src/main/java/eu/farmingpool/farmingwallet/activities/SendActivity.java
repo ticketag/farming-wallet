@@ -2,12 +2,14 @@ package eu.farmingpool.farmingwallet.activities;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ import eu.farmingpool.farmingwallet.permissions.PermissionsHandler;
 import eu.farmingpool.farmingwallet.ui.send.ScanReceiverQRCodeDialog;
 import eu.farmingpool.farmingwallet.ui.send.SelectContactDialog;
 import eu.farmingpool.farmingwallet.ui.send.SelectReceiverFragment;
+import eu.farmingpool.farmingwallet.ui.send.SelectReceiverFragmentDirections;
 import eu.farmingpool.farmingwallet.ui.send.SendViewModel;
 import eu.farmingpool.farmingwallet.utils.Contact;
 import eu.farmingpool.farmingwallet.utils.DBManager;
@@ -51,6 +54,7 @@ public class SendActivity extends AppCompatActivity implements
         setupViewModel();
         setupAccountName();
         setupNavigation();
+        setupCloseButton();
     }
 
     @Override
@@ -58,6 +62,11 @@ public class SendActivity extends AppCompatActivity implements
         super.onResume();
 
         permissionsHandler.check(mandatoryPermissions, null);
+    }
+
+    @Override
+    public void onBackPressed() {
+        closeSendActivity();
     }
 
     // SelectReceiverFragment.Interface
@@ -81,15 +90,15 @@ public class SendActivity extends AppCompatActivity implements
         fakeContact.setReceivingAddress(MOCK_RECEIVING_ADDRESS);
         contacts.add(fakeContact);
 
-        SelectContactDialog selectContactDialog = new SelectContactDialog(coin, contacts, this);
+        SelectContactDialog selectContactDialog = new SelectContactDialog(contacts, this);
         selectContactDialog.show(getSupportFragmentManager(), "selectContactDialog");
     }
 
     @Override
     public void onNextClicked() {
-
+        NavDirections directions = SelectReceiverFragmentDirections.actionSelectReceiverFragmentToSelectAmountFragment();
+        navController.navigate(directions);
     }
-
 
     // ScanReceiverQRCodeDialog.Interface
     @Override
@@ -148,5 +157,14 @@ public class SendActivity extends AppCompatActivity implements
 
     private void setupNavigation() {
         navController = Navigation.findNavController(this, R.id.activity_send_nav_host_fragment);
+    }
+
+    private void setupCloseButton() {
+        ImageView ivClose = findViewById(R.id.iv_activity_send_close);
+        ivClose.setOnClickListener(v -> closeSendActivity());
+    }
+
+    private void closeSendActivity() {
+        finish();
     }
 }

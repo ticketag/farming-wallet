@@ -11,14 +11,8 @@
         android:label="SelectReceiverFragment"
         tools:layout="@layout/fragment_select_receiver">
         <action
-            android:id="@+id/action_selectReceiverFragment_to_scanReceiverQRCodeFragment"
-            app:destination="@id/scanReceiverQRCodeFragment" />
-        <action
             android:id="@+id/action_selectReceiverFragment_to_selectAmountFragment"
             app:destination="@id/selectAmountFragment" />
-        <action
-            android:id="@+id/action_selectReceiverFragment_to_selectContactDialog"
-            app:destination="@id/selectContactDialog" />
     </fragment>
     <fragment
         android:id="@+id/selectAmountFragment"

@@ -42,6 +42,7 @@
 
 
     <LinearLayout
+        android:id="@+id/ll_dialog_select_contact_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -63,6 +64,7 @@
             android:layout_width="32dp"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="12dp"
+            android:contentDescription="@null"
             android:src="@drawable/ic_search_24" />
     </LinearLayout>
 

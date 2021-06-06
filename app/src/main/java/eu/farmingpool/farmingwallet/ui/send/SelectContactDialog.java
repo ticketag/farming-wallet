@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -16,15 +17,12 @@ import java.util.ArrayList;
 
 import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.utils.Contact;
-import eu.farmingpool.farmingwallet.wallet.Coin;
 
 public class SelectContactDialog extends BottomSheetDialogFragment implements SelectContactAdapter.OnClickListener {
-    private final Coin coin;
     private final ArrayList<Contact> contacts;
     private final Interface selectContactDialogInterface;
 
-    public SelectContactDialog(Coin coin, ArrayList<Contact> contacts, Interface selectContactDialogInterface) {
-        this.coin = coin;
+    public SelectContactDialog(ArrayList<Contact> contacts, Interface selectContactDialogInterface) {
         this.contacts = contacts;
         this.selectContactDialogInterface = selectContactDialogInterface;
     }
@@ -36,6 +34,7 @@ public class SelectContactDialog extends BottomSheetDialogFragment implements Se
 
         setupRecyclerView(root);
         setupAddButton(root);
+        setupSearch(root);
 
         return root;
     }
@@ -55,6 +54,14 @@ public class SelectContactDialog extends BottomSheetDialogFragment implements Se
     private void setupAddButton(View view) {
         AppCompatImageView tvAddContact = view.findViewById(R.id.iv_dialog_select_contact_add_contact);
         tvAddContact.setOnClickListener((v) -> selectContactDialogInterface.onAddContactClicked());
+    }
+
+    private void setupSearch(View view) {
+        LinearLayout llSearch = view.findViewById(R.id.ll_dialog_select_contact_search);
+        llSearch.setOnClickListener(v -> onSearchPressed());
+    }
+
+    private void onSearchPressed() {
     }
 
     public interface Interface {
