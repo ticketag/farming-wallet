@@ -44,7 +44,7 @@ public class WalletFragment extends Fragment {
 
         setupIcon(root);
         setupBalance(root);
-        setupButtons(root);
+        setupSendReceiveButtons(root);
         setupViewPager(root);
 
         return root;
@@ -88,12 +88,12 @@ public class WalletFragment extends Fragment {
         tvCorresponding.setText(String.format(getLocale(), coin.getFormat(), -1.0));
     }
 
-    private void setupButtons(View view) {
+    private void setupSendReceiveButtons(View view) {
         Button btSend = view.findViewById(R.id.bt_send);
         btSend.setOnClickListener(v -> walletFragmentInterface.onSendClicked(coin));
 
         Button btReceive = view.findViewById(R.id.bt_receive);
-        btReceive.setOnClickListener(v -> walletFragmentInterface.onReceiveClicked());
+        btReceive.setOnClickListener(v -> walletFragmentInterface.onReceiveClicked(coin));
     }
 
     private void setupViewPager(View view) {
@@ -112,6 +112,6 @@ public class WalletFragment extends Fragment {
     public interface Interface {
         void onSendClicked(Coin coin);
 
-        void onReceiveClicked();
+        void onReceiveClicked(Coin coin);
     }
 }

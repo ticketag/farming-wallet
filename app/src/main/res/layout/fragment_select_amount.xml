@@ -29,7 +29,7 @@
         tools:layout_editor_absoluteX="16dp">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tv_fragment_select_amount_coin"
             style="@style/styleTextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
             android:background="@android:color/transparent"
             android:gravity="center"
             android:hint="@null"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:text="@string/fragment_select_amount_0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/view2"
@@ -88,7 +88,7 @@
             android:background="@android:color/transparent"
             android:gravity="center"
             android:hint="@null"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:text="@string/fragment_select_amount_0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

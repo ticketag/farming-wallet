@@ -15,8 +15,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import eu.farmingpool.farmingwallet.R;
+import eu.farmingpool.farmingwallet.keys.Key;
 import eu.farmingpool.farmingwallet.logging.Event;
 import eu.farmingpool.farmingwallet.utils.Contact;
+import eu.farmingpool.farmingwallet.wallet.Coin;
 
 import static eu.farmingpool.farmingwallet.logging.Log.E;
 import static eu.farmingpool.farmingwallet.logging.Log.logEvent;
@@ -26,20 +28,19 @@ public class SelectReceiverFragment extends Fragment {
     private SendViewModel sendViewModel;
     private EditText etReceiverAddress;
     private Interface selectReceiverFragmentInterface;
-
-    private static final int N_CHARACTERS_TO_SHOW = 6;
+    private Button btNext;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_select_receiver, container, false);
 
+        setupViewModel();
+
         setupReceiverAddressEditText(root);
         setupQRCodeButton(root);
         setupContactButton(root);
         setupNextButton(root);
-
-        setupViewModel();
 
         return root;
     }
@@ -70,24 +71,37 @@ public class SelectReceiverFragment extends Fragment {
     }
 
     private void setupNextButton(View view) {
-        Button btNext = view.findViewById(R.id.bt_fragment_select_receiver_next);
+        btNext = view.findViewById(R.id.bt_fragment_select_receiver_next);
         btNext.setOnClickListener(v -> selectReceiverFragmentInterface.onNextClicked());
+
+        checkActivateNextButton();
     }
 
     private void setupViewModel() {
         sendViewModel = new ViewModelProvider(requireActivity()).get(SendViewModel.class);
 
         sendViewModel.getContact().observe(getViewLifecycleOwner(), this::setReceiverAddress);
+        sendViewModel.getCoin().observe(getViewLifecycleOwner(), coin -> checkActivateNextButton());
     }
 
     private void setReceiverAddress(Contact contact) {
-        String receiverAddress = contact.getReceivingAddress().getValue();
+        Key receiverAddress = contact.getReceivingAddress();
+        etReceiverAddress.setText(receiverAddress.getCompressedValue());
 
-        String firstPart = receiverAddress.substring(0, N_CHARACTERS_TO_SHOW);
-        String lastPart = receiverAddress.substring(receiverAddress.length() - N_CHARACTERS_TO_SHOW);
-        String compressedAddress = firstPart + "..." + lastPart;
+        checkActivateNextButton();
+    }
 
-        etReceiverAddress.setText(compressedAddress);
+    private void checkActivateNextButton() {
+        Contact contact = sendViewModel.getContact().getValue();
+        Coin coin = sendViewModel.getCoin().getValue();
+
+        boolean isCoinSelected = coin != null;
+        boolean isReceiverSelected = false;
+
+        if (contact != null)
+            isReceiverSelected = contact.getReceivingAddress() != null;
+
+        btNext.setEnabled(isCoinSelected && isReceiverSelected);
     }
 
     public interface Interface {

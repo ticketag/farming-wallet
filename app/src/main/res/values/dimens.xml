@@ -7,6 +7,7 @@
     <dimen name="text_size_nano">12sp</dimen>
 
     <!--  Modal -->
+    <dimen name="modal_corner_radius">16dp</dimen>
     <dimen name="decorator_modal_bottom_margin">24dp</dimen>
     <dimen name="decorator_modal_height">4dp</dimen>
     <dimen name="decorator_modal_width">120dp</dimen>
@@ -91,8 +92,12 @@
 
     <!--  Dialog Add Wallet -->
     <dimen name="dialog_add_wallet_padding">16dp</dimen>
-    <dimen name="dialog_add_wallet_card_corner_radius">20dp</dimen>
     <dimen name="dialog_add_wallet_rv_min_height">250dp</dimen>
+
+    <!--  Dialog Select Wallet -->
+    <dimen name="dialog_select_wallet_padding">16dp</dimen>
+    <dimen name="dialog_select_wallet_rv_min_height">250dp</dimen>
+    <dimen name="dialog_select_wallet_title_bottom_margin">16dp</dimen>
 
     <!--  Item Add Wallet -->
     <dimen name="item_add_wallet_radius">16dp</dimen>
@@ -126,4 +131,5 @@
     <dimen name="fragment_select_amount_large_margin">80dp</dimen>
     <dimen name="fragment_select_amount_separator_width">1dp</dimen>
     <dimen name="dialog_select_contact_search_horizontal_margin">16dp</dimen>
+
 </resources>

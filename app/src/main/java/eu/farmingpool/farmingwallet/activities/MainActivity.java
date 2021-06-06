@@ -81,6 +81,15 @@ public class MainActivity extends AppCompatActivity implements
             showBottomNavView();
     }
 
+    @Override
+    public void onSendClicked() {
+        openSendActivity(null);
+    }
+
+    @Override
+    public void onReceiveClicked() {
+    }
+
     // ChangeAccountAdapter.OnClickListener
     @Override
     public void onAccountClicked(int i) {
@@ -104,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onReceiveClicked() {
+    public void onReceiveClicked(Coin coin) {
 
     }
 

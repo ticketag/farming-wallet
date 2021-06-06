@@ -9,7 +9,7 @@
     android:padding="@dimen/activity_send_content_padding">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/ll_activity_send_coin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -35,8 +35,14 @@
             style="@style/styleTextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/coin_symbol_placeholder"
+            android:text="@string/activity_send_select_coin"
             android:textColor="?colorAccent" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_arrow_down_24" />
     </LinearLayout>
 
     <ImageView
@@ -56,7 +62,7 @@
         android:layout_weight="1"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/tv_activity_send_account"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/ll_activity_send_coin"
         app:navGraph="@navigation/navigation_activity_send"
         tools:layout="@layout/fragment_select_amount"
         tools:layout_editor_absoluteX="16dp" />

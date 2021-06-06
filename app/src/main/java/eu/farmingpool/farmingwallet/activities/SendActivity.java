@@ -3,6 +3,7 @@ package eu.farmingpool.farmingwallet.activities;
 import android.Manifest;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -23,10 +24,12 @@ import eu.farmingpool.farmingwallet.ui.send.ScanReceiverQRCodeDialog;
 import eu.farmingpool.farmingwallet.ui.send.SelectContactDialog;
 import eu.farmingpool.farmingwallet.ui.send.SelectReceiverFragment;
 import eu.farmingpool.farmingwallet.ui.send.SelectReceiverFragmentDirections;
+import eu.farmingpool.farmingwallet.ui.send.SelectWalletDialog;
 import eu.farmingpool.farmingwallet.ui.send.SendViewModel;
 import eu.farmingpool.farmingwallet.utils.Contact;
 import eu.farmingpool.farmingwallet.utils.DBManager;
 import eu.farmingpool.farmingwallet.wallet.Coin;
+import eu.farmingpool.farmingwallet.wallet.Wallet;
 
 import static eu.farmingpool.farmingwallet.utils.Utils.KEY_SERIALIZABLE_COIN;
 import static eu.farmingpool.farmingwallet.utils.Utils.MOCK_RECEIVING_ADDRESS;
@@ -35,7 +38,8 @@ public class SendActivity extends AppCompatActivity implements
         SelectReceiverFragment.Interface,
         SelectContactDialog.Interface,
         ScanReceiverQRCodeDialog.Interface,
-        PermissionsHandler.Interface {
+        PermissionsHandler.Interface,
+        SelectWalletDialog.Interface {
     private NavController navController;
     private SendViewModel sendViewModel;
     private DBManager dbManager;
@@ -52,6 +56,7 @@ public class SendActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_send);
 
         setupViewModel();
+        setupCoin();
         setupAccountName();
         setupNavigation();
         setupCloseButton();
@@ -62,11 +67,6 @@ public class SendActivity extends AppCompatActivity implements
         super.onResume();
 
         permissionsHandler.check(mandatoryPermissions, null);
-    }
-
-    @Override
-    public void onBackPressed() {
-        closeSendActivity();
     }
 
     // SelectReceiverFragment.Interface
@@ -138,6 +138,27 @@ public class SendActivity extends AppCompatActivity implements
 
     }
 
+    // SelectWalletDialog.Interface
+    @Override
+    public void onWalletClicked(Coin coin) {
+        TextView tvCoin = findViewById(R.id.tv_activity_send_coin);
+        tvCoin.setText(coin.toString());
+        sendViewModel.setCoin(coin);
+    }
+
+    private void setupCoin() {
+        Coin coin = sendViewModel.getCoin().getValue();
+
+        LinearLayout llCoin = findViewById(R.id.ll_activity_send_coin);
+        llCoin.setOnClickListener(v -> showSelectWalletDialog());
+
+        if (coin == null)
+            return;
+
+        TextView tvCoin = findViewById(R.id.tv_activity_send_coin);
+        tvCoin.setText(coin.toString());
+    }
+
     private void setupAccountName() {
         String accountName = Accounts.getInstance().getCurrentAccount().getName();
         TextView tvAccountName = findViewById(R.id.tv_activity_send_account);
@@ -157,11 +178,19 @@ public class SendActivity extends AppCompatActivity implements
 
     private void setupNavigation() {
         navController = Navigation.findNavController(this, R.id.activity_send_nav_host_fragment);
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+        });
     }
 
     private void setupCloseButton() {
         ImageView ivClose = findViewById(R.id.iv_activity_send_close);
         ivClose.setOnClickListener(v -> closeSendActivity());
+    }
+
+    private void showSelectWalletDialog() {
+        ArrayList<Wallet> wallets = Accounts.getInstance().getCurrentAccount().getWallets();
+        SelectWalletDialog selectWalletDialog = new SelectWalletDialog(wallets, this);
+        selectWalletDialog.show(getSupportFragmentManager(), "selectWalletDialog");
     }
 
     private void closeSendActivity() {

@@ -8,7 +8,6 @@
     android:background="@drawable/modal_background"
     android:orientation="vertical"
     android:padding="@dimen/dialog_add_wallet_padding"
-    app:cardCornerRadius="@dimen/dialog_add_wallet_card_corner_radius"
     tools:context=".ui.wallet.TransactionRecordDialog">
 
     <include layout="@layout/decorator_modal" />

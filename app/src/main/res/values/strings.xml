@@ -139,4 +139,6 @@
 
     <!--  Dialog Scan Receiver QR Code -->
     <string name="dialog_scan_receiver_qr_code_qr_code">QR Code</string>
+    <string name="dialog_select_wallet_select_a_coin">Select a Coin</string>
+    <string name="activity_send_select_coin">Select Coin</string>
 </resources>

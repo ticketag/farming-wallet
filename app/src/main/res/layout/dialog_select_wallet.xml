@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/modal_background"
     android:orientation="vertical"
-    android:padding="@dimen/modal_corner_radius"
+    android:padding="@dimen/dialog_select_wallet_padding"
     tools:context=".ui.wallet.TransactionRecordDialog">
 
     <include layout="@layout/decorator_modal" />
@@ -15,13 +15,14 @@
         style="@style/styleTextNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/dialog_add_wallet_select_a_coin_to_add" />
+        android:layout_marginBottom="@dimen/dialog_select_wallet_title_bottom_margin"
+        android:text="@string/dialog_select_wallet_select_a_coin" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_dialog_add_wallet_coins_list"
+        android:id="@+id/rv_dialog_select_wallet_coins_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:minHeight="@dimen/dialog_add_wallet_rv_min_height"
-        tools:listitem="@layout/item_add_wallet" />
+        android:minHeight="@dimen/dialog_select_wallet_rv_min_height"
+        tools:listitem="@layout/item_wallet" />
 </LinearLayout>

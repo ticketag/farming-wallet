@@ -40,7 +40,7 @@ public class SelectAmountFragment extends Fragment {
 
         setupViewModel();
 
-        setupCoin();
+        setupCoin(root);
         setupSeekBar(root);
         setupAmountEditText(root);
         setupMinMaxValues(root);
@@ -80,8 +80,11 @@ public class SelectAmountFragment extends Fragment {
         sbAmount.setProgress(getProgressFromAmount(amount));
     }
 
-    private void setupCoin() {
+    private void setupCoin(View view) {
         coin = sendViewModel.getCoin().getValue();
+        TextView tvCoin = view.findViewById(R.id.tv_fragment_select_amount_coin);
+        tvCoin.setText(coin.toString());
+
     }
 
     private void setupSeekBar(View view) {

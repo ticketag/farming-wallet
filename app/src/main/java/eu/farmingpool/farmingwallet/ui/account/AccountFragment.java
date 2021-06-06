@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,6 +42,7 @@ public class AccountFragment extends Fragment implements WalletsAdapter.OnClickL
         setupAccountName(root);
         setupWalletsRecyclerView(root);
         setupWalletsPercentageRecyclerView(root);
+        setupSendReceiveButtons(root);
 
         return root;
     }
@@ -120,6 +122,14 @@ public class AccountFragment extends Fragment implements WalletsAdapter.OnClickL
         rvWalletsPercentage.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
     }
 
+    private void setupSendReceiveButtons(View view) {
+        Button btSend = view.findViewById(R.id.bt_send);
+        btSend.setOnClickListener(v -> accountFragmentInterface.onSendClicked());
+
+        Button btReceive = view.findViewById(R.id.bt_receive);
+        btReceive.setOnClickListener(v -> accountFragmentInterface.onReceiveClicked());
+    }
+
     private void setRvAdapters() {
         setRvWalletsAdapter();
         setRvWalletsPercentageAdapter();
@@ -148,5 +158,9 @@ public class AccountFragment extends Fragment implements WalletsAdapter.OnClickL
         void onAccountNameClicked();
 
         void onWalletsScroll(int dy);
+
+        void onSendClicked();
+
+        void onReceiveClicked();
     }
 }
