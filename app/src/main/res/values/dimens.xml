@@ -16,7 +16,6 @@
     <integer name="activity_animation_duration">1000</integer>
 
     <!-- Activity Splash -->
-    <dimen name="activity_splash_button_radius">8dp</dimen>
     <dimen name="activity_splash_vertical_space">20dp</dimen>
     <dimen name="activity_splash_padding">8dp</dimen>
     <dimen name="activity_splash_button_height">44dp</dimen>
@@ -59,7 +58,6 @@
 
     <!-- Fragment Account -->
     <dimen name="fragment_account_content_padding_top">24dp</dimen>
-    <dimen name="fragment_account_content_padding_bottom">16dp</dimen>
     <dimen name="fragment_account_wallet_list_top_margin">16dp</dimen>
     <dimen name="fragment_account_send_receive_top_margin">20dp</dimen>
 

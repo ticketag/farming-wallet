@@ -18,7 +18,6 @@
         android:layout_marginHorizontal="@dimen/dialog_select_contact_search_horizontal_margin">
 
         <TextView
-            android:id="@+id/textView8"
             style="@style/styleTextLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
