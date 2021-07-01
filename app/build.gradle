@@ -38,6 +38,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     implementation "androidx.security:security-crypto:1.0.0"
     implementation "androidx.security:security-identity-credential:1.0.0-alpha02"
+    implementation files('libs/blsandroidlib.jar')
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

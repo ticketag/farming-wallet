@@ -3,6 +3,7 @@ package eu.farmingpool.farmingwallet.keys;
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.transactions.Transaction;
 import eu.farmingpool.farmingwallet.wallet.Coin;
+import eu.farmingwallet.bls_android.ChiaKeyManager;
 
 public class ChiaKeysManager extends KeysManager {
     private static ChiaKeysManager instance;
@@ -29,8 +30,14 @@ public class ChiaKeysManager extends KeysManager {
     }
 
     @Override
+    public String getWalletAddress(Account account) {
+        return ChiaKeyManager.getAddress(account.retrieveKeywords().toPlainString());
+    }
+
+    @Override
     public Key getMasterKey(Account account) {
-        return null;
+        byte[] masterKey = ChiaKeyManager.getMasterKey(account.retrieveKeywords().toPlainString());
+        return new Key(masterKey);
     }
 
     @Override

@@ -16,6 +16,13 @@ import eu.farmingpool.farmingwallet.services.MasterService;
 import eu.farmingpool.farmingwallet.utils.DBManager;
 
 public class GlobalApplication extends Application {
+
+    static {
+        System.loadLibrary("jbls");
+        System.loadLibrary("jbls_Wrapper");
+        System.loadLibrary("clvm_bindings");
+    }
+
     private static WeakReference<Context> appContext;
     private static MasterService masterService;
     private static DBManager dbManager;

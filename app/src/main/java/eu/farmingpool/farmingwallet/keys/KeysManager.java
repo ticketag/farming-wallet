@@ -13,6 +13,8 @@ public abstract class KeysManager {
 
     public abstract Transaction generateTransaction(Account account, double amount, Key receivingAddress);
 
+    public abstract String getWalletAddress(Account account);
+
     public abstract Key getMasterKey(Account account);
 
     public abstract Key getPublicKey(Account account, String tag);
