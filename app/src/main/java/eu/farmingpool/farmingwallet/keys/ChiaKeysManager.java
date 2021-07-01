@@ -1,5 +1,8 @@
 package eu.farmingpool.farmingwallet.keys;
 
+
+import org.jetbrains.annotations.NotNull;
+
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.transactions.Transaction;
 import eu.farmingpool.farmingwallet.wallet.Coin;
@@ -30,8 +33,9 @@ public class ChiaKeysManager extends KeysManager {
     }
 
     @Override
-    public String getWalletAddress(Account account) {
-        return ChiaKeyManager.getAddress(account.retrieveKeywords().toPlainString());
+    public String getWalletAddress(@NotNull Account account) {
+        String keywords = account.retrieveKeywords().toPlainString();
+        return ChiaKeyManager.getAddress(keywords);
     }
 
     @Override

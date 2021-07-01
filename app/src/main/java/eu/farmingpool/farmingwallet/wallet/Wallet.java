@@ -1,16 +1,21 @@
 package eu.farmingpool.farmingwallet.wallet;
 
+import eu.farmingpool.farmingwallet.accounts.Account;
+import eu.farmingpool.farmingwallet.keys.ChiaKeysManager;
+import eu.farmingpool.farmingwallet.keys.KeysManager;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecord;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 
 public class Wallet {
     public final Coin coin;
     public final TransactionRecords transactions = new TransactionRecords();
+    private final ChiaKeysManager keysManager;
 
     private double balance;
 
     public Wallet(Coin coin) {
         this.coin = coin;
+        this.keysManager = ChiaKeysManager.getInstance();
     }
 
     public void insertTransactions(TransactionRecords transactions) {
@@ -32,5 +37,9 @@ public class Wallet {
 
     public double getBalance() {
         return balance;
+    }
+
+    public String getMainAddress(Account account) {
+        return ChiaKeysManager.getInstance().getWalletAddress(account);
     }
 }

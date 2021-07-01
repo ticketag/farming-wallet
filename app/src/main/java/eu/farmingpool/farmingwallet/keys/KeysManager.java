@@ -1,5 +1,7 @@
 package eu.farmingpool.farmingwallet.keys;
 
+import org.jetbrains.annotations.NotNull;
+
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.transactions.Transaction;
 import eu.farmingpool.farmingwallet.wallet.Coin;
@@ -13,7 +15,7 @@ public abstract class KeysManager {
 
     public abstract Transaction generateTransaction(Account account, double amount, Key receivingAddress);
 
-    public abstract String getWalletAddress(Account account);
+    public abstract String getWalletAddress(@NotNull Account account);
 
     public abstract Key getMasterKey(Account account);
 

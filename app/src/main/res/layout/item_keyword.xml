@@ -7,9 +7,10 @@
     android:orientation="horizontal">
 
     <LinearLayout
+        android:id="@+id/tv_item_keyword_inner_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_item_key_word"
+
         android:orientation="horizontal"
         android:paddingHorizontal="20dp">
 

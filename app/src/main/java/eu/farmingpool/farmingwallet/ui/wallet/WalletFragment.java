@@ -80,12 +80,15 @@ public class WalletFragment extends Fragment {
     private void setupBalance(View view) {
         TextView tvBalance = view.findViewById(R.id.tv_item_balance_balance);
         TextView tvCorresponding = view.findViewById(R.id.tv_item_balance_corresponding);
+        TextView tvAddress = view.findViewById(R.id.tv_item_balance_address);
 
         Account account = Accounts.getInstance().getCurrentAccount();
         double balance = account.getWallet(coin).getBalance();
 
         tvBalance.setText(String.format(getLocale(), coin.getFormat(), balance));
         tvCorresponding.setText(String.format(getLocale(), coin.getFormat(), -1.0));
+
+        tvAddress.setText(account.getWallet(coin).getMainAddress(account));
     }
 
     private void setupSendReceiveButtons(View view) {

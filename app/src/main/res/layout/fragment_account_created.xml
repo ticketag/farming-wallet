@@ -72,13 +72,14 @@
             android:text="@string/fragment_account_created_give_a_name"
             android:textStyle="bold" />
 
+        <!--   android:background="@drawable/background_account_name"-->
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_fragment_account_created_account_name"
             style="@style/styleTextNormal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:height="@dimen/fragment_account_created_account_name_height"
-            android:background="@drawable/background_account_name"
+
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_-. "
             android:focusedByDefault="false"
             android:maxLines="1"

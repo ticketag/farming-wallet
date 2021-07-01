@@ -1,6 +1,8 @@
 package eu.farmingpool.farmingwallet.keywords;
 
-public class Keyword {
+import java.io.Serializable;
+
+public class Keyword implements Serializable {
     public final int index;
     public final String value;
 
