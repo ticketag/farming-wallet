@@ -10,6 +10,7 @@ import com.android.volley.toolbox.Volley;
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.application.GlobalApplication;
 import eu.farmingpool.farmingwallet.transactions.Transaction;
+import eu.farmingpool.farmingwallet.transactions.TransactionRecordEventHandler;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 import eu.farmingpool.farmingwallet.utils.SharedDataManager;
 import eu.farmingpool.farmingwallet.wallet.Coin;
@@ -19,7 +20,7 @@ import static eu.farmingpool.farmingwallet.utils.Utils.KEY_SEPARATOR;
 public abstract class BlockchainClient {
     private static final String KEY_TRANSACTIONS = "transactions";
     protected final Coin coin;
-    private final RequestQueue requestQueue = Volley.newRequestQueue(GlobalApplication.getAppContext());
+    protected final RequestQueue requestQueue = Volley.newRequestQueue(GlobalApplication.getAppContext());
 
     protected BlockchainClient(Coin coin) {
         this.coin = coin;
@@ -28,13 +29,14 @@ public abstract class BlockchainClient {
     protected abstract void postTransaction(Transaction transaction);
 
     @NonNull
-    protected abstract TransactionRecords fetchTransactionRecords(Account account);
+    protected abstract TransactionRecords fetchTransactionRecords(Account account, TransactionRecordEventHandler handler);
 
     public void executeTransaction(Transaction transaction) {
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 "",
                 response -> {
+
                 },
                 error -> {
                 }) {
@@ -44,8 +46,8 @@ public abstract class BlockchainClient {
     }
 
     @NonNull
-    public TransactionRecords fetchAndCacheTransactionRecords(Account account) {
-        TransactionRecords transactionRecords = fetchTransactionRecords(account);
+    public TransactionRecords fetchAndCacheTransactionRecords(Account account, TransactionRecordEventHandler handler) {
+        TransactionRecords transactionRecords = fetchTransactionRecords(account, handler);
 
         cacheTransactionRecords(account, transactionRecords);
 

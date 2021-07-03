@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.transactions.Transaction;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecord;
+import eu.farmingpool.farmingwallet.transactions.TransactionRecordEventHandler;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 import eu.farmingpool.farmingwallet.wallet.Coin;
 
@@ -36,7 +37,7 @@ public class EthereumBlockchainClient extends BlockchainClient {
 
     @NotNull
     @Override
-    protected TransactionRecords fetchTransactionRecords(Account account) {
+    protected TransactionRecords fetchTransactionRecords(Account account, TransactionRecordEventHandler handler) {
         TransactionRecords transactionRecords = new TransactionRecords();
 
         String testSender = "xch1wh88x8m47dqkw5wuselqs4t0un5ns3k6z5cf92fpju27jwnpx3fsx2lsha";

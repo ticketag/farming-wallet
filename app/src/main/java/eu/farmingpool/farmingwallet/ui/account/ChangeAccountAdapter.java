@@ -12,6 +12,8 @@ import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.accounts.Accounts;
 
+import static eu.farmingpool.farmingwallet.utils.Utils.getLocale;
+
 public class ChangeAccountAdapter extends RecyclerView.Adapter<ChangeAccountAdapter.AccountViewHolder> {
     private final OnClickListener onClickListener;
 
@@ -57,7 +59,12 @@ public class ChangeAccountAdapter extends RecyclerView.Adapter<ChangeAccountAdap
         }
 
         public void setup(Account account) {
-            tvAccountName.setText(account.getName());
+            if (account.getName() == null || account.getName().equals("")) {
+                tvAccountName.setText(String.format(getLocale(),"Account %d", account.getId()+1));
+            } else {
+                tvAccountName.setText(account.getName());
+            }
+
         }
     }
 }

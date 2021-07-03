@@ -1,5 +1,7 @@
 package eu.farmingpool.farmingwallet.ui.wallet;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -19,8 +22,11 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import eu.farmingpool.farmingwallet.R;
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.accounts.Accounts;
+import eu.farmingpool.farmingwallet.blockchain.BlockchainClient;
+import eu.farmingpool.farmingwallet.blockchain.BlockchainClientFactory;
 import eu.farmingpool.farmingwallet.logging.Event;
 import eu.farmingpool.farmingwallet.wallet.Coin;
+import eu.farmingpool.farmingwallet.wallet.Wallet;
 
 import static eu.farmingpool.farmingwallet.logging.Log.E;
 import static eu.farmingpool.farmingwallet.logging.Log.logEvent;
@@ -31,6 +37,8 @@ import static eu.farmingpool.farmingwallet.utils.Utils.getLocale;
 public class WalletFragment extends Fragment {
     private Coin coin;
     private Interface walletFragmentInterface;
+    private TextView tvBalance;
+    private TextView tvCorresponding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -78,17 +86,21 @@ public class WalletFragment extends Fragment {
     }
 
     private void setupBalance(View view) {
-        TextView tvBalance = view.findViewById(R.id.tv_item_balance_balance);
-        TextView tvCorresponding = view.findViewById(R.id.tv_item_balance_corresponding);
+
+
+        tvBalance = view.findViewById(R.id.tv_item_balance_balance);
+        tvCorresponding = view.findViewById(R.id.tv_item_balance_corresponding);
         TextView tvAddress = view.findViewById(R.id.tv_item_balance_address);
 
         Account account = Accounts.getInstance().getCurrentAccount();
-        double balance = account.getWallet(coin).getBalance();
+        fetchTransactionRecords(account, Coin.XCH);
+        tvBalance.setText("...");
 
-        tvBalance.setText(String.format(getLocale(), coin.getFormat(), balance));
-        tvCorresponding.setText(String.format(getLocale(), coin.getFormat(), -1.0));
+        //tvCorresponding.setText(String.format(getLocale(), coin.getFormat(), -1.0));
+        tvCorresponding.setText("...");
 
         tvAddress.setText(account.getWallet(coin).getMainAddress(account));
+        tvAddress.setOnClickListener(v -> copyAddress());
     }
 
     private void setupSendReceiveButtons(View view) {
@@ -101,7 +113,6 @@ public class WalletFragment extends Fragment {
 
     private void setupViewPager(View view) {
         WalletFragmentStateAdapter adapter = new WalletFragmentStateAdapter(this);
-
         ViewPager2 viewPager = view.findViewById(R.id.fragment_wallet_host_fragment);
         viewPager.setAdapter(adapter);
 
@@ -110,6 +121,28 @@ public class WalletFragment extends Fragment {
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> tab.setText(adapter.getTabTitle(position))
         ).attach();
+    }
+
+    private void copyAddress() {
+        Account account = Accounts.getInstance().getCurrentAccount();
+
+        ClipboardManager clipboard = (ClipboardManager) (requireActivity().getSystemService(Context.CLIPBOARD_SERVICE));
+        ClipData clip = ClipData.newPlainText("address", account.getWallet(coin).getMainAddress(account));
+        clipboard.setPrimaryClip(clip);
+        Toast.makeText(requireContext(), R.string.fragment_keywords_creation_copied, Toast.LENGTH_SHORT).show();
+    }
+
+    public void fetchTransactionRecords(Account account, Coin coin) {
+        BlockchainClient blockchainClient = BlockchainClientFactory.get(coin);
+        blockchainClient.fetchAndCacheTransactionRecords(account, (records, balance) -> {
+            Wallet wallet = account.getWallet(coin);
+            wallet.setTransactions(records);
+            wallet.setBalance(balance);
+
+            tvBalance.setText(String.format(getLocale(), coin.getFormat(), coin.formattedAmount(balance)));
+
+            account.updateWallet(coin, wallet);
+        });
     }
 
     public interface Interface {

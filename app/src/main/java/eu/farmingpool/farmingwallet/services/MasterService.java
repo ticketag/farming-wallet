@@ -69,10 +69,11 @@ public class MasterService extends Service {
 
     public void fetchTransactionRecords(Account account, Coin coin) {
         BlockchainClient blockchainClient = BlockchainClientFactory.get(coin);
-        TransactionRecords transactions = blockchainClient.fetchAndCacheTransactionRecords(account);
         Wallet wallet = account.getWallet(coin);
-
-        wallet.insertTransactions(transactions);
+        TransactionRecords transactions = blockchainClient.fetchAndCacheTransactionRecords(account, (txns, balance) -> {
+            wallet.setTransactions(txns);
+            wallet.setBalance(balance);
+        });
     }
 
 

@@ -34,13 +34,18 @@ public class ChiaKeysManager extends KeysManager {
 
     @Override
     public String getWalletAddress(@NotNull Account account) {
-        String keywords = account.retrieveKeywords().toPlainString();
+        String keywords = account.retrieveKeywords().toNormalizedString();
         return ChiaKeyManager.getAddress(keywords);
+    }
+
+    public String[] getPuzzleHashes(@NotNull Account account) {
+        String keywords = account.retrieveKeywords().toNormalizedString();
+        return ChiaKeyManager.getPuzzleHashes(keywords);
     }
 
     @Override
     public Key getMasterKey(Account account) {
-        byte[] masterKey = ChiaKeyManager.getMasterKey(account.retrieveKeywords().toPlainString());
+        byte[] masterKey = ChiaKeyManager.getMasterKey(account.retrieveKeywords().toNormalizedString());
         return new Key(masterKey);
     }
 

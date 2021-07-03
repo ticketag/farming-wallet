@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onImportAccountClicked() {
-
+        openImportAccountActivity();
     }
 
     // WalletFragment.Interface
@@ -197,6 +197,10 @@ public class MainActivity extends AppCompatActivity implements
             navView.setVisibility(View.VISIBLE);
             navView.startAnimation(animShow);
         }
+    }
+
+    private void openImportAccountActivity() {
+        openActivity(this, ImportAccountActivity.class, false, true, false, false);
     }
 
     private void openNewAccountActivity() {

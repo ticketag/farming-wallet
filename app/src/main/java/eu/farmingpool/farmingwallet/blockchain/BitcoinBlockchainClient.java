@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import eu.farmingpool.farmingwallet.accounts.Account;
 import eu.farmingpool.farmingwallet.transactions.Transaction;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecord;
+import eu.farmingpool.farmingwallet.transactions.TransactionRecordEventHandler;
 import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 import eu.farmingpool.farmingwallet.wallet.Coin;
 
@@ -38,7 +39,7 @@ public class BitcoinBlockchainClient extends BlockchainClient {
 
     @NotNull
     @Override
-    protected TransactionRecords fetchTransactionRecords(Account account) {
+    protected TransactionRecords fetchTransactionRecords(Account account, TransactionRecordEventHandler handler) {
         TransactionRecords transactionRecords = new TransactionRecords();
 
         transactionRecords.insert(new TransactionRecord(coin, new Timestamp(System.currentTimeMillis()), 1.2, MOCK_RECEIVING_ADDRESS, 0));

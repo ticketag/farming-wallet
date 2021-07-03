@@ -80,10 +80,27 @@ public enum Coin implements Serializable {
         switch (this) {
             case EUR:
             case USD:
+                return "%.2f " + this;
             case XCH:
             case BTC:
             case ETH:
-                return "%.2f " + this;
+                return "%.8f " + this;
+            default:
+                throw new IllegalStateException("Unexpected value: " + this);
+        }
+    }
+    public double formattedAmount(double intValue) {
+        return formattedAmount((long)intValue);
+    }
+    public double formattedAmount(long intValue) {
+        switch (this) {
+            case EUR:
+            case USD:
+                return ((double)intValue)/100;
+            case XCH:
+            case BTC:
+            case ETH:
+                return ((double)intValue)/1000000000000L;
             default:
                 throw new IllegalStateException("Unexpected value: " + this);
         }

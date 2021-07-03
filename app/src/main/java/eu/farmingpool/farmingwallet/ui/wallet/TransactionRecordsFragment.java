@@ -8,19 +8,27 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Observable;
 import java.util.Observer;
 
 import eu.farmingpool.farmingwallet.R;
+import eu.farmingpool.farmingwallet.accounts.Account;
+import eu.farmingpool.farmingwallet.accounts.Accounts;
+import eu.farmingpool.farmingwallet.transactions.TransactionRecordEventHandler;
+import eu.farmingpool.farmingwallet.transactions.TransactionRecords;
 import eu.farmingpool.farmingwallet.ui.ObservableChanges;
+import eu.farmingpool.farmingwallet.wallet.Coin;
+import eu.farmingpool.farmingwallet.wallet.Wallet;
 
 public class TransactionRecordsFragment extends Fragment implements
         Observer,
-        TransactionRecordsAdapter.OnClickListener {
+        TransactionRecordsAdapter.OnClickListener, TransactionRecordEventHandler {
     private RecyclerView rvTransactionRecords;
     private TransactionRecordsAdapter.OnClickListener onClickListener;
+    private Wallet wallet;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -64,12 +72,22 @@ public class TransactionRecordsFragment extends Fragment implements
             onObservableCurrentAccountObservation();
     }
 
+    private Observer transactionRecordsChanged = (o, arg) -> {
+
+    };
+
     private void onObservableCurrentAccountObservation() {
         setTransactionRecordsAdapter();
     }
 
+
     private void setupRecyclerView(View view) {
         rvTransactionRecords = view.findViewById(R.id.rv_transaction_records);
+        rvTransactionRecords.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+        Account account = Accounts.getInstance().getCurrentAccount();
+        wallet = account.getWallet(Coin.XCH);
+        TransactionRecordsAdapter adapter = new TransactionRecordsAdapter(wallet.transactions, this);
+        rvTransactionRecords.setAdapter(adapter);
     }
 
     private void setTransactionRecordsAdapter() {
@@ -79,5 +97,12 @@ public class TransactionRecordsFragment extends Fragment implements
 //        TransactionRecordsAdapter adapter = new TransactionRecordsAdapter(transactionRecords, this);
 //        rvTransactionRecords.setAdapter(adapter);
 //        rvTransactionRecords.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+    }
+
+    @Override
+    public void onTransactionRecordsLoaded(TransactionRecords records, long balance) {
+        wallet.setTransactions(records);
+        TransactionRecordsAdapter adapter = new TransactionRecordsAdapter(wallet.transactions, this);
+        rvTransactionRecords.setAdapter(adapter);
     }
 }

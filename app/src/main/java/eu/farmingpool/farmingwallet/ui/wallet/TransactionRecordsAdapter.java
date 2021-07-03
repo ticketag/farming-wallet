@@ -84,7 +84,7 @@ public class TransactionRecordsAdapter extends RecyclerView.Adapter<TransactionR
             ivIcon.setImageResource(iconId);
             tvOperation.setText(isPositive ? R.string.item_transaction_record_operation_received : R.string.item_transaction_record_operation_sent);
             tvOperation.setTextColor(color);
-            tvAmount.setText(String.format(getLocale(), coin.getFormat(), amount));
+            tvAmount.setText(String.format(getLocale(), coin.getFormat(), coin.formattedAmount(amount)));
             tvAmount.setTextColor(color);
             tvDate.setText(f.format(date));
             tvCorresponding.setText("0.0 $");

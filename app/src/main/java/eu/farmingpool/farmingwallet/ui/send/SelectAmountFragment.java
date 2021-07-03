@@ -177,7 +177,7 @@ public class SelectAmountFragment extends Fragment {
 
         assert coin != null;
         tvMin.setText(String.format(getLocale(), coin.getFormat(), 0.0));
-        tvMax.setText(String.format(getLocale(), coin.getFormat(), balance));
+        tvMax.setText(String.format(getLocale(), coin.getFormat(),  coin.formattedAmount(balance)));
     }
 
     private void setupMinHalfMaxButtons(View view) {

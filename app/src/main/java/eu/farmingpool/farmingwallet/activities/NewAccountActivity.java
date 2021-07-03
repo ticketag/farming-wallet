@@ -29,7 +29,7 @@ import static eu.farmingpool.farmingwallet.utils.Utils.openActivity;
 public class NewAccountActivity extends AppCompatActivity implements
         KeywordsCreationFragment.KeywordsCreationFragmentInterface,
         AccountCreatedFragment.WalletCreatedFragmentInterface {
-    public static final int N_KEYWORDS_TO_GENERATE = 16;
+    public static final int N_KEYWORDS_TO_GENERATE = 24;
     private static final int N_KEYWORDS_TO_CHECK = 6;
 
     private NavController navController;

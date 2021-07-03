@@ -75,7 +75,7 @@ public class WalletsAdapter extends RecyclerView.Adapter<WalletsAdapter.WalletVi
 
             ivIcon.setImageResource(coin.getIconResId());
             tvCoinName.setText(coin.getCoinName());
-            tvCoinAmount.setText(String.format(getLocale(), coin.getFormat(), amount));
+            tvCoinAmount.setText(String.format(getLocale(), coin.getFormat(),  coin.formattedAmount(amount)));
             tvCoinValue.setText("0.0 $");
             tvCoinChange.setText("+32.1%");
             tvCoinCorresponding.setText("0.0 $");

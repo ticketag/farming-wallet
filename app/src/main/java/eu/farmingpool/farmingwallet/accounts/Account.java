@@ -73,6 +73,11 @@ public class Account {
         return SharedDataManager.getWallet(walletKey);
     }
 
+    public void updateWallet(Coin coin, Wallet wallet) {
+        String walletKey = getWalletKey(coin);
+        SharedDataManager.putWallet(walletKey, wallet);
+    }
+
     public Keywords retrieveKeywords() {
         String keywordsKey = getKeywordsKey();
 
