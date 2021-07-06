@@ -70,14 +70,10 @@ public class ChiaBlockchainClient extends BlockchainClient {
         JsonObjectRequest req = new JsonObjectRequest("http://192.168.2.2:5012/api/wallet/transactions", body, response -> {
             try {
                 long balance = response.getLong("balance");
-                JSONArray coins = response.getJSONArray("coins");
-                for (int i = 0; i < coins.length(); i++ ) {
-                    JSONObject coinRecord = coins.getJSONObject(i);
-                    JSONObject coinData = coinRecord.getJSONObject("coin");
-                    transactionRecords.insert(new TransactionRecord(coin, new Timestamp(coinRecord.getLong("timestamp")*1000), coinData.getLong("amount"), MOCK_RECEIVING_ADDRESS, coinRecord.getLong("confirmed_block_index")));
-                    if (coinRecord.getBoolean("spent")) {
-                        transactionRecords.insert(new TransactionRecord(coin, new Timestamp(coinRecord.getLong("timestamp")*1000), -coinData.getLong("amount"), MOCK_RECEIVING_ADDRESS, coinRecord.getLong("spent_block_index")));
-                    }
+                JSONArray transactions = response.getJSONArray("transactions");
+                for (int i = 0; i < transactions.length(); i++ ) {
+                    JSONObject txnRecord = transactions.getJSONObject(i);
+                    transactionRecords.insert(new TransactionRecord(coin, new Timestamp(txnRecord.getLong("timestamp")*1000), txnRecord.getLong("amount"), MOCK_RECEIVING_ADDRESS, txnRecord.getLong("block_height")));
                 }
                 handler.onTransactionRecordsLoaded(transactionRecords, balance);
             } catch (JSONException e) {
